@@ -6,7 +6,7 @@ package implicit_test
   * 1. Like: Polymorphic call..
  *   - but here we have Objects not Classes
  *   - in Java no object but just static methods which we can not override or extend
- *   - we may not avoid passing implicit object as param to some method, it will be done automatically (implicitly)
+ *   - we may avoid passing implicit object as param to some method, it will be done automatically (implicitly)
  *
  * Use cases:
  *
