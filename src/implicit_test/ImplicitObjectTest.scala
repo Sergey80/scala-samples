@@ -1,5 +1,29 @@
 package implicit_test
 
+/*
+ * Comparing to Java:
+ *
+  * 1. Like: Polymorphic call..
+ *   - but here we have Objects not Classes
+ *   - in Java no object but just static methods which we can not override or extend
+ *   - we may not avoid passing implicit object as param to some method, it will be done automatically (implicitly)
+ *
+ * Use cases:
+ *
+ * 1. Implicit object is often used as a "Session".
+ *    If Session is defined somewhere then no need specify it all over the code when we use it (like db-session, web-session, etc..).
+ *
+ * 2. Json/XML (de)serialization - when default rule/algorithm is already applied about how to do this for object,
+ *    we may provide our own algorithm for some type of objects.
+ *
+ * 3. In general: When we need substitute some existing algorithm by our own implementation
+ *
+ *
+ * Limitations:
+ *
+ *  - Implicit object may Not be defined as extended/top structure.  They must be defined inside of another trait/class/object.
+*/
+
 
 trait Worker[T] {
 
