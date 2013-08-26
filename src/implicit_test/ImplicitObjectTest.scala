@@ -59,14 +59,10 @@ object ImplicitObjectTest extends App {
 
   // MAIN
 
-  override def main(args : Array[String]) = {
-
     Boss.makeWorkedDo(work = "take the first letter from this string")  // prints "t"
 
     Boss.makeWorkedDo(work = 123456789) // print "1", as we can see here we don't know which worker will do the work
 
-    Boss.makeWorkedDo(work = new Object) // if there is no worker, nothing will happen
-
-  }
+    //Boss.makeWorkedDo(work = new Object) // if there is no worker, will fail on compilation
 
 }
