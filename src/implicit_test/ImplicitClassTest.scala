@@ -5,11 +5,11 @@ package implicit_test
 */
 
 object ImplicitsScope {
-                                        // only one arg argument allowed for 'implicit class'
+                                        // only one (no more) arg argument allowed for 'implicit class'
   implicit class ExtendedInt(x: Int) {  // does not matter how we call this class. It just defines 'class of methods'
                                         // x: Int - type 'Int' it does matter - we are adding new methods to "Int"
 
-    def times[A]( f: => A ): Unit = {    // 'times' will be used everywhere where
+    def times[A]( f: => A ): Unit = {    // method 'times()' will be available as as it was in 'Int' class
       for(i <- 1 to x) {
         f
       }
