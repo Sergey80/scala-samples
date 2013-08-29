@@ -7,7 +7,7 @@ import scala.concurrent.duration.Duration
 
 object FutureTest extends App {
 
-  def getData(): mutable.MutableList[Int] = {
+  def getData(): Iterable[Int] = {
 
     val data = mutable.MutableList[Int]()
 
