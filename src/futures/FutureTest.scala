@@ -31,8 +31,7 @@ object FutureTest extends App {
 
   println ("hello!")
 
-  Thread.currentThread().join()
-  //Await.result(f, Duration(500000, "millis"))
-
+  // wait until done
+  while(!f.isCompleted) {Thread.sleep(1000)}
 
 }
