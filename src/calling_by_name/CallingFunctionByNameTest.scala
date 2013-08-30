@@ -1,10 +1,12 @@
-package higher_order_functions
+package calling_by_name
 
-// http://blog.bruchez.name/2011/10/scala-partial-functions-without-phd.html
+// #calling by name - arguments that are evaluating on the moment of use, but not on the moment of passing them to function.
+// #partially applied function - use "_" to omit some arguments and return a function instead that expect rest of not applied arguments
+// #gigher order function - take function as parameter
 
-// Higher Order Functions - These are functions that take other functions as parameters, or whose result is a function
+// Calling function By Name
 
-object HigherOrderFunctionsTest extends App {
+object CallingFunctionByNameTest extends App {
 
   var var1 = 0
 
@@ -20,7 +22,10 @@ object HigherOrderFunctionsTest extends App {
     f(v1, v2) + f(v1, v2)
   }
 
-
+  /* nGen does not have any parameters defined (on first glance),
+   * but since fnGen returns 'partially applied function' which made by using "_" on aFun,
+   * then it makes fnGen returns the function that's able to apply parameters
+  */
   def fnGen() = {
 
     var1 += 1
@@ -38,7 +43,6 @@ object HigherOrderFunctionsTest extends App {
 
   println( takeFunction1( fnGen(), 2, 2) )
   println(var1)
-  var1 = 0
 
   println( takeFunction2( fnGen(), 2, 2) )
   println(var1)
