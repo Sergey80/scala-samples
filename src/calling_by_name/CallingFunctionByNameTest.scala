@@ -47,6 +47,13 @@ object CallingFunctionByNameTest extends App {
   println( takeFunction2( fnGen(), 2, 2) )
   println(var1)
 
+  /* Output:
+  44
+  1
+  44
+  3
+  */
+
 
 }
 
