@@ -4,7 +4,8 @@ package currying
  * The difference between a Function that returns a function and Currying.
  *
  * Currying - is a function that expects parameters but if those are missed -
- * returns another function where (rest of) those params are expected to be passed afterwords. Due to using "_".
+ * returns another function where (rest of) those params are expected to be passed to than new function afterwords.
+ * To be able to miss some of parameters we have to use "_".
  */
 object CurryingTest extends App {
 
@@ -15,9 +16,10 @@ object CurryingTest extends App {
 
   // 1.2
   //add1(5)_  // can not be treated as 'partially applied function',
-  //            // because it there is no 2nd parameter defined, soo there is nothing to omit
+  //            // because there is no 2nd parameter defined, so there is nothing to omit then
 
-   val f = add1(5) // not need to treat it as 'partially applied function', no need to pass "_", does not require 2nd parameter passed
+   val f = add1(5) // only one param is used. no need to treat this as 'partially applied function',
+                    // no need to pass "_", does not require 2nd parameter passed (see next example)
    println("1.2: " + f(5) )
 
 }
