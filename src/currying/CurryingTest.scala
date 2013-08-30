@@ -26,7 +26,7 @@ object CurryingTest extends App {
 
 { // 2. Currying - it does not return a function - it returns an Int result.
   // It expects 2nd parameter to be passed,
-  // but if that is not provided - it returns a function that expect this parameter
+  // but if that is not provided - it returns a function that expects this parameter
   def add2(a:Int)(b:Int) = {a + b}
 
   // 2.1
