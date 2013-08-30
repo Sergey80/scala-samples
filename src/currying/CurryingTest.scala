@@ -4,7 +4,7 @@ package currying
  * The difference between a Function that returns a function and Currying.
  *
  * Currying - is a function that expects parameters but if those are missed -
- * returns another function where (rest of) those params are expected to be passed to than new function afterwords.
+ * returns another function where (rest of) those params are expected to be passed to than new function afterwards.
  * To be able to miss some of parameters we have to use "_".
  */
 object CurryingTest extends App {
