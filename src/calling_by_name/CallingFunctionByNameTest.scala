@@ -2,7 +2,7 @@ package calling_by_name
 
 // #calling by name - arguments that are evaluating on the moment of use, but not on the moment of passing them to function.
 // #partially applied function - use "_" to omit some arguments and return a new function instead that expects rest of not-yet-applied arguments to be passed to that new function
-// #gigher order function - take function as parameter
+// #higher order function - take function as parameter
 
 // Calling function By Name
 
