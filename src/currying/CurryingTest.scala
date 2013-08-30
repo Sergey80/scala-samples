@@ -2,7 +2,7 @@ package currying
 
 /*
  * The difference between a Function that returns function and Currying -function that expect parameters,
-  * but if those are missed - return the function where those params might be passed afterwords by using "_".
+  * but if those are missed - returns a function where those params are expected to be passed afterwords. Due to using "_".
  */
 object CurryingTest extends App {
 
@@ -12,7 +12,8 @@ object CurryingTest extends App {
   println ("1.1: " + add1(5)(6))
 
   // 1.2
-  //add1(5)_  // can not be treated as 'partially applied function', because it there is no 2nd parameter defined
+  //add1(5)_  // can not be treated as 'partially applied function',
+  //            // because it there is no 2nd parameter defined, soo there is nothing to omit
 
    val f = add1(5) // not need to treat it as 'partially applied function', no need to pass "_", does not require 2nd parameter passed
    println("1.2: " + f(5) )
