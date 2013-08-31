@@ -30,4 +30,15 @@ takeFunction( f1 ) // passing a reference to function without passing any parame
 takeFunction2( f1, 1)  // this is how "Higher order function" is able to pass an parameter to a function it takes as an argument
                             // and by passing it - an evaluating is taking place
 
+/* Output:
+  try 1:
+  <function1>
+  f1 is invoking
+  1
+
+  try 2:
+  f1 is invoking
+  1
+*/
+
 }
