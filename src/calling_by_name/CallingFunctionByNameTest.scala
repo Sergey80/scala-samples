@@ -45,7 +45,8 @@ object CallingFunctionByNameTest extends App {
   // --
   // first try
   println( takeFunction1( aFun, 2, 2) )   // btw.: we can not use 'aFun()' with brackets here !
-  println("var1 = " + var1)
+  println("var1 = " + var1)                  // "aFun" interpreted as: (Int, Int) => String; (as expected by 'takeFunction1')
+                                             // "aFun()" interpreted as: String
 
   println( takeFunction2( aFun, 2, 2) )
   println("var1 = " + var1 + "\n")
