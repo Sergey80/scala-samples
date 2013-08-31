@@ -9,6 +9,7 @@ package calling_by_name
 object CallingFunctionByNameTest extends App {
 
   var var1 = 0
+  var var2 = 0
 
   // 1.
   // the function that accepts arg-function with: two int params and returning String
@@ -22,36 +23,51 @@ object CallingFunctionByNameTest extends App {
     f(v1, v2) + f(v1, v2)
   }
 
+
+  def aFun(v1:Int, v2:Int) : String = {
+    var1 += 1
+    (v1 + v2).toString
+  }
+
+
   /* nGen does not have any parameters defined (on first glance),
    * but since fnGen returns 'partially applied function' which made by using "_" on aFun,
    * then it makes fnGen returns the function that's able to apply parameters
   */
   def fnGen() = {
 
-    var1 += 1
-
-    def aFun(v1:Int, v2:Int) : String = {
-      (v1 + v2).toString
-    }
+    var2 += 1
 
     aFun _
 
   }
 
   // --
+  // first try
+  println( takeFunction1( aFun, 2, 2) )   // btw.: we can not use 'aFun()' with brackets here !
+  println("var1 = " + var1)
+
+  println( takeFunction2( aFun, 2, 2) )
+  println("var1 = " + var1 + "\n")
 
 
+  // second try
   println( takeFunction1( fnGen(), 2, 2) )
-  println(var1)
+  println("var2 = " + var2)
 
   println( takeFunction2( fnGen(), 2, 2) )
-  println(var1)
+  println("var2 = " + var2)
 
   /* Output:
   44
-  1
+  var1 = 2
   44
-  3
+  var1 = 4
+
+  44
+  var2 = 1
+  44
+  var2 = 3
   */
 
 
