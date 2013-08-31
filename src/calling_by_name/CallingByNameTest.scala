@@ -17,7 +17,7 @@ object CallingByNameTest extends App {
 
   }
 
-  def y() = {println ("y is calling"); 1}
+  def y() = {println ("y is calling"); 1} // will print the text by calling
 
   val result1 = fByValue( x=0, y=y() ) // y() is evaluating by passing .. but nobody is going to use its value though
   val result2 = fByName ( x=0, y=y() ) // y() will not be evaluated
