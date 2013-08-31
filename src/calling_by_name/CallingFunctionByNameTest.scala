@@ -43,12 +43,12 @@ object CallingFunctionByNameTest extends App {
   }
 
   // --
-  // first try
+  // first try - aFun will be evaluated immediately, once by passing it
   println( takeFunction1( aFun, 2, 2) )   // btw.: we can not use 'aFun()' with brackets here !
   println("var1 = " + var1)                  // "aFun" interpreted as: (Int, Int) => String; (as expected by 'takeFunction1')
                                              // "aFun()" interpreted as: String
 
-  println( takeFunction2( aFun, 2, 2) )
+  println( takeFunction2( aFun, 2, 2) )  // evaluated immediately anyhow, because passing a reference to aFun leads it its initialization (it can not exist without its params)
   println("var1 = " + var1 + "\n")
 
 
@@ -56,8 +56,8 @@ object CallingFunctionByNameTest extends App {
   println( takeFunction1( fnGen(), 2, 2) )
   println("var2 = " + var2)
 
-  println( takeFunction2( fnGen(), 2, 2) )
-  println("var2 = " + var2)
+  println( takeFunction2( fnGen(), 2, 2) ) // fnGen() will be evaluated afterwards, each time when on the moment of calling it
+  println("var2 = " + var2)                    // fGen() - a reference to partial function, that does not require params to be passed to create it
 
   /* Output:
   44
