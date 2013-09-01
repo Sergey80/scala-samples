@@ -5,6 +5,7 @@ package partially_applied_functions
 Q1: So, what are the differences exactly between partially applied functions and curried functions in Scala?﻿
 
 A: Short answer: Partially applied function (PAF) & Curried don't conflict with each others.
+   Partially applied function is a tool to make General FUnction or Currying function to be partial.
 
 */
 
