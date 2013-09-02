@@ -66,6 +66,10 @@ object HigherOrderFunctionTest extends App {
   try 2:
   f1 is invoking
   1
+
+  #3 try:
+  f1 is invoking
+  f2 is invoking
 */
 
 }
