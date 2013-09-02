@@ -58,12 +58,12 @@ object HigherOrderFunctionTest extends App {
   takeTwoFunctions2(f1, f2, p1=1, p2=2)   // actually nothing special - that works like expected
 
 /* Output:
-  try 1:
+  #1 try
   <function1>
   f1 is invoking
   1
 
-  try 2:
+  #2 try:
   f1 is invoking
   1
 
