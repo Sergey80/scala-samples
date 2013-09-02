@@ -20,7 +20,7 @@ object CurryingTest extends App {
 
    val f = add1(5) // only one param is used. no need to treat this as 'partially applied function',
                     // no need to pass "_", does not require 2nd parameter passed (see next example)
-   println("1.2: " + f(5) )
+   println("1.2: " + f(6) )
 
 }
 
@@ -37,7 +37,7 @@ object CurryingTest extends App {
   //val f =  add(5) // does not compile, expecting 2nd param passed
   val f =  add2(5)_  // can treat it as 'partially applied function' because 2nd parameter is defined,
                         // so we may mark it to be omitted
-  println("2.2: " + f(5) )
+  println("2.2: " + f(6) )
 
 }
 
