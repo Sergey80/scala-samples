@@ -23,7 +23,7 @@ object Starter extends App {
 
   val z:Int = obj() // equivalent to x.apply()
 
-  // in this sense apply() method is just default 'empty-name' when you apply "()" on a object
+  // in this sense apply() method is just default 'empty-name' function which we could call when we applying "()" on a object
 
   // so apply is default function if we want to evaluate an object as a function
 
