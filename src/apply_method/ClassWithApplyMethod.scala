@@ -9,7 +9,7 @@ class ClassWithApplyMethod(x:Int) {
 
 object Starter extends App {
 
-  val obj = new ClassWithApplyMethod(1)
+  val obj = new ClassWithApplyMethod(1) // no any apply() method will be invoked, because the object is not yet created at this moment
 
 
   println("-1-")
