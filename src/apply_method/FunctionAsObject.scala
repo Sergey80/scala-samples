@@ -1,15 +1,26 @@
 package apply_method
 
-// #3 (look at #1, #1 first)
+/*
+  #apply
+  related: #lazy-evaluation
+*/
+// sequence: #3 (look at #1, #2 first)
 
 object FunctionAsObject extends App {
 
   def sum = (x:Int, y:Int) => x + y
 
-  println(sum) // <function2>
+  println(sum) // <function2>   // #lazy-evaluation related
 
   val v1 = sum.apply(1, 2) // demonstrates that function "sum" is an instance of Function2 that has method apply(_,_)
 
   println(v1)  // 3
+
+
+  // only because Function<N> has apply() method we can do this:
+  val v2 = sum(2,2) // this is apply method !
+  println(v2)  // 4
+
+  // Thant means that in Scala everything tends to be a function (apply methods help to get this feeling), but all functions are objects.
 
 }
