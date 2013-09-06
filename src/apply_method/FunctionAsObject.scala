@@ -10,7 +10,7 @@ object FunctionAsObject extends App {
 
   def sum = (x:Int, y:Int) => x + y
 
-  println(sum) // <function2>   // #lazy-evaluation related
+  println(sum) // <function2>   // #lazy-evaluation + #anonymous-function related
 
   val v1 = sum.apply(1, 2) // demonstrates that function "sum" is an instance of Function2 that has method apply(_,_)
 
