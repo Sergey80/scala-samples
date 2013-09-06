@@ -1,15 +1,20 @@
 package implicit_test
 
 /*
+  #implicit
+  related: #implicit-class #implicit-parameters
+ */
+
+/*
  * Add new method to exiting Int class, That works in particular scope.
 */
 
 object ImplicitsScope {
-                                        // only one (no more) arg argument allowed for 'implicit class'
-  implicit class ExtendedInt(x: Int) {  // does not matter how we call this class. It just defines 'class of methods'
-                                        // x: Int - type 'Int' it does matter - we are adding new methods to "Int"
 
-    def times[A]( f: => A ): Unit = {    // method 'times()' will be available as as it was in 'Int' class
+  // defines implicits method for Int class
+  implicit class ExtendedInt(x: Int) {  // the method of class is not really matter, it is jus a scope
+
+    def times[A]( f: => A ): Unit = {    // new method 'times()' will be added to Int class
       for(i <- 1 to x) {
         f
       }
@@ -20,13 +25,13 @@ object ImplicitsScope {
 }
 
 
-object ImplicitClassTest extends App {
+object Starter extends App {
 
   foo1
 
   def foo1 = {
     import implicit_test.ImplicitsScope._
-    5 times println("hello")  // now we can use this new 'times()' method for Int class
+    5 times println("hello")  // you see ! there  is new method added in Int (for this context only!)
   }
 
   // this will not work, because scope where method "times()" was defined is not imported
