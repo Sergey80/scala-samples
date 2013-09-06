@@ -21,6 +21,6 @@ object FunctionAsObject extends App {
   val v2 = sum(2,2) // this is apply method !
   println(v2)  // 4
 
-  // Thant means that in Scala everything tends to be a function (apply methods help to get this feeling), but all functions are objects.
+  // That means that in Scala everything tends to be a function (apply methods help to get this feeling), but all functions are objects.
 
 }
