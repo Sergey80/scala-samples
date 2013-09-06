@@ -8,7 +8,7 @@ object FunctionAsObject extends App {
 
   println(sum) // <function2>
 
-  val v1 = sum.apply(1, 2) // demonstrate that function "sum" is an instance of Function2 that has method apply(_,_)
+  val v1 = sum.apply(1, 2) // demonstrates that function "sum" is an instance of Function2 that has method apply(_,_)
 
   println(v1)  // 3
 
