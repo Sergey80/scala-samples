@@ -23,7 +23,7 @@ class FactoryApplyMethod extends App {
 
   // why the difference ?
 
-  //  by using A(1) we do not use method "new"to create an object
+  //  by using A(1) we do not use method "new"to create an object. and an object looks like a function call
 
 
 }
