@@ -1,6 +1,10 @@
 package apply_method
 
-// #1
+/*
+  #apply-method
+*/
+
+// sequence: #1 (look at #1, #2 after)
 
 class ClassWithApplyMethod(x:Int) {
 
