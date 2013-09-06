@@ -6,6 +6,12 @@ package calling_by_name
 
 // Calling function By Name
 
+/*
+  #calling-by-name
+  related: #calling-by-value #lazy-evaluation #anonymous-function #partially-applied-function #higher-order-function
+*/
+
+// sequence: #2 (look at #1 first)
 object CallingFunctionByNameTest extends App {
 
   var var1 = 0
