@@ -1,6 +1,11 @@
 package currying
 
 /*
+  #currying
+  related: #partially-applied-function
+*/
+
+/*
  * The difference between a Function that returns a function and Currying.
  *
  * Currying - is a function that expects parameters but if those are missed -
@@ -36,7 +41,7 @@ object CurryingTest extends App {
 
   //val f =  add(5) // does not compile, expecting 2nd param passed
   val f =  add2(5)_  // can treat it as 'partially applied function' because 2nd parameter is defined,
-                        // so we may mark it to be omitted
+                        // so we may mark it to be omitted  (#partially-applied-function related)
   println("2.2: " + f(6) )
 
 }

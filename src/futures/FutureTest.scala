@@ -5,6 +5,10 @@ import scala.collection.mutable
 import ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 
+/*
+ #future
+ related:
+ */
 object FutureTest extends App {
 
   def getData(): Iterable[Int] = {

@@ -1,6 +1,11 @@
 package partially_applied_functions
 
 /*
+   #partially-applied-function
+   related: #currying
+*/
+
+/*
 
 Q1: So, what are the differences exactly between partially applied functions and curried functions in Scala?﻿
 
@@ -16,7 +21,7 @@ object PartialAppliedFunction_And_Currying extends App {
 //  PAF could be used for general functions as well for "currying-functions".
 
     def f1(x:Int, y:Int) = {x+y}
-    def f2(x:Int)(y:Int) = {x+y}
+    def f2(x:Int)(y:Int) = {x+y}  // #currying related
 
 //  So, "partially applied function" is just not-yet fully evaluated function.
 //  We could convert "general function" or ether "currying function" to partially applied (partially evaluated)
