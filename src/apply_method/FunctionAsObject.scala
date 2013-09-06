@@ -8,9 +8,9 @@ package apply_method
 
 object FunctionAsObject extends App {
 
-  def sum = (x:Int, y:Int) => x + y
+  def sum = (x:Int, y:Int) => x + y // #anonymous-function related
 
-  println(sum) // <function2>   // #lazy-evaluation + #anonymous-function related
+  println(sum) // <function2>   // #lazy-evaluation related
 
   val v1 = sum.apply(1, 2) // demonstrates that function "sum" is an instance of Function2 that has method apply(_,_)
 
