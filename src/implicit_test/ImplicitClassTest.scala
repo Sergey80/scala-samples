@@ -31,7 +31,7 @@ object Starter extends App {
 
   def foo1 = {
     import implicit_test.ImplicitsScope._
-    5 times println("hello")  // you see ! there  is new method added in Int (for this context only!)
+    5 times println("hello")  // you see ! there is a new method times() added in Int class (for this context only!)
   }
 
   // this will not work, because scope where method "times()" was defined is not imported
