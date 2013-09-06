@@ -1,7 +1,7 @@
 package apply_method
 
 /*
-  #apply
+  #apply-method
   related: #lazy-evaluation #anonymous-function
 */
 // sequence: #3 (look at #1, #2 first)
