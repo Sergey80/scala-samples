@@ -53,6 +53,6 @@ object ForLoop extends App {
   for (i <- 0 to 3)
     if (i%2==0)     // you may omit "{..}". But maybe it's obvious
       print (i)
-      // println (i) // no you can not continue like that. "i" already is not visible out of for scope
+      // println (i) // no you can not continue like that. "i" already is not visible from out of "for" scope
 
 }
