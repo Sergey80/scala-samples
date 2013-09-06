@@ -1,5 +1,7 @@
 package apply_method
 
+// #1
+
 class ClassWithApplyMethod(x:Int) {
 
   def apply(): Int = {println("apply method is calling with no arguments"); 1}
