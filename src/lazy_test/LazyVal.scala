@@ -5,7 +5,7 @@ package lazy_test
 */
 // sequence: #1
 
-object LazyTest extends App {
+object LazyVal extends App {
 
   def fn(x:Int) = {println(x)}
 
