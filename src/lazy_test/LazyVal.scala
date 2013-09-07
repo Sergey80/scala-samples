@@ -16,4 +16,6 @@ object LazyVal extends App {
 
   // but if I try to use v2..
   v2 // '2' will print
+
+  v2 // calling it second time - noting will be printed (because it was already evaluated)
 }
