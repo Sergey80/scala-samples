@@ -11,7 +11,7 @@ object CaseClassesTest extends App {
    val a1 = A(1,2)  // may omit using "new" (it comes with default apply(_,_) method
 
    println(a1) // toString() is defined
-   println(a1.a) // public value
+   println(a1.a) // it provides read-only access by default (no need to put "var a:int" in arguments)
 
    val a2 = A(1,2)
 
@@ -40,6 +40,14 @@ object CaseClassesTest extends App {
     //case class A2(a:Int) extends A(1)               // does all us to extend, asks for 'val/val' and 'override'
     //case class A2(override val a:Int) extends A(1)    // but, but it still does not allow. It is prohibited to use inheritance !
 
+
+    // but
+    class GeneralClass(val a:Int) // if we have general class (not case class)
+    case class AA(override val a:Int) extends GeneralClass(1) // then we can extend our case class from it
+
+    val g:GeneralClass = AA(2)
+
+    println ("inherited, and overridden: " + g.a)
   }
 
 }
