@@ -50,7 +50,7 @@ object PatternMatchingTest extends App {
   // 5. how it match by type
   def function(x:Any):Unit = x match {
       case _:String => println("yes, this is string")
-      case _:Int => println("no, this is NOT string, this is int")
+      case x:Number => println("no, this is NOT string, this is number..")
       case _ => println("who knows..")
   }
   function("123")
