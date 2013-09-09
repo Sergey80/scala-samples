@@ -25,7 +25,7 @@ object PatternMatchingTest extends App {
 
   println (str2) // prints: "more than one" if x=2. And prints: "default" when x2=1
 
-  // 3. Nested cases. Will not work
+  // 3. Nested cases. Will not work  TODO: ..
   /*
   {
     val x1 = 1
@@ -35,7 +35,7 @@ object PatternMatchingTest extends App {
     println (str)
   }*/
 
-  // 4. how it work with lists
+  // 4. how it works with lists
   val list = List(1,2,3)
   list match {
     case List(_,_,3) => println("yes, there is '3' as a last element")
@@ -47,10 +47,16 @@ object PatternMatchingTest extends App {
   }
 
 
-  // 5. how it match by type
+  // 5. how it matches by type
   def function(x:Any):Unit = x match {
-      case _:String => println("yes, this is string")
+
+    case _:String => println("yes, this is string")
+
       case x:Number => println("no, this is NOT string, this is number..")
+
+      // this will not be happen, because Number is first/top in the 'math'
+      case _:Int => println("no, this is NOT string, this is Int..")
+
       case _ => println("who knows..")
   }
   function("123")
