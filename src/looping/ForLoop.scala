@@ -55,4 +55,11 @@ object ForLoop extends App {
       print (i)
       // println (i) // no you can not continue like that. "i" already is not visible from out of "for" scope
 
+  // 6. let's use variable/values just right in the loop
+  val result = for { i <- 1 to 3 ;
+        j = i * 2; // same as val j
+        k = j * 2; // same as val k
+        k <- j to k } yield k
+
+   println("\nresult: " + result)
 }
