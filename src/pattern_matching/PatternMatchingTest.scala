@@ -35,7 +35,7 @@ object PatternMatchingTest extends App {
     println (str)
   }*/
 
-  // 3. how it work with lists
+  // 4. how it work with lists
   val list = List(1,2,3)
   list match {
     case List(_,_,3) => println("yes, there is '3' as a last element")
@@ -45,5 +45,15 @@ object PatternMatchingTest extends App {
     case List(_) => println("could not find what to match 1") // will NOT be printed because it match to 1 long args list
     case List(_*) => println("could not find what to match 2") // will be printed because '*_' means any args
   }
+
+
+  // 5. how it match by type
+  def function(x:Any):Unit = x match {
+      case _:String => println("yes, this is string")
+      case _:Int => println("no, this is NOT string, this is int")
+      case _ => println("who knows..")
+  }
+  function("123")
+  function(123)
 
 }
