@@ -2,7 +2,7 @@ package looping
 
 /*
  #loop #foor-loop
- related: #filtering #yield
+ related: #filtering #yield #tuple
  */
 object ForLoop extends App {
 
@@ -61,5 +61,10 @@ object ForLoop extends App {
         k = j * 2; // same as val k
         k <- j to k } yield k
 
-   println("\nresult: " + result)
+   println("\n6. result: " + result)
+
+  // 7. how traverse the map
+  val mapResult =  for { (key, value) <- Map(1->"One", 2->"two") } yield (key, value) // #tuple related
+
+  println( "7. " + mapResult )
 }
