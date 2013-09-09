@@ -25,7 +25,7 @@ object PatternMatchingTest extends App {
 
   println (str2) // prints: "more than one" if x=2. And prints: "default" when x2=1
 
-  // 3. Nested cases. Will not work  TODO: ..
+  // 3. Nested cases. Will not work  TODO: is should be possible
   /*
   {
     val x1 = 1
@@ -55,7 +55,7 @@ object PatternMatchingTest extends App {
       case x:Number => println("no, this is NOT string, this is number..")
 
       // #pattern-overlaps related
-      // this will not happen, because Number-match is first in the 'math'. Developer should care about this by himself
+      // this will not happen, because Number-match is first in the 'match'. A developer should care about this by himself
       case _:Int => println("no, this is NOT string, this is Int..")
 
       case _ => println("who knows..")
