@@ -47,7 +47,7 @@ object CaseClassesTest extends App {
 
     val g:GeneralClass = AA(2)
 
-    println ("inherited, and overridden: " + g.a)
+    println ("inherited, and overridden: " + g.a) // 2
   }
 
 }
