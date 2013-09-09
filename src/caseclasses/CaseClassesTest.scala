@@ -2,7 +2,7 @@ package caseclasses
 
 /*
  #cace-classes
- related: #apply-method #unapply-method
+ related: #apply-method #unapply-method #extractor
 */
 object CaseClassesTest extends App {
 
@@ -26,7 +26,7 @@ object CaseClassesTest extends App {
 
   // --
 
-  // works with "pattern matching"
+  // works with "pattern matching" - #unapply-method #extractor related
 
   val b2 = B(1,2)
   var str = b2 match {
