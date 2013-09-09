@@ -2,7 +2,7 @@ package pattern_matching
 
 /**
  * #pattern-matching
- * related:
+ * related: #pattern-overlaps
  */
 object PatternMatchingTest extends App {
 
@@ -54,6 +54,7 @@ object PatternMatchingTest extends App {
 
       case x:Number => println("no, this is NOT string, this is number..")
 
+      // #pattern-overlaps related
       // this will not happen, because Number-match is first in the 'math'. Developer should care about this by himself
       case _:Int => println("no, this is NOT string, this is Int..")
 
