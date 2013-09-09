@@ -54,7 +54,7 @@ object PatternMatchingTest extends App {
 
       case x:Number => println("no, this is NOT string, this is number..")
 
-      // this will not be happen, because Number is first/top in the 'math'
+      // this will happen, because Number-match is first in the 'math'. Developer should care about this by himself
       case _:Int => println("no, this is NOT string, this is Int..")
 
       case _ => println("who knows..")
