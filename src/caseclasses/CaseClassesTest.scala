@@ -2,7 +2,7 @@ package caseclasses
 
 /*
  #cace-classes
- related: #apply-method
+ related: #apply-method #unapply-method
 */
 object CaseClassesTest extends App {
 
@@ -30,7 +30,7 @@ object CaseClassesTest extends App {
 
   val b2 = B(1,2)
   var str = b2 match {
-    case B(1,_) => "yes, first param is '1'"  // it works because of apply-method
+    case B(1,_) => "yes, first param is '1'"  // it works because of unapply-method (extractor) method is defined by default
   }
   println(str)
 
