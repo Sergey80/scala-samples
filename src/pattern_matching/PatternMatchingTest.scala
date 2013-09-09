@@ -2,7 +2,7 @@ package pattern_matching
 
 /**
  * #pattern-matching
- * related: #pattern-overlaps
+ * related: #pattern-overlaps #pattern-guards
  */
 object PatternMatchingTest extends App {
 
@@ -19,7 +19,7 @@ object PatternMatchingTest extends App {
   val x2 = 2
 
   val str2 = x2 match {
-    case x2 if (x2>1) => "more than one"  // yes you can put condition like this, and this is good
+    case x2 if (x2>1) => "more than one"  // yes you can put condition like this, and this is good  (#pattern-guards related)
     case _ => "default"                 // wil fail in RUNTIME "scala.MatchError" if miss this part when x2 <= 1  !!!
   }                                     // so, the rule is all cases should be covered !
 
