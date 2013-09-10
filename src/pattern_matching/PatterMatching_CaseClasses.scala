@@ -33,7 +33,7 @@ object PatterMatching_CaseClasses extends App {
   val myA = MyA(1, 2) // same as MyA.apply(1,2)
 
   myA match {
-    case MyA(1, 2) => println ("got (1,2)") // 'case MyA(1,2)' will lead to C.unapply(c) invocation. Make sense to remember this !
+    case MyA(1, 2) => println ("got (1,2)") // 'case MyA(1,2)' will lead to MyA.unapply(1,2) invocation. Make sense to remember this !
   }
 
   // (that says that if a class does not have unapply method, it can not be used in pattern-matching)
