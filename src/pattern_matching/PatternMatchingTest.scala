@@ -26,11 +26,11 @@ object PatternMatchingTest extends App {
   println (str2) // prints: "more than one" if x=2. And prints: "default" when x2=1
 
   // 3. Nested cases. Will not work  TODO: is should be possible
-  /*
-  {
-    val x1 = 1
+/*  {
+    val x1 = 2
     val str = x1 match {   // scala.MatchError: 1 (of class java.lang.Integer)
       case x if(x > 1) => "x"+x match {case "x1" => "yes"}
+      case _ => "nope"
     }
     println (str)
   }*/
