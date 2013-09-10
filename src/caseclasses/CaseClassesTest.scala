@@ -2,31 +2,38 @@ package caseclasses
 
 /*
  #cace-classes
- related: #apply-method #unapply-method #extractor
+ related: #apply-method #unapply-method #extractor #variable-binding
 */
 object CaseClassesTest extends App {
 
    case class A(a:Int, b:Int)
 
-   val a1 = A(1,2)  // may omit using "new" (it comes with default apply(_,_) method
+   // 1. may omit using "new"
+   val a1 = A(1,2)  // same as A.apply(1,2)
 
-   println(a1) // toString() is defined
-   println(a1.a) // it provides read-only access by default (no need to put "var a:int" in arguments)
 
-   val a2 = A(1,2)
+   // 2. oString() is defined by default
+   println(a1) // prints: A(1,2)
 
-   if (a1 == a2) println ("equal!")  // '==' (and 'equals') function is overloaded to use all fields to compare with
+
+   // 3. public read-only(getters) properties by default
+   println(a1.a) // so no need to put "val a:int" in arguments like for general classes
 
    //a1.a = 1 // can no do it (read only)
 
-  case class B(var a:Int, var b:Int)
 
+  // 4. equals() defined by default
+   val a2 = A(1,2)
+   if (a1 == a2) println ("equal!")  // method '==' uses default built-in 'equals()'
+
+  // 5. you we want setters to be defined
+  case class B(var a:Int, var b:Int) // we need to put 'var' (same as for general classes)
   val b1 = B(1,2)
   b1.a=2  // that's ok, because it was defined as VAR
 
   // --
 
-  // works with "pattern matching" - #unapply-method #extractor related
+  // 6. works with "pattern matching" - #unapply-method #extractor related
 
   val b2 = B(1,2)
   var str = b2 match {
@@ -34,7 +41,7 @@ object CaseClassesTest extends App {
   }
   println(str)
 
-  // inheritance
+  // 7. inheritance
   {
     case class A(a:Int)
     //case class A2(a:Int) extends A(1)               // does all us to extend, asks for 'val/val' and 'override'
@@ -48,6 +55,15 @@ object CaseClassesTest extends App {
     val g:GeneralClass = AA(2)
 
     println ("inherited, and overridden: " + g.a) // 2
+  }
+
+  // 8. you can define you variable binding inside 'case' ( #variable-binding related )
+  {
+    case class AA(a:Int, b:Int)
+    val aa = AA(1,2)
+    aa match {
+      case AA(x @ myX, y) => println("myX: " + myX)
+    }
   }
 
 }
