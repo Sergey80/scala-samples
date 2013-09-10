@@ -6,25 +6,25 @@ package caseclasses
 */
 object CaseClassesTest extends App {
 
-   case class A(a:Int, b:Int)
+  case class A(a:Int, b:Int)
 
-   // 1. may omit using "new"
-   val a1 = A(1,2)  // same as A.apply(1,2)
-
-
-   // 2. oString() is defined by default
-   println(a1) // prints: A(1,2)
+  // 1. may omit using "new"
+  val a1 = A(1,2)  // same as A.apply(1,2)
 
 
-   // 3. public read-only(getters) properties by default
-   println(a1.a) // so no need to put "val a:int" in arguments like for general classes
+  // 2. toString() is defined by default
+  println(a1) // prints: A(1,2)
 
-   //a1.a = 1 // can no do it (read only)
+
+  // 3. public read-only(getters) properties by default
+  println(a1.a) // so no need to put "val a:int" in arguments like for general classes
+
+  //a1.a = 1 // can no do it (read only)
 
 
   // 4. equals() defined by default
-   val a2 = A(1,2)
-   if (a1 == a2) println ("equal!")  // method '==' uses default built-in 'equals()'
+  val a2 = A(1,2)
+  if (a1 == a2) println ("equal!")  // method '==' uses default built-in 'equals()'
 
   // 5. you we want setters to be defined
   case class B(var a:Int, var b:Int) // we need to put 'var' (same as for general classes)
@@ -57,7 +57,7 @@ object CaseClassesTest extends App {
     println ("inherited, and overridden: " + g.a) // 2
   }
 
-  // 8. you can define you variable binding inside 'case' ( #variable-binding related )
+  // 8. you can define a variable binding inside 'case' ( #variable-binding related )
   {
     case class AA(a:Int, b:Int)
     val aa = AA(1,2)
