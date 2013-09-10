@@ -81,6 +81,9 @@ object CaseClassesTest extends App {
       case F( f:(Int=>Int) ) => println(" f:(Int=>Int) matched")  // works as expected
     }
     obj match {
+      case F( f:(Any=>Any) ) => println(" f:(Any=>Any) matched")  // works as expected
+    }
+    obj match {
       case F( _ ) => println("_ matched")                         // works as expected
     }
     /*
