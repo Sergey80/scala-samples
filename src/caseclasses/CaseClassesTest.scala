@@ -44,8 +44,8 @@ object CaseClassesTest extends App {
   // 7. inheritance
   {
     case class A(a:Int)
-    //case class A2(a:Int) extends A(1)               // does all us to extend, asks for 'val/val' and 'override'
-    //case class A2(override val a:Int) extends A(1)    // but, but it still does not allow. It is prohibited to use inheritance !
+    //case class A2(a:Int) extends A(1)               // does allow us to extend, asks for 'val/val' and 'override'
+    //case class A2(override val a:Int) extends A(1)  // but it still does not allow. It is prohibited to use inheritance !
 
 
     // but
