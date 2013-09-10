@@ -1,7 +1,7 @@
 package caseclasses
 
 /*
- #cace-classes
+ #case-classes
  related: #apply-method #unapply-method #extractor #variable-binding
 */
 object CaseClassesTest extends App {
