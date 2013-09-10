@@ -66,4 +66,28 @@ object CaseClassesTest extends App {
     }
   }
 
+  // 9. a case class that accepts a function (what would happen ? )
+  {
+    case class F( f: Int => Int) // the case class that expects a function as parameter
+
+    def f(a:Int) = {a + a} // function that returns back in two time more than it gets
+
+    val obj = F(f)
+    val f_ref = obj.f // actually.. it is a getter that returns a function. works like expected.
+    println("result:"  + f_ref(2))
+
+    // and how patter-matching will work with it?
+    obj match {
+      case F( f:(Int=>Int) ) => println(" f:(Int=>Int) matched")  // works as expected
+    }
+    obj match {
+      case F( _ ) => println("_ matched")                         // works as expected
+    }
+    /*
+    obj match {
+      case F( 4 ) => println("will not work") // it expects a function, no a Int value (or function result)
+    }*/
+
+  }
+
 }
