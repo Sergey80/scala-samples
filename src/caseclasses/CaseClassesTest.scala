@@ -2,7 +2,7 @@ package caseclasses
 
 /*
  #case-classes
- related: #apply-method #unapply-method #extractor #variable-binding
+ related: #apply-method #unapply-method #extractor
 */
 object CaseClassesTest extends App {
 
@@ -57,16 +57,7 @@ object CaseClassesTest extends App {
     println ("inherited, and overridden: " + g.a) // 2
   }
 
-  // 8. you can define a variable binding inside 'case' ( #variable-binding related )
-  {
-    case class AA(a:Int, b:Int)
-    val aa = AA(1,2)
-    aa match {
-      case AA(x @ myX, y) => println("myX: " + myX)
-    }
-  }
-
-  // 9. a case class that accepts a function (what would happen ? )
+  // 8. a case class that accepts a function (what would happen ? )
   {
     case class F( f: Int => Int) // the case class that expects a function as parameter
 
