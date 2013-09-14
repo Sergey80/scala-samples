@@ -1,9 +1,11 @@
 package extractors
 
 /*
- * In nutshell: If apply() method usually create an object from inputs parts, as method method,
- * then unapply method - extracts those parts from the object in favour of / (To be used in) pattern-matching
- * that's why it is called Extractor
+ * In nutshell: If apply() method usually creates an object from/by inputs parts, as factory method,
+ *
+ * Then unapply method - extracts those parts from the object in favour of / (To be used in) pattern-matching
+ *
+ * that's why it is called "Extractor"
  *
  * #extractor, unapply-method
  * related: #companion-object #pattern-matching #variable-binding related
