@@ -26,7 +26,7 @@ object PartiallyAppliedFunction extends App {
   println("partFun: " + partFun)
   println("partFun: " + partFun(2))
 
-  // this makes us think that having "currying"-function is easier to make that function partial than do the same having for normal function.
+  // thus, to convert "currying"-function to partial one is easier than do the same from general function..
 
  /*
  Output:
