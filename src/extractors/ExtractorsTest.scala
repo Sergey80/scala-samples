@@ -2,14 +2,14 @@ package extractors
 
 /*
  * #extractor, unapply-method
- * related: #companion-object #pattern-matching #value-binding
+ * related: #companion-object #pattern-matching #variable-binding related
 */
 object ExtractorsTest extends App {
 
   // let's say we have class email
   class Email {
     var name:String = ""
-    var domain:String = ""
+    var host:String = ""
   }
 
   // an companion-object that contains extractor (unapply-method)
@@ -20,14 +20,14 @@ object ExtractorsTest extends App {
 
       val ar = str.split("@")  // converts string to the object
       email.name = ar(0)
-      email.domain = ar(1)
+      email.host = ar(1)
 
       email
     }
 
     // extractor !
     def unapply(email:Email) : Option[(String, String)] = { // extractor splits object apart
-      Some(email.name, email.domain)              // to be able match it by name & domain
+      Some(email.name, email.host)              // to be able match it by name & domain
     }
 
   }
@@ -69,7 +69,7 @@ object ExtractorsTest extends App {
 
     // what do you think "host" is here ? it has the following value: "gmail.com"
 
-    // what this about? we binds (@ means 'to bind to') host to Domain.  (#value-binding related)
+    // what this about? we binds (@ means 'to bind to') host to Domain.  (#variable-binding related)
 
     // and what does it mean to bind ?? It means to pass it to extractor (to unapply method) - Domain.unapply(host)
 
