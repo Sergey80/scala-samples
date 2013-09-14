@@ -25,6 +25,7 @@ object ExtractorsTest extends App {
       email
     }
 
+    // extractor !
     def unapply(email:Email) : Option[(String, String)] = { // extractor splits object apart
       Some(email.name, email.domain)              // to be able match it by name & domain
     }
@@ -48,6 +49,8 @@ object ExtractorsTest extends App {
 
   // 2. Let's make extractor to help us ever more, filtering the expecting result by pattern-matching. (#pattern-matching related)
   object Domain {
+
+    // extractor !
     def unapply(host: String): Option[(String)] = {
 
        val domains = host.split("\\.")  // splitting by dot ( "." )
