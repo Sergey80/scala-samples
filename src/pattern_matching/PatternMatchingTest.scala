@@ -2,7 +2,7 @@ package pattern_matching
 
 /**
  * #pattern-matching
- * related: #pattern-overlaps #pattern-guards
+ * related: #pattern-overlaps #pattern-guards #variable-binding
  */
 object PatternMatchingTest extends App {
 
@@ -62,5 +62,17 @@ object PatternMatchingTest extends App {
   }
   function("123")
   function(123)
+
+  // 6. you can define a variable binding inside 'case' ( #variable-binding related )
+  {
+    case class AA(a:Int, b:Int)
+    val a = 1
+    a match {
+      case AA(x @ myX, y) => println("myX: " + myX)  // myX is binding to x (in this case myX is alias to x)
+    }
+  }
+
+  // 6.1 but '@' sign is more than just aliasing. It is binding .. in wider sense
+  // TODO:
 
 }
