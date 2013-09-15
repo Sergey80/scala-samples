@@ -40,7 +40,8 @@ object PartialFunctionTest extends App {
 
 //  divide2(0)  // still fail (of course, because nobody uses 'isDefinedAt()' method )
 
- // 2.1 let's improve our 2nd try. To apply some case-magic
+ // 2.1 let's improve our 2nd try. To apply some case-magic.
+    // Actually we could skip implementing PartialFunction class manually, but just make it done for you with help of case-anonymous function
 
   def divide3: PartialFunction[Int,Int] = {  // Note ! for now we are passing anonymous function with "case"
     // this make birth of anonymous function
