@@ -43,7 +43,7 @@ object PartialFunctionTest extends App {
 
   def divide3: PartialFunction[Int,Int] = {  // Note ! for now we are passing anonymous function with "case"
     // this make birth of anonymous function
-    case d:Int if d!=0 => 10/0                // thus we let built-in apply(f:Int=>Int) method create PartialFunction impl
+    case d:Int if d!=0 => 10/d                // thus we let built-in apply(f:Int=>Int) method create PartialFunction impl
                                               // based on anonymous function we are passing
   }
 
@@ -58,16 +58,24 @@ object PartialFunctionTest extends App {
  // 2.2 Let' use case-advantage, to let use pass not only "Int", but any argument
  def divide4: PartialFunction[Any,Int] = {  // Note ! for now we are passing anonymous function with "case"
    // this make birth of anonymous function
-   case d:Int if d!=0 => 10/0                // thus we let built-in apply(f:Int=>Int) method create PartialFunction impl
+   case d:Int if d!=0 => 10/d                // thus we let built-in apply(f:Int=>Int) method create PartialFunction impl
    // based on anonymous function we are passing
  }
 
  divide4.isDefinedAt("hello") // how we can test against String .. or Any other type  - it returns "false"
 // divide4("hell0")   // scala.MatchError: hell0 (of class java.lang.String)  - case related error
 
- // So, what we need is a function that could accept partial function a argument, and before applying it,
+ // So, what we need is a function that could accept Partial Function an argument before applying it,
  // first check isDefinedAt() method
- // TODO:
+ def acceptPartial(pf:PartialFunction[Any, Int], arg:Any) = {
+   if (pf.isDefinedAt(arg)) pf(arg) // that's it
+ }
+
+  val result1 = acceptPartial( divide4, 2 )
+  val result2 = acceptPartial( divide4, 0 )
+
+  println("result: " + result1) // "10"
+  println("result: " + result2) // "()" - Unit
 
 
  // 3. Example of PartialFunction from Scala collections
@@ -80,5 +88,10 @@ object PartialFunctionTest extends App {
   val list2 = list.collect{case x:Int => x+1} //
 
   list2 foreach( print(_) )  // 23
+
+
+  // ADVICE:
+  // Just remember what "Partial" stands for in terms of math/function, and look carefully which
+  // function expects Partial function and which does not.
 
 }

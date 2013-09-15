@@ -22,6 +22,7 @@ object PatternMatching_AnonymousFunction extends App {
   // But what kind of function we have provided with " case(k,v) => println("k="+k+";v="+v) "  ?
   // It is:
   // (Int,String) => Unit i.e. Tuple2[Int, String] => Unit  ?
+  // TODO: http://stackoverflow.com/questions/18807890/to-see-anonymous-function-declaration
 
 
   // 2.
