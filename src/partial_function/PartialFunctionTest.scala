@@ -86,7 +86,7 @@ object PartialFunctionTest extends App {
                                 // that's why it fails, because the "case" does not handle / expect String type
 
  //but if we  use a method that accept PartialFunction as argument, then ...
-  val list2 = list.collect{case x:Int => x+1} //
+  val list2 = list.collect{case x:Int => x+1} // def collect[B, That](pf: PartialFunction[A, B])
 
   list2 foreach( print(_) )  // 23
 
