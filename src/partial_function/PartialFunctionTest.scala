@@ -63,7 +63,7 @@ object PartialFunctionTest extends App {
  }
 
  divide4.isDefinedAt("hello") // how we can test against String .. or Any other type  - it returns "false"
-// divide4("hell0")   // scala.MatchError: hell0 (of class java.lang.String)  - case related error
+// divide4("hell0")   // no magic: scala.MatchError: hell0 (of class java.lang.String)  - case related error
 
  // So, what we need is a function that could accept Partial Function an argument before applying it,
  // first check isDefinedAt() method
@@ -78,7 +78,7 @@ object PartialFunctionTest extends App {
   println("result: " + result2) // "()" - Unit
 
 
- // 3. Example of PartialFunction from Scala collections
+ // 3. Using Partial Function in Scala colletion
  val list = List(1,2, "a", "b")
 
 // list.map{ case x:Int => x+1 }  // map accepts anonymous (not Partial) Function,
