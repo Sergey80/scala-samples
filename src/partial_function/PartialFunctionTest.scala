@@ -1,7 +1,7 @@
 package partial_function
 
 /*
- * Partial function (math.) - it's opposed to "total" functions.
+ * Partial function (math.) - it's opposed to "total" functions.   http://en.wikipedia.org/wiki/Partial_function
  *
  * So, Partial Function is a function which could pass an argument for which
  * this function is not defined / where it does not have sense /  does not exist.
