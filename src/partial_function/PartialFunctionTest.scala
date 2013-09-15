@@ -9,6 +9,7 @@ package partial_function
  * Like: (x:Int, d:Int) => Int => x/d. When d = 0 is applied, then the value of the function does not exist
  *
  * #partial-function
+ * related #pattern-matching
  *
  */
 object PartialFunctionTest extends App {
