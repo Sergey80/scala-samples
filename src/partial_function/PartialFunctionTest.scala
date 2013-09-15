@@ -78,7 +78,7 @@ object PartialFunctionTest extends App {
   println("result: " + result2) // "()" - Unit
 
 
- // 3. Using Partial Function in Scala colletion
+ // 3. Using Partial Function in Scala collection
  val list = List(1,2, "a", "b")
 
 // list.map{ case x:Int => x+1 }  // map accepts anonymous (not Partial) Function,
