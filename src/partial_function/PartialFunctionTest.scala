@@ -3,7 +3,7 @@ package partial_function
 /*
  * Partial function (math.) - it's opposed to "total" functions.   http://en.wikipedia.org/wiki/Partial_function
  *
- * So, Partial Function is a function which could pass an argument for which
+ * So, Partial Function is a function where we could pass an argument for which
  * this function is not defined / where it does not have sense /  does not exist.
  *
  * Like: (x:Int, d:Int) => Int => x/d. When d = 0 is applied, then the value of the function does not exist
