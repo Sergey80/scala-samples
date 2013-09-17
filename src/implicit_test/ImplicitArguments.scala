@@ -15,9 +15,10 @@ object ImplicitArguments extends App {
 
   implicit val request = Request("my request") // let's say we already have a Request from browser. So it exists/lives somewhere
 
-  // Action represent the Result of performing a Request (that generate that Result). Also, Result keeps the Request upon which it was made.
+  // The Action represents the Result of performing a Request (that generate that Result). Also, Result keeps the Request upon which it was made.
 
   case class Result(msg:String)
+
   case class Action(result:Result)
   object Action {
     def apply(block:Request => Result):Action = {   // not that we do not type/use "implicit block" here !
