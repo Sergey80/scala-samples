@@ -1,10 +1,10 @@
 package implicit_test
 
 /**
- * In scope of implicit parameters topic,
+ * In scope of implicit parameters topic (using implicit defining anonymous function as argument),
  * this example shows (roughly) how PlayFramework Action works (or might work). This might be useful to understand "how it's made"
  *
- * #implicit-parameters
+ * #implicit-parameters #implicit-arguments
  * related: #anonymous-function
  */
 object ImplicitArguments extends App {
