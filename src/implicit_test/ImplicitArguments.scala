@@ -21,7 +21,7 @@ object ImplicitArguments extends App {
 
   case class Action(result:Result)
   object Action {
-    def apply(block:Request => Result):Action = {   // not that we do not type/use "implicit block" here !
+    def apply(block:Request => Result):Action = {   // note: we do NOT type/use "implicit block" here !
 
      //val result = block(...)                     // what value, do you thing we are going to pass here?
 
@@ -68,7 +68,7 @@ object ImplicitArguments extends App {
  // 3. The better way to do it is to use "currying function"
  case class Action2(result:Result)
   object Action2 {
-    def apply(block:Request => Result)(implicit request:Request):Action2 = {   // not that we do not type/use "implicit block" here !
+    def apply(block:Request => Result)(implicit request:Request):Action2 = { // now we use implicit !
 
       val result = block(request)
 
