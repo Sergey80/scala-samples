@@ -15,7 +15,7 @@ object ImplicitArguments extends App {
 
   implicit val request = Request("my request") // let's say we already have a Request from browser. So it exists/lives somewhere
 
-  // When Action has a result of performing a Request that generate a Result. In the end the Action has information about Result.
+  // Action represent the Result of performing a Request (that generate that Result). Also, Result keeps the Request upon which it was made.
 
   case class Result(msg:String)
   case class Action(result:Result)
