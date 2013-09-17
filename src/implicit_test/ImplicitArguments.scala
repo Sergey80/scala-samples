@@ -83,14 +83,14 @@ object ImplicitArguments extends App {
   val a2_1 = Action2 { implicit req  =>       // passing anonymous function that use _exiting_ request implicitly as arg
     Result("Got request2 [" + req + "]")           //  and returns Result (result has information about the request)
   }
-  println(a2_1)
+  println(a2_1)               // Action2(Result(Got request2 [Request(my request)]))
 
   val myRequest2 = new Request("my own request")
-  val a2_2 = Action2 { myRequest2  =>           // why then use "implicit", because anyhow it will use Request val implicitly due to "implicitly()" method
-    Result("Got request2 [" + myRequest + "]")    // ???
+  val a2_2 = Action2 { myRequest2  =>
+    Result("Got request2 [" + myRequest + "]")
   }
 
-  println(a2_2)
+  println(a2_2)               // Action2(Result(Got request2 [Request(my own request)]))    ( Now it is Ok.!)
 
 }
 
