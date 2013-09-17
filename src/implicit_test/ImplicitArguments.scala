@@ -53,7 +53,7 @@ object ImplicitArguments extends App {
   // 2. What if we are not going to use _implicit_, but explicitly passing our OWN Request ?
 
   val myRequest = new Request("my own request")
-  val action3 = Action { myRequest  =>           // why then use "implicit", because anyhow it will uses Request implicitly due to "implicitly()" method
+  val action3 = Action { myRequest  =>           // why then use "implicit", because anyhow it will use Request val implicitly due to "implicitly()" method
     Result("Got request [" + myRequest + "]")    // ???
   }
 
