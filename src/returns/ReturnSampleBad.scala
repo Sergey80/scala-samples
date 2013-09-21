@@ -6,7 +6,7 @@ package returns
  *
  * This application shows return works in Scala.
  */
-object ReturnSample extends App {
+object ReturnSampleBad extends App {
 
   // can you answer what this function returns - 0 or 1 ?
 
@@ -16,7 +16,7 @@ object ReturnSample extends App {
       return 1
     }
 
-    return foo(list.tail, count + 1)
+    foo(list.tail, count + 1)
 
     count
   }
@@ -26,5 +26,7 @@ object ReturnSample extends App {
   println ( result )  // ?
 
   // see explanations here: http://stackoverflow.com/questions/18934871/scala-return-does-not-return
+
+  // What is recommended way to write this code? see: ReturnSample2
 
 }
