@@ -7,7 +7,7 @@ package returns
  */
 object ReturnSampleGood extends App {
 
-  // can you answer what this function returns - 0 or 1 ?
+  // now this method will work as expected
 
   def foo(list:List[Int], count:Int = 0): Int = {
 
@@ -27,9 +27,19 @@ object ReturnSampleGood extends App {
 
   }
 
-  val result = foo( List(1,2,3) )
+  //just more consist version of the function:
 
-  println ( result )  // ?
+  def fooShort(list:List[Int], count:Int = 0) :Int = list match {
+    case Nil => 1  // Nil = empty list
+    case List(_*) => fooShort(list.tail, count + 1)
+  }
+
+  val result1 = foo( List(1,2,3) )
+
+  val result2 = fooShort( List(1,2,3) )
+
+  println ( result1 )  // 1
+  println ( result2 )  // 1
 
 
 }
