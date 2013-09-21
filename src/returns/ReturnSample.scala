@@ -12,7 +12,7 @@ object ReturnSample extends App {
 
   def foo(list:List[Int], count:Int = 0): Int = {
 
-    if (list.isEmpty) {
+    if (list.isEmpty) { // #block related
       return 1
     }
 
