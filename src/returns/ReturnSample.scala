@@ -1,7 +1,7 @@
 package returns
 
 /*
- * #return
+ * #return #puzzle
  * related #blocks
  *
  * This application shows return works in Scala.
