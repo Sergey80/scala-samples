@@ -1,6 +1,10 @@
 package returns
 
 /*
+ * This is GOOD code.This is just a demo.
+ * It is a puzzle that supposed to make reader remember how "return" works.
+ * Please see ReturnSampleGood as an alternative fixed version of the same scenario.
+ *
  * #return #puzzle
  * related #blocks
  *
