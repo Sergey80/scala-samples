@@ -56,26 +56,18 @@ object CountChange extends App {
 
   def countChange(money: Int, coins: List[Int]): Int = {
 
-    def level(list:List[Int], buffer:List[Int], level:Int = 0) : Int = {
-
-       val currentList = list
-
-       applyBuffer(currentList, buffer)
-
-       // where ...
-
        def applyBuffer(list:List[Int], buffer:List[Int], count:Int = 0) : Int = {
          if (buffer isEmpty) count
          else
          if ( (list :+ buffer.head).max == money) applyBuffer(list, buffer.tail, count + 1)
           else applyBuffer(list, buffer.tail, count + 1)
        }
-    }
 
     //
+    var result = 0
 
 
-    0
+    result
   }
 
 
