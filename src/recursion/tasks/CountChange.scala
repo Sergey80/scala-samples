@@ -22,7 +22,59 @@ import scala.collection.mutable.ListBuffer
   */
 object CountChange extends App {
 
+  // 5 => 1,2,3
+  // 1
+
+    // all variants with "2 length/LEVEL"
+
+    // 1 1
+    // 1 2
+    // 1 3
+
+    // 2 1
+    // 2 2
+    // 2 3
+
+   // all variant with "3 length"
+
+   // 1 1 ->
+     // 1 1 1
+     // 1 1 2
+     // 1 1 3
+
+  // 1 2 ->
+    // 1 2 1
+    // 1 2 2
+    // 1 2 3
+
+  // 1 3 ->
+    // 1 3 1
+    // 1 3 2
+    // 1 3 3
+
+  //...
+
   def countChange(money: Int, coins: List[Int]): Int = {
+
+    def level(list:List[Int], buffer:List[Int], level:Int = 0) : Int = {
+
+       val currentList = list
+
+       applyBuffer(currentList, buffer)
+
+       // where ...
+
+       def applyBuffer(list:List[Int], buffer:List[Int], count:Int = 0) : Int = {
+         if (buffer isEmpty) count
+         else
+         if ( (list :+ buffer.head).max == money) applyBuffer(list, buffer.tail, count + 1)
+          else applyBuffer(list, buffer.tail, count + 1)
+       }
+    }
+
+    //
+
+
     0
   }
 
