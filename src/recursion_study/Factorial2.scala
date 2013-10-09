@@ -47,10 +47,12 @@ object Factorial2 extends App{
   println ( "factorial2(5): " + factorial2(5) )
 
 
-  // You many wonder. "Is tail recursion is still recursion if there is not any stack-helping?"
+  // You many wonder. "Is tail recursion is still "recursion" if there is no any stack-helping?"
   //
   // The answer might be:
-  // for you it "looks like" as recursion, but compiler is able to rewrite/optimize this by using loops (like: "while" or "for")
+  // For you it "looks like" as recursion, but compiler is able to rewrite/optimize this by using loops (like: "while" or "for")
+
+  // Just do not forget: you may use recursion calls to implement looping without side-effects (vars).
 
   // but if you would use while and for it might look not so nice and cool, let's check:
 
