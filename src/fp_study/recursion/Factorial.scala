@@ -1,4 +1,4 @@
-package recursion_study
+package fp_study.recursion
 
 // 1. Understanding recursion
 

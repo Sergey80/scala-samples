@@ -1,4 +1,4 @@
-package recursion_study
+package fp_study.recursion
 
 import scala.annotation.tailrec
 
