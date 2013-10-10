@@ -47,7 +47,7 @@ object Factorial2 extends App{
   println ( "factorial2(5): " + factorial2(5) )
 
 
-  // You may wonder. "Is tail recursion is still "recursion" if there is no any stack-helping?"
+  // You may wonder. "Is tail recursion still "recursion" if there is no any stack-helping?"
   //
   // The answer might be:
   // For you it "looks like" as recursion (because 'function calls itself'),
