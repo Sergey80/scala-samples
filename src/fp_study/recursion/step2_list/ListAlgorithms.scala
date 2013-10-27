@@ -5,7 +5,6 @@ package fp_study.recursion.step2_listl
  *
  * Examples comes with step by step explanations to make it clear to understand applied recursion
  */
-/
 
 object ListAlgorithms extends App {
 

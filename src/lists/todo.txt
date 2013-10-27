@@ -1,0 +1,3 @@
+I'm going to add even more examples for each method by creating one file for each method.
+
+Each example is supposed to be more ore less complicated than examples presented in ListMethods file.
