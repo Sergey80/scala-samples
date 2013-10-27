@@ -15,7 +15,7 @@ object HigherOrderFunctions extends App {
 
   }
 
-  map_example()
+  map_example()  // Output: List(2, 4, 6)
 
 // TODO: -----------
 
