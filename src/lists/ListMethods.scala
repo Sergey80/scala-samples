@@ -136,5 +136,32 @@ val listWithDuplications = List("a", "a", "b", "c")  // here we have
 
   }
 
+  // 16. mkString
+  {
+
+    val result1 = List("a", "b", "c").mkString
+
+    println ("mkString: " + result1)  // Output: abc
+
+  }
+
+  // 17. sortBy  (http://stackoverflow.com/questions/10602730/scala-ordered-by-multiple-fields)
+  {
+
+    case class Person (name:String, age: Int)
+
+    val list = List( Person("Bob", 25), Person("Jon", 31), Person("Peter", 15) )
+
+    val result1 = list.sortBy(_.age)
+
+    val result2 = list.sortBy {
+      case Person(name, age) => (name, age)  // first 'name', then 'age'
+    }
+
+    println ("sortBy1: " + result1) // List(Person(Peter,15), Person(Bob,25), Person(Jon,31))
+    println ("sortBy2: " + result2) // List(Person(Bob,25), Person(Jon,31), Person(Peter,15))
+
+  }
+
 
 }
