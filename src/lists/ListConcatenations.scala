@@ -15,4 +15,10 @@ object ListConcatenations extends App {
 
   println ("list1 ++ list2 : " + result2)
 
+  // what about "::" ?
+
+  val result3 = list1 :: list2 // It add new ELEMENT to the BEGINNING of the list2. So, :: is method of list2
+
+  println ("list1 :: list2 : " + result3) // List(List(1, 2, 3), 4, 5, 6)
+
 }
