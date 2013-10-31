@@ -9,17 +9,29 @@ package lists
 
 object ReduceExamples extends App {
 
-  val sum1 = List(1,2,3,4,5).reduceLeft{ (total, current) => {
+  val theList = List(1,2,3,4,5)
+
+  // 1.
+  val sum1 = theList reduceLeft{ (total, current) => {
                                        println("total:  " + total + " current: " + current)
                                        total + current}
                                    }
 
-  val sum2 = List(1,2,3,4,5) reduce(_ + _)  // short version
+  // 2.
+  val sum2 = theList reduceLeft(_ + _)  // short version
+
+  // 3.
+
+  def sumOp(total: Int, current:Int) = total + current
+
+  val sum3  = theList reduceLeft( sumOp )
 
 
-  println (sum1)  // 6 (1+2+3 = 6)
+  println ("sum1: " + sum1)  // 15
 
-  println (sum2)  // 6
+  println ("sum2: " + sum2)  // 15
+
+  println ("sum3:"  + sum3)  // 15
 
 
 }
