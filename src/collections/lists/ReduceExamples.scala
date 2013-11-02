@@ -34,4 +34,17 @@ object ReduceExamples extends App {
   println ("sum3:"  + sum3)  // 15
 
 
+  // 4. empty list  - will fail
+
+  val emptyList = List[Int]()
+
+  //val sum4 = emptyList reduceLeft( sumOp )  // UnsupportedOperationException: empty.reduceLeft
+
+  // putting initial value
+
+  val sum4 = (0 :: emptyList).reduceLeft( sumOp )  // 0  -- same as #fod : foldLeft(0)(sumOp)
+
+  println (sum4)
+
+
 }

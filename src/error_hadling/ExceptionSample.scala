@@ -2,6 +2,7 @@ package ExceptionSample
 
 import scala.util.Try
 import scala.io.BufferedSource
+import java.io.IOException
 
 // #exceptions. #Try
 
@@ -17,7 +18,7 @@ object ExceptionSample extends App {
         source.close()
         Some(contents)
       } catch {  // catch expect PartialFunction
-        case x: Exception =>  return None
+        case x: IOException =>  return None
         case x => errorHandler(x) // if any other exception
       }
     }
