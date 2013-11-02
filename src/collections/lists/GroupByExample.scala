@@ -1,5 +1,7 @@
 package lists
 
+// #list #group-by
+
 object GroupByExample extends App {
 
   type Word = String

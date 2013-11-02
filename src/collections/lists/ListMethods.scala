@@ -5,6 +5,8 @@ package lists
 // The full list of methods is defined here:
 // http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
 
+// #list #genaral
+
 object ListMethods extends App {
 
   val list = List("a","b","c")

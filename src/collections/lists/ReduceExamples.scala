@@ -1,6 +1,6 @@
 package lists
 
-// #list
+// #list #reduce
 
 // Reduce - Simplified version of foldLeft.
 

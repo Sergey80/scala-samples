@@ -1,5 +1,7 @@
 package lists
 
+// #list #concatenation
+
 object ListConcatenations extends App {
 
   val list1 = List(1,2,3)
