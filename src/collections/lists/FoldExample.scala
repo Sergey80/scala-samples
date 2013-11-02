@@ -1,18 +1,20 @@
 package collections.lists
 
-// #fold
-// related: #reduce (see: ReduceExample)
+// #fold #list
+// related: #reduce (see: ReduceExample) #template-method-pattern #strategy-pattern #decorator-pattern
 
 // In nutshell: Fold is sophisticated version of 'reduce'
 
 object FoldExample extends App {
+
+  println("#1")
 
   // # 1 - simple
   {
 
     val result1 = List(1,2,3).foldLeft(0)(_ + _)
 
-    // empty list will work, because initial value is set to 0
+    // empty list will work, because initial value is set to 0 ('reduceLeft' would not work [#reduce related] )
 
     val result2 = List[Int]().foldLeft(0)(_ + _)
 
@@ -21,19 +23,45 @@ object FoldExample extends App {
 
   }
 
-  // #2
+  // #2  similar to:  #template-method-pattern #strategy-pattern #decorator-pattern
+  println("#2")
 
   // there are two operations ..
-  def upperCaseOP (str:String) : String = str.toUpperCase
-  def addBarOP (str:String) : String = str + "bar"
+  def upperCaseOP (str:String) : String = {
+    println(s"upperCaseOp($str)")
+    str.toUpperCase
+  }
 
-  def applyTransformations(initial: String, ops: Seq[String => String]) =
+  def addBarOP (str:String) : String = {
+    println(s"addBarOP($str)")
+    str + "bar"
+  }
+
+  def applyTransformations(initial: String, ops: Seq[String => String]) : String =
     ops.foldLeft(initial) {
-      (cur, op) => op(cur)
+      (currentResult, op) => op(currentResult) // applying an operation for each pair.
+                                                // as you can see the pair has different types:
+                                                    // 1. currentResult: String
+                                                    // 2. op: String => String
     }
+
+  // sequence of operations to be applied is important fo us. Like it is in #decorator-pattern
 
   val result = applyTransformations("hello", Seq( upperCaseOP, addBarOP))
 
-  println (result)
+  println ("result: " + result) // HELLObar
 
 }
+
+/*
+Full output is:
+
+ #1
+ 6
+ 0
+ #2
+ upperCaseOp(hello)
+ addBarOP(HELLO)
+ result: HELLObar
+
+*/
