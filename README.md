@@ -17,7 +17,7 @@ for particular example. Like #feature-1 #feature-3.
 
 <b>HOW TO INSTALL:</b>
 
-This is SBT project. So you may follow general rules about how to open it in your ide or console.
+This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-sbt.org/release/docs/index.html" target="_blank">rules</a> about how to open it in your ide or console.
 
 For example To convert project to <b>IntellijIdea</b>:
 <ol>
