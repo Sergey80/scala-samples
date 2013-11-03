@@ -35,10 +35,10 @@ object StreamCreations extends App {
   // #2 - let's create limited stream for now
   {
 
-    def makeStream(i:Int) : Stream[String] = {
-                                        if(i == 0) Stream.empty
-                                          else Stream.cons(i + 5 toString, makeStream(i-1))
-                                        }
+    def makeStream(size:Int) : Stream[String] = size match {
+      case 0 => Stream.empty
+      case size => Stream.cons(size + 5 toString, makeStream(size-1))
+    }
 
     val stream = makeStream(10)
 
