@@ -32,7 +32,7 @@ For example To convert project to <b>IntellijIdea</b>:
 
  Then usual steps are:
  <ol>
-  <li>cd ~/<your-path>/scala-samples</li>
+  <li>cd ~/[your-path]/scala-samples</li>
   <li>sbt</li>
   <li>gen-idea</li>
   <li>Open project in IDE</li>
