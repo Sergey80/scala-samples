@@ -14,6 +14,7 @@ object StreamCreations extends App {
     val infinate = makeStream
 
     println (infinate)  // Stream(4, ?) <!-- random values !!!
+                            // "?" means that the values are not evaluated yet
 
     val val0 = infinate(0)
     val val1 =infinate(1)
