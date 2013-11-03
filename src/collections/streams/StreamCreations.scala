@@ -17,8 +17,8 @@ object StreamCreations extends App {
                             // "?" means that the values are not evaluated yet
 
     val val0 = infinate(0)
-    val val1 =infinate(1)
-    val val2 =infinate(2)
+    val val1 = infinate(1)
+    val val2 = infinate(2)
     // ...
 
     val val100 = infinate(100)
