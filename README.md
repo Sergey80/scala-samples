@@ -15,7 +15,7 @@ for particular example. Like #feature-1 #feature-3.
 
 "Use the course, Luke!" (R)
 
-HOW TO INSTALL:
+<b>HOW TO INSTALL:</b>
 
 This is SBT project. So you may follow general rules about how to open it in your ide or console.
 
