@@ -3,6 +3,7 @@ package collections.streams
 import scala.collection.immutable.Stream.cons
 
 // #stream
+// related: #cons
 
 // In nutshell: Streams are similar to list but a tail is evaluated only on demand
 
