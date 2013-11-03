@@ -19,15 +19,19 @@ for particular example. Like #feature-1 #feature-3.
 
 This is SBT project. So you may follow general rules about how to open it in your ide or console.
 
-To convert project to IntellijIdea:
- 1. make sure you have this directory open (depending on your current sbt version): '.sbt/0.13/plugins'
- 2. in that file '.sbt/0.13/plugins/build.sbt' make sure you have content like this:
-    addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")
+For example To convert project to <b>IntellijIdea</b>:
+<ol>
+ <li> make sure you have this directory open (depending on your current sbt version): '.sbt/0.13/plugins' </li>
+ <li> in that file '.sbt/0.13/plugins/build.sbt' make sure you have content like this: <br />
+    addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2") </li>
+
 
     For more info: https://github.com/mpeltonen/sbt-idea
+ <//ol>
 
  Then usual steps are:
- 1. cd ~/<your-path>/scala-samples
- 2. sbt
- 3. gen-idea
- 4. open project in IDE
+ <ol>
+  <li>cd ~/<your-path>/scala-samples</li>
+  <li>sbt</li>
+  <li>gen-idea</li>
+  <li>open project in IDE</li>
