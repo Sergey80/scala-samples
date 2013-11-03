@@ -23,7 +23,8 @@ For example To convert project to <b>IntellijIdea</b>:
 <ol>
  <li> make sure you have this directory open (depending on your current sbt version): '.sbt/0.13/plugins' </li>
  <li> in that file '.sbt/0.13/plugins/build.sbt' make sure you have content like this: <br />
-    addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2") </li>
+    <code>addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")</code>
+ </li>
 
 
     For more info: https://github.com/mpeltonen/sbt-idea
