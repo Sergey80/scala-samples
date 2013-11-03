@@ -27,7 +27,7 @@ For example To convert project to <b>IntellijIdea</b>:
 
 
     For more info: https://github.com/mpeltonen/sbt-idea
- <//ol>
+ </ol>
 
  Then usual steps are:
  <ol>
@@ -35,3 +35,4 @@ For example To convert project to <b>IntellijIdea</b>:
   <li>sbt</li>
   <li>gen-idea</li>
   <li>open project in IDE</li>
+</ol>
