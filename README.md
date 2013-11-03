@@ -35,5 +35,5 @@ For example To convert project to <b>IntellijIdea</b>:
   <li>cd ~/<your-path>/scala-samples</li>
   <li>sbt</li>
   <li>gen-idea</li>
-  <li>open project in IDE</li>
+  <li>Open project in IDE</li>
 </ol>
