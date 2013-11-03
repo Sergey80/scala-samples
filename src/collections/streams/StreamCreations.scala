@@ -37,13 +37,13 @@ object StreamCreations extends App {
 
     def makeStream(size:Int) : Stream[String] = size match {
       case 0 => Stream.empty
-      case size => Stream.cons(size + 5 toString, makeStream(size-1))
+      case size => Stream.cons(size toString, makeStream(size-1))
     }
 
     val stream = makeStream(10)
 
     println ("stream.size: " + stream.size)     // stream.size: 10
-    println ("stream content: " + stream.force) // Stream(15, 14, 13, 12, 11, 10, 9, 8, 7, 6)
+    println ("stream content: " + stream.force) // Stream(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
 
   }
 
