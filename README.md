@@ -21,13 +21,13 @@ This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-
 
 For example To convert project to <b>IntellijIdea</b>:
 <ol>
- <li> make sure you have this directory open (depending on your current sbt version): '.sbt/0.13/plugins' </li>
- <li> in that file '.sbt/0.13/plugins/build.sbt' make sure you have content like this: <br />
+ <li> make sure you have this directory open (depending on your current sbt version): <code>'.sbt/0.13/plugins'</code> </li>
+ <li> in that file <code>'.sbt/0.13/plugins/build.sbt'</code> make sure you have content like this: <br />
     <code>addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")</code>
  </li>
 
 
-    For more info: https://github.com/mpeltonen/sbt-idea
+    For more info: <a href="https://github.com/mpeltonen/sbt-idea">sbt-idea plugin</a>
  </ol>
 
  Then usual steps are:
