@@ -30,8 +30,8 @@ Those versions that I have right now (4 November 2013)
 
 
 <ol>
- <li> make sure you have this directory open (depending on your current sbt version): <code>'.sbt/0.13/plugins'</code> </li>
- <li> in that file <code>'.sbt/0.13/plugins/build.sbt'</code> make sure you have content like this: <br />
+ <li> If you use sbt v 0.13 then make sure you have this directory (in your home directory): <code>'~/.sbt/0.13/plugins'</code> </li>
+ <li> in that file <code>'~/.sbt/0.13/plugins/build.sbt'</code> make sure you have content like this: <br />
     <code>addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")</code>
  </li>
 
