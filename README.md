@@ -20,6 +20,9 @@ for particular example. Like #feature-1 #feature-3.
 This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-sbt.org/release/docs/index.html" target="_blank">rules</a> about how to open it in your ide or console.
 
 For example To convert project to <b>IntellijIdea</b>:
+
+BEFORE: make sure you have Scala plugin installed!
+
 <ol>
  <li> make sure you have this directory open (depending on your current sbt version): <code>'.sbt/0.13/plugins'</code> </li>
  <li> in that file <code>'.sbt/0.13/plugins/build.sbt'</code> make sure you have content like this: <br />
