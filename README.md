@@ -15,7 +15,7 @@ for particular example. Like #feature-1 #feature-3.
 
 "Use the course, Luke!" (R)
 
-<b>HOW TO INSTALL:</b>
+<h3>HOW TO INSTALL:</h3>
 
 This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-sbt.org/release/docs/index.html" target="_blank">rules</a> about how to open it in your ide or console.
 
@@ -47,7 +47,9 @@ Those versions that I have right now (4 November 2013)
   <li>Open project in IDE - just open it as usual IntelliJ idea project</li>
 </ol>
 
-Then let's say you want run some file from this project with sbt support.
+<h3>How to launch</h3>
+
+Then let's say you want run some file from this project using <b>SBT support</b>.
 
 An an example,
  1. CTRL+N in IDE, type: "ClassWithApplyMethod", go in this file
