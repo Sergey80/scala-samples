@@ -40,5 +40,5 @@ BEFORE: make sure you have:
   <li>cd ~/[your-path]/scala-samples</li>
   <li>sbt</li>
   <li>gen-idea</li>
-  <li>Open project in IDE</li>
+  <li>Open project in IDE - just open it as usual IntelliJ idea project</li>
 </ol>
