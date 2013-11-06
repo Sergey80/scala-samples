@@ -66,7 +66,7 @@ An an example,
    (firs time it's going to take some time. But next time - it will compile and launch it much faster)
 
 
-<h4>Known SBT-issue for now (found by me. <b>Please vote for them - to make them fixed even faster</b>!)</h4>:
+<h4>Known SBT-issue for now (found by me. <b>Please vote for them - to make them fixed even faster</b>!)</h4>
 <ol>
 <li>http://youtrack.jetbrains.com/issue/SCL-6208  (IntelliJ Idea compiling with SBT by default) </li>
 <li>http://youtrack.jetbrains.com/issue/SCL-6220  (SBT plugin does not get last changes in the code -
