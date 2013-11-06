@@ -55,7 +55,8 @@ Then let's say you want run some file from this project using <b>SBT support</b>
 An an example,
  1. CTRL+N in IDE, type: "ClassWithApplyMethod", go in this file
  2. CTL+G, type "17" (go to line number #17), CTRL+SHIFT+F10 (launch the file project, from that line)
-  - you will see that is starts compiling.. (actually for now with no SBT support. That's a lame.. I know).
+  - you will see that is starts compiling.. (actually for now with no SBT support.
+      ( That's a lame.. I know [this is because of sbt-issue that not fixed yet - see below] ).
     You may stop it before it's finished (hurry up)! Just click red cross on the bottom panel to make it happen.
  3. In the top toolbar panel, just under menu-panel "Run" & "Tools" you will be able to see "Starter":
    - click on it and go to "Edit Configuration" window
