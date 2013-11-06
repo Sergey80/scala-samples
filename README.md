@@ -46,3 +46,20 @@ Those versions that I have right now (4 November 2013)
   <li>gen-idea</li>
   <li>Open project in IDE - just open it as usual IntelliJ idea project</li>
 </ol>
+
+Then let's say you want run some file from this project with sbt support.
+
+An an example,
+ 1. CTRL+N in IDE, type: "ClassWithApplyMethod", go in this file
+ 2. CTL+G, type "17" (line number), CTRL+SHIFT+F10 (launch the file project, from line number 17)
+  - you will see it will start compiling.. (actually now with no SBT support. That's a lame.. I know).
+    You may stop it ! Just click red cross on the bottom panel.
+ 3. In the top toolbar panel, just under menu-panel "Run" & "Tools" you will be able to see "Starter":
+   - click on it and go to "Edit Configuration" window
+   - There is "Before launch" section:
+     - delete "make" from there
+     - then click on "+" and add select SBT and select "compile" option
+     - click OK to close the "Edit Configuration" window
+ 4. Now click "Starter" again in the toolbar panel. Now it use SBT for this particular case / class to run.
+   (firs time it's going to take some time. But next time - it will compile and launch it much faster)
+
