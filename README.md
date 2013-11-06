@@ -1,9 +1,9 @@
 scala-samples
 =============
 
-<h3>preface</h3>
+<h3>Preface</h3>
 Sometimes we need read some articles, forums, blogs to understand Scala features.
-But if we want just remind yourself something we already knew, then is better just look at code sample.
+But if we want just remind ourselves something we already knew, then is better just look at code sample.
 You could easily change it and play with it and see what's going on.
 
 There are samples of Scala code that explains how to use some scala features.
@@ -16,7 +16,7 @@ for particular example. Like #feature-1 #feature-3.
 
 "Use the course, Luke!" (R)
 
-<h3>HOW TO INSTALL:</h3>
+<h3>HOW TO INSTALL</h3>
 
 This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-sbt.org/release/docs/index.html" target="_blank">rules</a> about how to open it in your ide or console.
 
