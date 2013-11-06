@@ -22,8 +22,8 @@ This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-
 For example To convert project to <b>IntellijIdea</b>:
 
 BEFORE: make sure than in your IDE, here "File->Setting->Plugins->Browse repositories":
- 1. "Scala v.0.22.302" (> 83 000 downloads) plugin installed (ide plugin)
- 2. "SBT v. 1.5.1" (>10 000 downloads)" plugin installed (ide plugin)
+ 1. "Scala v.0.22.302" (> 83 000 downloads) plugin installed
+ 2. "SBT v. 1.5.1" (>10 000 downloads)" plugin installed
 
 Those versions that I have right now (4 November 2013)
 
