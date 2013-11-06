@@ -63,7 +63,7 @@ An an example,
      - delete "make" from there
      - then click on "+" and add select SBT and select "compile" option
      - click OK to close the "Edit Configuration" window
- 4. Now click "Starter" again in the toolbar panel. Now it use SBT for this particular case / class to run.
+ 4. Now click "Starter" again in the toolbar panel. Now every time when you click on press CTRL+SHIFT+F10, it starts using SBT to compile and launch this particular file / class.. well Object.
    (firs time it's going to take some time. But next time - it will compile and launch it much faster)
 
 
