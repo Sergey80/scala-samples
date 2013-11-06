@@ -1,6 +1,7 @@
 scala-samples
 =============
 
+<h3>preface</h3>
 Sometimes we need read some articles, forums, blogs to understand Scala features.
 But if we want just remind yourself something we already knew, then is better just look at code sample.
 You could easily change it and play with it and see what's going on.
