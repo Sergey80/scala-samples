@@ -21,7 +21,9 @@ This is <b>SBT project</b>. So you may follow general <a href="http://www.scala-
 
 For example To convert project to <b>IntellijIdea</b>:
 
-BEFORE: make sure you have Scala plugin installed!
+BEFORE: make sure you have:
+ 1. Scala plugin installed
+ 2. SBT plugin installed
 
 <ol>
  <li> make sure you have this directory open (depending on your current sbt version): <code>'.sbt/0.13/plugins'</code> </li>
