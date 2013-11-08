@@ -1,6 +1,7 @@
 package main.scala.pattern_matching.extractors
 
 import scala.util.matching.Regex
+import scala.collection.generic.SeqFactory
 
 
 // #pattern-definition, #PatVarDef  #pattern-matching  #extractor #unapply
@@ -32,6 +33,13 @@ object PatternValDefinitionExample extends App {
     val List(one, two, three, four) = foo // extractor/unapplySeq is invoking
 
     println(s"$one, $two, $three, $four") // 1, 2, 3, 4
+  }
+
+  // #3.1 even like that:
+  {
+    val Seq(x, y, _, xx @ _* )= 1 to 10
+
+    println(s"Seq(x, y, _, xx @ _* ): $x, $y, $xx"   ) // Range(4, 5, 6, 7, 8, 9, 10)
   }
 
   // # 4
