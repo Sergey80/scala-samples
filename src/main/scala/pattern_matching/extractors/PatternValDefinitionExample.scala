@@ -51,9 +51,7 @@ object PatternValDefinitionExample extends App {
     // same as
 
     // 4.3
-    val (count2, fruit2) = "100 Cars"  match {
-                                                case Pattern( count, fruit) => (count, fruit)
-                                             }
+    val (count2, fruit2) = "100 Cars"  match { case Pattern( count, fruit) => (count, fruit)  }
 
     // So, 4.1 is just sugared for short. That is just pattern matching.
 
