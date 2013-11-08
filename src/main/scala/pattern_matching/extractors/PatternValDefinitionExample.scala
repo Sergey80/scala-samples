@@ -39,7 +39,7 @@ object PatternValDefinitionExample extends App {
   {
     val Seq(x, y, _, xx @ _* )= 1 to 10
 
-    println(s"Seq(x, y, _, xx @ _* ): $x, $y, $xx"   ) // Range(4, 5, 6, 7, 8, 9, 10)
+    println(s"Seq(x, y, _, xx @ _* ): $x, $y, $xx"   ) // 1, 2, Range(4, 5, 6, 7, 8, 9, 10)
   }
 
   // # 4
