@@ -1,7 +1,7 @@
 package collections.lists
 
 // #flatmap (#flatmap-method)
-// related: #map-method #flatten
+// related: #map-method #flatten #product-trait (#product)
 
 object FlatMapExample extends App {
 
@@ -92,6 +92,10 @@ object FlatMapExample extends App {
 
   val flatResult1 = results flatMap(x=>x)           //  List[Int] = List(1, 2)  .
   // So it treats Option as possible Collection of: Some or None
+
+  // Related to Product trait:
+  // http://stackoverflow.com/questions/1301907/how-should-i-think-about-scalas-product-classes
+  // http://en.wiktionary.org/wiki/Cartesian_product
 
   // same as (int this case)
 
