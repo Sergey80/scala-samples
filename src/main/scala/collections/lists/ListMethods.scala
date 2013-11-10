@@ -114,10 +114,10 @@ val listWithDuplications = List("a", "a", "b", "c")  // here we have
   {
     val list1 = List(1,2,3)
 
-    val result1 = list1.find(x => x < 2)
+    val result1 = list1.find(x => x < 3)
     val result2 = list1.find(x => x > 100)
 
-    println ("find1: " + result1)  // Output: Some(1)
+    println ("find1: " + result1)  // Output: Some(1) // ONY ONE (FIRST) IS RETURNED
     println ("find2: " + result2)  // Output:None
   }
 

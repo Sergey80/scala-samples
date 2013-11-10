@@ -86,4 +86,16 @@ object FlatMapExample extends App {
 
   }
 
+  // #5 and of course example with Option(s)
+
+  val results = List(None, Some(1), Some(2), None) // List[Option[Int]]
+
+  val flatResult1 = results flatMap(x=>x)           //  List[Int] = List(1, 2)  .
+  // So it treats Option as possible Collection of: Some or None
+
+  // same as (int this case)
+
+  val flatResult2 = results flatten                 //  List[Int] = List(1, 2)
+
+
 }
