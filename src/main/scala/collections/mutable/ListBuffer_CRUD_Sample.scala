@@ -7,7 +7,7 @@ import scala.collection.mutable.ListBuffer
 // #ListBuffer
 // related: #zipWithIndex #mutable
 
-object ListBufferSample extends App {
+object ListBuffer_CRUD_Sample extends App {
 
   case class User(id:Long, name:String, email:String)
 
@@ -25,13 +25,29 @@ object ListBufferSample extends App {
 
       val zipped = users.zipWithIndex   // #zipWithIndex example usage
 
-      val optionResult = zipped find(u => u._1.id == user.id )
+      val optionResult = zipped find(u => u._1.id == user.id ) // then find user by ID
 
       if (optionResult.isDefined) {
 
         val ( _:User, index:Int) = optionResult.get
 
-        users.update(index, user)
+        users.update(index, user)                  // update expects Index
+
+      }
+
+    }
+
+    def delete(user:User) = {  // delete by object ref / instance
+
+      val zipped = users.zipWithIndex   // #zipWithIndex example usage
+
+      val optionResult = zipped find(_._1 == user) // then find user by ID
+
+      if (optionResult.isDefined) {
+
+        val (_:User, index) = optionResult.get
+
+        users.remove(index)                       // remove() expects Index
 
       }
 
@@ -56,6 +72,12 @@ object ListBufferSample extends App {
   Users.update( User(1, "bob1", "new-email-bob@bobs.com") ) // update User that has id = 1
 
   println ("All after update: " + Users.users )
+
+  // remove:
+
+  Users.delete( User(1, "bob1", "new-email-bob@bobs.com") )  // bob1 will be deleted
+
+  println ("All after delete: " + Users.users )
 
 
 }
