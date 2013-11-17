@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 // typical example where mutable List like ListBuffer might be useful
 
 // #ListBuffer
-// related: #zipWithIndex
+// related: #zipWithIndex #mutable
 
 object ListBufferSample extends App {
 
@@ -13,7 +13,7 @@ object ListBufferSample extends App {
 
   object Users {
 
-    val users = ListBuffer[User]()
+    val users = ListBuffer[User]() // mutable list
 
     def exists(id:Long) = users.exists (_.id == id)
 
