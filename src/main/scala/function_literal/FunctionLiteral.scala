@@ -80,4 +80,6 @@ object FunctionLiteral extends App {
 
   // val goodTry[A] = (a:A) => a   // compilation error: "wrong value declaration"
 
+  val resultF3 = myFunction2[Int](1) // but this works, of course
+  println (resultF3) // 1
 }
