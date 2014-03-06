@@ -76,7 +76,7 @@ object FunctionLiteral extends App {
 
   def myFunction2[A] = (a:A) => a
 
-  // because we can not write in a #Function-Literal way
+  // because we can not write in a #Function-Literal in the way of:
 
   // val goodTry[A] = (a:A) => a   // compilation error: "wrong value declaration"
 
