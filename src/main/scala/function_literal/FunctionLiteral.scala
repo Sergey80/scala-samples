@@ -82,4 +82,10 @@ object FunctionLiteral extends App {
 
   val resultF3 = myFunction2[Int](1) // but this works, of course
   println (resultF3) // 1
+
+ // To remember as an example:
+  // 4 - is integer literal
+  // (2+2) - is not
+
+  // in our case/example we operate by functions (but not integer) - so it is about #Function-Literal
 }
