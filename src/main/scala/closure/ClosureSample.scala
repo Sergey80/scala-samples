@@ -4,7 +4,6 @@ package closure
 
 object ClosureSample extends App {
 
-
 // Closure - is all about encapsulation
 
   object scope { // defining a scope to hide/close our data
@@ -30,12 +29,7 @@ object ClosureSample extends App {
   
   println ( result  ) // so that we see change result
 
-
-  
-// --
-  
-// In Java and other ancient languages you would usually do this (but that is not closure)
-
+// -- In Java and other ancient languages you would usually do this (but that is not closure)
 
   abstract class ScopeSetter {  // define interface - we have to define it
     def setData(value:Int):Int      // since we want expose setData
@@ -76,7 +70,7 @@ object ClosureSample extends App {
 
   // so...the same
 
-  val result3 = myFunction(scope.setData, 2) // FYI: 'setData' is a function an object (with known interface) at the same time
+  val result3 = myFunction(scope2.setData, 2) // FYI: 'setData' is a function an object (with known interface) at the same time
 
   def myFunction3(f:(Int=>Int), p:Int) = { // That's it - function is already 'interface', so no need to create one
     f(p)
