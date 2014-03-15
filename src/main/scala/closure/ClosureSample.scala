@@ -7,7 +7,7 @@ object ClosureSample extends App {
 
 // Closure - is all about encapsulation
 
-  object scope {
+  object scope { // defining a scope to hide/close our data
 
     private var data = 1 // here we 'close' data in a scope
 
@@ -40,7 +40,7 @@ object ClosureSample extends App {
   abstract class ScopeSetter {  // define interface - we have to define it
     def setData(value:Int):Int      // since we want expose setData
   }                                   // since we are not going to pass function as an parameter
-  class ScopeSetterImpl extends ScopeSetter {
+  class ScopeSetterImpl extends ScopeSetter { // one of possible implementations
     private var data = 1       // our private data
     override def setData(value: Int) = {
       data = value             // changing that data
@@ -48,7 +48,7 @@ object ClosureSample extends App {
     }
   }
 
-  val obj:ScopeSetter = new ScopeSetterImpl
+  val obj:ScopeSetter = new ScopeSetterImpl // ref to base interface
 
   val result2 = myFunction(obj) // here we passing reference to the object, but not to the function
 
@@ -76,7 +76,7 @@ object ClosureSample extends App {
 
   // so...the same
 
-  val result3 = myFunction(scope.setData, 2)
+  val result3 = myFunction(scope.setData, 2) // FYI: 'setData' is a function an object (with known interface) at the same time
 
   def myFunction3(f:(Int=>Int), p:Int) = { // That's it - function is already 'interface', so no need to create one
     f(p)
