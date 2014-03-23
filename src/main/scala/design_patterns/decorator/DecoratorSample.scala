@@ -12,7 +12,7 @@ object DecoratorSample extends App {
   //  - no need to create additional class 'IcecreamDecorator' (like in classical OOP)
   //  - and no need to care about delegation calls from out IcecreamDecorator.makeIcecream() method
 
-  // making os of 'traits' helps us avoid boilerplate code creation
+  // making use of 'traits' helps us avoid boilerplate code creation
 
   // creating an IceScream with ingredients / decorators
   val iceCream = new JustIceCream with NuttyDecorator with HoneyDecorator
