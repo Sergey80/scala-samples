@@ -2,7 +2,7 @@ package design_patterns.decorator
 
 // inspired by: http://javapapers.com/design-patterns/decorator-pattern/
 
-// #decorator-pattern
+// #decorator-pattern #traits
 
 object DecoratorSample extends App {
 
