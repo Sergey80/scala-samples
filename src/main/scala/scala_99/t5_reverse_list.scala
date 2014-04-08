@@ -1,6 +1,6 @@
 package scala_99
 
-//# reverse
+// #list-reverse #reverse
 // #list-concatenation #list-copy
 object t5_reverse_list extends App {
 
@@ -15,6 +15,6 @@ object t5_reverse_list extends App {
 
   }
 
-  println( reverse(List(1, 2, 3, 4, 5)) )
+  println( reverse(List(1, 2, 3, 4, 5)) ) // List(5, 4, 3, 2 ,1)
 
 }
