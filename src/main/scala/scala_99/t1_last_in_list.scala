@@ -3,7 +3,7 @@ package scala_99
 // Find the last element of a list.
 
 // #Nil #pattern-matching #list
-// #last-element
+// #last-element #pattern-matching
 object t1_last_in_list extends App {
 
   def last(list: List[Int]) : Int = list match {

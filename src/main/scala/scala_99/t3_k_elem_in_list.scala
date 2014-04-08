@@ -2,7 +2,7 @@ package scala_99
 
 // Find the Kth element of a list.
 
-// #list #loop #stable-identifier
+// #list #loop #stable-identifier #tail #head
 object t3_k_elem_in_list extends App {
 
   def nth(k:Int, list:List[Int]): Int =  {
