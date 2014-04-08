@@ -1,21 +1,20 @@
 package scala_99
 
 //# reverse
+// #list-concatenation #list-copy
 object t5_reverse_list extends App {
 
-  def reverse(list:List[Int]) : List[Any] = {
+  def reverse(list:List[Int]) : List[Int] = {
 
-    def loop(list2:List[Any]): List[Any] = {
-      list match {
-        case Nil => list2
-        case elem :: tail => loop(elem :: list2 :: Nil)
-      }
+    def copyList(from:List[Int], to:List[Int]): List[Int] = from match {
+        case Nil  => to
+        case elem :: tail => copyList(from.tail, List(elem) ::: to ) // #list-concatenation
     }
 
-    loop(list)
+    copyList( from = list, to = List[Int]() ) // #list-copy
 
   }
 
-  println( reverse(List(1, 1, 2, 3, 5, 8)) )
+  println( reverse(List(1, 2, 3, 4, 5)) )
 
 }
