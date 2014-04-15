@@ -31,22 +31,20 @@ object t5_reverse_list extends App {
   }
 
   // --
+  // #list-concatenation - classic recursion (putting some 'prints' to see how it goes)
 
   def reverse3(list:List[Int]) : List[Int] = list match {
-    case Nil => list
-    case h :: tail => reverse3(tail) ::: List(h) // #list-concatenation - classic recursion
+    case Nil => list // 1
+    case h :: tail => reverse3(tail) ::: List(h) // 2
   }
-//  list:
-//  List(5, 4, 3, 2, 1)
-//  List(5, 4, 3, 2, 1)
-//  List(2, 3, 4, 5)
-//  List(3, 4, 5)
-//  List(4, 5)
-//  List(5)
-//  List()
-//  List(5, 4, 3, 2, 1)
+//  2: List(1, 2, 3, 4, 5)
+//  2: List(2, 3, 4, 5)
+//  2: List(3, 4, 5)
+//  2: List(4, 5)
+//  2: List(5)
+//  1: List()
 
-
+//
   println( reverse1(List(1, 2, 3, 4, 5)) ) // List(5, 4, 3, 2 ,1)
 
   println( reverse2(List(1, 2, 3, 4, 5)) ) // List(5, 4, 3, 2 ,1)
