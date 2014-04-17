@@ -76,13 +76,3 @@ An an example,
                                                     this happens only if we don't use any sbt-related files in the project, like build.sbt) </li>
 </ol>
 
-
-About dependencies:
-
-"
-When apps use other libraries during compilation or test, they are called library dependencies (or "deps" for short).
-These deps are declared in build.sbt (or *.sbt or project/*.scala) as follows:
-
-libraryDependencies += "org.specs2" %% "specs2" % "2.2" % "test"
-
-"
