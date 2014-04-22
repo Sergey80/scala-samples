@@ -88,4 +88,4 @@ object Fib extends App {
 //Output will be like this:
 //5  4  3  2  1  0  1  2  1  0  3  2  1  0  1  ;result: 5
 //5  4  3  2  1  0  1  2  3  ;result: 5
-//5  4  3  2  1  0  1  2  3  ;result:
+//5  4  3  2  1  0  1  2  3  ;result: 5
