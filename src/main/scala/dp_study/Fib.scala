@@ -22,6 +22,8 @@ import scala.collection._
 
 object Fib extends App {
 
+// #1
+
   // not "top-down" implementation. no #memoization is used
   def fib1(n:Int) : Int = {
     print (" " + n + " ")
@@ -31,7 +33,7 @@ object Fib extends App {
 
   println ( " ;result: " + fib1(5) ) //  5  4  3  2  1  0  1  2  1  0  3  2  1  0  1  ;result: 5
 
-  // --
+// #2
 
   val m = mutable.Map[Int, Int](0 -> 0, 1->1) // global mutable state - not good. but it shows the idea
 
@@ -50,7 +52,9 @@ object Fib extends App {
   println ( " ;result: " + fib2(5) )
 
 
-  // A bit improved version. Scala style. #automatic-memoization
+// #3
+
+  // A bit improved version. Scala style. #automatic-memoization. Hiding mutable scope into the function.
 
   //#automatic-memoization
 
