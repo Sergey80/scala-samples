@@ -6,7 +6,7 @@ package fp_study.recursion.step1
 
 // #stream #infinit-list #factorial #algorithm
 
-object Factorial3 extends App {
+object Factorial3_NoRecursion extends App {
 
   def fac(n:Int) = Stream.range[Int](1,n+1).foldLeft(1) (_ * _)
 
