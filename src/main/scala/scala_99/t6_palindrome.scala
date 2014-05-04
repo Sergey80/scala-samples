@@ -11,7 +11,7 @@ object t6_palindrome extends App {
     case list => isPalindrome_v1(list.drop(1).reverse.drop(1))  //  Will improve that in the next version
   }
 
-  def isPalindrome_v2[A](list: List[A]): Boolean = list match {
+  def isPalindrome_v2[A](list: List[A]): Boolean = list match { // v2
 
     case List(_) => true
 
