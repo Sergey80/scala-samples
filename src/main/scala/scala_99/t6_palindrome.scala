@@ -23,7 +23,7 @@ object t6_palindrome extends App {
       val left = list.slice(0, middleLeft)                     // do slice only once
       val right = list.slice(middleRight, list.length).reverse // do reverse only once
 
-      left sameElements (right)
+      left sameElements (right)  // just compare
     }
 
   }
