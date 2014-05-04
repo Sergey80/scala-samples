@@ -8,7 +8,9 @@
     <artifactId>scala-samples</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-  <!--  <repositories>
+    <!--
+
+  <repositories>
         <repository>
             <id>oss.sonatype.org</id>
             <name>releases</name>
@@ -28,9 +30,17 @@
             <groupId>org.specs2</groupId>
             <artifactId>specs2_2.10</artifactId>
             <version>2.3.11</version>
-            &lt;!&ndash;<scope>test</scope>&ndash;&gt;
+            <scope>test</scope>
         </dependency>
-    </dependencies>
+
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.11</artifactId>
+            <version>2.1.5</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies> -->
 
 
     <build>
@@ -45,6 +55,6 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
 
 </project>
