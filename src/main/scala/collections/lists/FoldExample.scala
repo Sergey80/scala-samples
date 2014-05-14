@@ -18,7 +18,7 @@ object FoldExample extends App {
 
     val result2 = List[Int]().foldLeft(0)(_ + _)
 
-    println (result1) // 1
+    println (result1) // 6
     println (result2) // 0
 
   }

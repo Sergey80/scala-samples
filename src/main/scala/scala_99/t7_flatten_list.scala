@@ -31,5 +31,18 @@ object t7_flatten_list extends App {
 
   }
 
+  // if use standard flatten method then:
+  {
+    val list = List(1, List(2, 3), 4)
+    // No implicit view available from Any => scala.collection.GenTraversableOnce[B].
+    // println (  list flatten )  //
+
+    // But this (one type-list) will work out
+    val list2 = List(List(1), List(2, 3), List(4) )
+    println ( list2 flatten )
+
+
+  }
+
 
 }
