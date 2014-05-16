@@ -2,7 +2,7 @@ package scala_99
 
 import scala.annotation.tailrec
 
-//# duplicates #list #consecutive #tailrec
+//# duplicates #list #consecutive #tailrec #dropWhile
 
 object t8_duplicate_list extends App {
 
@@ -19,6 +19,19 @@ object t8_duplicate_list extends App {
   val result = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
 
   println (result) // List('a, 'b, 'c, 'a, 'd, 'e)
+
+
+  // 2. make use of existing method: #dropWhile. recursion
+
+  {
+    def compress[T](list:List[T]): List[T] = list match {
+      case Nil => Nil
+      case head :: tail => head :: compress(tail.dropWhile(x=> x == head))
+    }
+
+    val result = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+    println (result)
+  }
 
 
 }
