@@ -13,10 +13,10 @@ object WithTuples extends App {
   // but what if we need match by several one ?
   def function2(arg1:String, arg2:String) : String = (arg1, arg2) match { // here we go- we use tuples
     case ("val1", "val2") => "val1, val2"
-    case (a, b) if a == b => "equal!"
+    case (a, b) if a == b => "equal!"   // use tuples to hit the case
   }
 
-  val result = function2("a", "a")
+  val result = function2("a", "a") // equal!
 
 
   println(result)
