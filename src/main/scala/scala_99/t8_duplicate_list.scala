@@ -10,8 +10,8 @@ object t8_duplicate_list extends App {
 
   @tailrec
   def compress[T](list:List[T], previous:T = "", acc:List[T] = List() ): List[T] = list match {
-    case Nil => acc reverse
-    case head :: tail if (head == previous) => compress(tail, head, acc)
+    case Nil                                => acc reverse
+    case head :: tail if (head == previous) => compress(tail, head, acc) // not adding to accumulator if equal
     case head :: tail                       => compress(tail, head, head :: acc) // or: acc ++ List(head), then no need to use "reverse'
   }
 
