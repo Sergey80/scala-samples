@@ -26,7 +26,7 @@ object t8_duplicate_list extends App {
   {
     def compress[T](list:List[T]): List[T] = list match {
       case Nil => Nil
-      case head :: tail => head :: compress(tail.dropWhile(x=> x == head))
+      case head :: tail => head :: compress(tail.dropWhile(_ == head)) // x=> x == head
     }
 
     val result = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
