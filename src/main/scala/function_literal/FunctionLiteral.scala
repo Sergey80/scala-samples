@@ -47,10 +47,12 @@ object FunctionLiteral extends App {
   // Q: What about this? Is it Function Literal?
 
   val v2 = new Function1[Int, Int] {
+    println("test")                       // you will see that this will be printed only once when you will be using this function
     def apply(a: Int): Int = a + 1
   }
 
-  def f2 = new Function1[Int, Int] {
+  def f2 = new Function1[Int, Int] {      // so, f(a:Int): Int just a syntax sugar for that one
+    println("test")                       // you will see that this will be printed all the time when you invoke this function
     def apply(a: Int): Int = a + 1
   }
 
