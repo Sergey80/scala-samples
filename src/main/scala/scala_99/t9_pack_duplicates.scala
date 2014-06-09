@@ -22,7 +22,7 @@ object t9_pack_duplicates extends App {
 
   }
 
-  val result = pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)).reverse
+  val result = pack(List[Symbol]('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)).reverse
 
   println(result) // List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e, 'e))
 
