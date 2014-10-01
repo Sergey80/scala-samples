@@ -6,8 +6,8 @@ package looping
    While in Haskell:
 
    contact :: [[a]] -> [a]
-   contact xss = [x | xs <- xss, x <- xs]
-   result = contact [[1],[3,4,5],[6]]       -- [1,2,3,4,5]
+   contact xss = [x | xs <- xss, x <- xs]           -- 'hungarian-notation' for lists. meaning xss - list of lists; xs - list of x; x - end value
+   result = contact [[1],[3,4,5],[6]]               -- [1,2,3,4,5]
 
 */
 
