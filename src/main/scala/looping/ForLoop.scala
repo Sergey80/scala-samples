@@ -1,7 +1,7 @@
 package looping
 
 /*
- #loop #foor-loop
+ #loop #foor-loop #list-comprehension
  related: #filtering #yield #tuple
  */
 object ForLoop extends App {
@@ -45,7 +45,7 @@ object ForLoop extends App {
 
   // 5. you can filter while looping
 
-  val list2 = for (i <- 0 to 3 if i%2==0 ) yield i
+  val list2 = for (i <- 0 to 3 if i%2==0 ) yield i      // list-comprehension
 
   println (list2) // Vector(0, 2)
 
