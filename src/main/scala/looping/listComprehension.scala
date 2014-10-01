@@ -1,4 +1,5 @@
 // #list-comprehension #haskell
+// http://en.wikipedia.org/wiki/List_comprehension
 
 package looping
 
