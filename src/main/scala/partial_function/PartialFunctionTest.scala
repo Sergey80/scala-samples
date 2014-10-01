@@ -69,7 +69,7 @@ object PartialFunctionTest extends App {
 
  // So, what we need is a function that could accept Partial Function an argument before applying it,
  // first check isDefinedAt() method
- def acceptPartial(pf:PartialFunction[Any, Int], arg:Any) = {
+ def acceptPartial(pf:PartialFunction[Any, Int], arg:Any) = { // returns: Any
    if (pf.isDefinedAt(arg)) pf(arg) // that's it
  }
 
@@ -77,7 +77,7 @@ object PartialFunctionTest extends App {
   val result2 = acceptPartial( divide4, 0 )
 
   println("result: " + result1) // "10"
-  println("result: " + result2) // "()" - Unit
+  println("result: " + result2) // "()" - Any
 
 
  // 3. Using Partial Function in Scala collection

@@ -18,9 +18,27 @@ object FoldExample extends App {
 
     val result2 = List[Int]().foldLeft(0)(_ + _)
 
-    println (result1) // 1
+    println (result1) // 6
     println (result2) // 0
 
+  }
+
+  // traversing the list by foldRight
+  {
+    val list = List(1,2,3)
+      list.foldRight(List[Int]()) { (right, result) =>
+        right :: result
+      }
+    println ("traversing by foldRight: " + list)
+  }
+
+  // traversing the list by foldLeft
+  {
+    val list = List(1,2,3)
+    list.foldLeft(List[Int]()) { (result, left) =>
+      left :: result
+    }
+    println ("traversing by foldLeft: " + list)
   }
 
   // #2  similar to:  #template-method-pattern #strategy-pattern #decorator-pattern

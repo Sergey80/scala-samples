@@ -75,3 +75,4 @@ An an example,
 <li>http://youtrack.jetbrains.com/issue/SCL-6220  (SBT plugin does not get last changes in the code -
                                                     this happens only if we don't use any sbt-related files in the project, like build.sbt) </li>
 </ol>
+
