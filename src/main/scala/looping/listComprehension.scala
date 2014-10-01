@@ -19,3 +19,7 @@ object ListComprehension extends App {
   println("result: " + result)      // result: List(1, 3, 4, 5, 6)
 
 }
+
+// As you can seen Haskell code is more readable: Two reasons: 1. 'hungarian-notation' is used in Haskell 2. square-brackets for list
+// About Scala vs Haskell list syntax: http://stackoverflow.com/questions/6171955/scala-alternative-list-syntax-with-square-brackets-if-possible
+
