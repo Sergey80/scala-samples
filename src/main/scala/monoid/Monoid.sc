@@ -1,0 +1,37 @@
+/*
+- In math, Monoid is a category with one object.
+- In abstract algebra, a branch of mathematics, a Monoid is an _algebraic structure_ with
+a single associative binary operation and an identity element.
+*/
+
+trait Monoid[T] {
+  def mappend(m1: T, m2: T): T       // here is a single binary operation
+  val mzero: T                   // this is identity element
+}
+
+object StringMonoid extends Monoid[String] {
+  def mappend(s1: String, s2: String) = s1 + s2
+  val mzero = ""
+}
+
+object IntMonoid extends Monoid[Int] {
+  def mappend(n1:Int, n2:Int) = n1 + n2
+  val mzero = 0
+}
+
+def sum[A](xs: List[A], m: Monoid[A]): A =
+  xs.foldLeft(m.mzero)(m.mappend)
+
+sum(List(1, 2, 3, 4), IntMonoid)              // 10
+
+sum(List("a", "b", "c", "d"), StringMonoid)   // abcd
+
+// we may be implicit
+def sum2[A](xs: List[A])(implicit m: Monoid[A]): A = 
+  xs.foldLeft(m.mzero)(m.mappend)
+
+implicit val intMonoid = IntMonoid
+implicit val stringMonoid = StringMonoid
+
+sum2( List(1,2,3) )            // 6
+sum2( List("a","b","c","d") )  // abcd
