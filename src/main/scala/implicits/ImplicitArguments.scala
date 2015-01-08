@@ -1,4 +1,6 @@
-package implicit_test
+// #implicitly #implicit
+
+package implicits
 
 /**
  * In scope of implicit parameters topic (using implicit defining anonymous function as argument),

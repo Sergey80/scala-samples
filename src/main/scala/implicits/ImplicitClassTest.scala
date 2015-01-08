@@ -1,4 +1,4 @@
-package implicit_test
+package implicits
 
 /*
   #implicit
@@ -30,7 +30,7 @@ object Starter extends App {
   foo1
 
   def foo1 = {
-    import implicit_test.ImplicitsScope._
+    import implicits.ImplicitsScope._
     5 times println("hello")  // you see ! there is a new method times() added in Int class (for this context only!)
   }
 

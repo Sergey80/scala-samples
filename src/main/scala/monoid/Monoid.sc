@@ -1,3 +1,5 @@
+// #monoid
+
 /*
 - In math, Monoid is a category with one object.
 - In abstract algebra, a branch of mathematics, a Monoid is an _algebraic structure_ with
@@ -35,3 +37,12 @@ implicit val stringMonoid = StringMonoid
 
 sum2( List(1,2,3) )            // 6
 sum2( List("a","b","c","d") )  // abcd
+
+
+// or we can avoid using 'implicit' in arguments, but use 'implicitly' inside the f body
+
+def plus[A: Monoid](a: A, b: A): A = 
+  implicitly[Monoid[A]].mappend(a, b)  // I would call 'implicitly' 'inject'
+
+val r1 = plus(1,2)
+val r2 = plus("a","b")

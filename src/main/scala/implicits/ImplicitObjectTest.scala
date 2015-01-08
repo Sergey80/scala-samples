@@ -1,4 +1,4 @@
-package implicit_test
+package implicits
 
 /*
  #implicit
