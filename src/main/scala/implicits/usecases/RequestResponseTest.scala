@@ -2,18 +2,18 @@ package implicits.usecases
 
 object RequestResponseTest extends App {
 
-  type User = String
+  type User = String      // for simplicity sake - all are strings
   type Request = String
   type Result = String
 
-  trait Action
+  trait Action  // there are two auth Action - Ok and Not Ok
   case class OkAction(content:Result) extends Action
   case class UnauthorizedAction(content:Result) extends Action
 
-  var userDB = List("user1", "user2", "user3")
+  var userDB = List("user1", "user2", "user3") // our simple database
 
   val user = "user1"  // usually user available from the session
-  var request:Request = "request"
+  var request:Request = "request"  // current request
 
 
   // wraps request into Action
@@ -70,15 +70,13 @@ object RequestResponseTest extends App {
         result // "ok" / "not ok"
 
       }
-
     )
-
     authResult  // OkAction / NotOkAction
-
   }
 
-  //
-  def doWork() = withUser {                     // doWork -> withUser -> withAuth  (like ... pattern)
+  // Let's run this and to some work
+
+  def doWork() = withUser {                     // doWork -> withUser -> withAuth  (like Decorator/Wrapper pattern)
     user => request => {
       // if user exists (withUser) and authorization is ok (withAuth), then this work will done
       println("do some important work here")
@@ -88,3 +86,12 @@ object RequestResponseTest extends App {
 
   val result = doWork()  // doWork doesn't care about user or request
 }
+
+// Output:
+/*
+withUser in play...
+withAuth in play...
+user has been found
+do some important work here
+wrapped to Action as authorized
+*/
