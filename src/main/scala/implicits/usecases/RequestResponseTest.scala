@@ -46,29 +46,25 @@ object RequestResponseTest extends App {
       userDB.find(u => u == user)
     }
 
-    val authResult:Action = withAuth (    // 'withUser' requires help of 'withAuth'
+    val authResult:Action = withAuth (    // call 'withAuth'
       /* Create anonymous function to please the 'withAuth'
-         this function already knows who is user, what request is,
-         but doesn't what Result is.
-         In our case (since we are in 'withUser') the Result is the
-         fact whether the user exists in users database or not.
+         it is already known who is current user, and what request is, but doesn't what Result is.
+         And he Result is the fact whether the user exists in users database or not.
          So it tries to get the Result by searching for the current user.
-         If user has been found then it makes sense to
-         continue with Authorisation (withAuth) */
-      user => request => {
+         If user has been found then it makes sense to continue with Authorisation (withAuth)
+      */
+      user => request => { // passing anonymous function with user, request, and result (where result is based on user existence in the user db )
         val userOption = findInDb("user1")          // find the user in users db
         val result:Result = userOption match {      // check if user exists
-          case Some(_) => {                         // user has been found
+          case Some(_) => // user has been found
             println("user has been found")
             "ok"
-          }
-          case None    => {                         // user has not been found
+          case None    => // user has not been found
             println("user has not been found")
             "not ok"
-          }
         }
        result // "ok" / "not ok" (user has been found or not)
-      }
+      } // end of passing anonymous function to 'withAuth'
     )
 
     authResult match {
@@ -76,7 +72,7 @@ object RequestResponseTest extends App {
     }
 
     authResult
-  }
+  } // edn of 'withUser'
 
   // Let's run this and to some work
   def doWork() = withUser {                     // doWork -> withUser -> withAuth  (like Decorator/Wrapper pattern)
@@ -95,5 +91,4 @@ user has been found
 check authorisation...
 wrapped to Action as authorized
 do some important work here!!
-
 */
