@@ -11,7 +11,7 @@ package implicits
  */
 object ImplicitArguments extends App {
 
-  def magic[T](implicit e: T) = e  // read about this latter in this code
+  def inject[T](implicit e: T) = e  // read about this latter in this code
 
   case class Request(msg:String)
 
@@ -22,41 +22,56 @@ object ImplicitArguments extends App {
   case class Result(msg:String)
 
   case class Action(result:Result)
+
+  // companion object
   object Action {
-    def apply(block:Request => Result):Action = {   // note: we do NOT type/use "implicit block" here !
 
-     //val result = block(...)                     // what value, do you thing we are going to pass here?
+    def apply(block : Request => Result) : Action = {
 
-     // use 'implicitly()'  !
-     val result1 = block(implicitly[Request])     // if case if "implicitly" sounds to you like a magic,
+      // use 'implicitly()'  !
+      val result1 = block(implicitly[Request])     // injecting request value by type Request
 
-     val result2 = block(magic[Request])          // you can do your own "magic"
+      val result2 = block(inject[Request])          // we can call it 'inject' if you like
 
-                                                  // in terms of PlayFramework, you may thing that magic() is method that
-                                                    // prints result to HTML Template view
-     new Action(result1)
+      new Action(result1)
     }
+
   }
+  // Ok, remember - Action is trying to inject Request value implicitly !!!
+
 
   // 1. Let's test
 
-  val action1 = Action { implicit req  =>       // passing anonymous function that use _exiting_ request implicitly as arg
-    Result("Got request [" + req + "]")           //  and returns Result (result has information about the request)
+  // passing anonymous function that use _exiting_ request implicitly as arg
+  val action1 = Action { implicit req  =>   // creating and passing anonymous function (that takes request and returns Result)
+    Result("Got request [" + req + "]")     //  and returns Result (result has information about the request)
   }
 
-  // That is the same as this:
-  val action2 = Action {  req =>
-    implicit val r = req              // as you can see, previous form is more concise than this
-    Result("Got request [" + req + "]")
+  // Actually that is the same as this:
+  val action2 = Action {  req =>  // note no any 'req' variable was defined above !
+
+    implicit val r :Request = req              // implicit was put here
+
+    // Reminding - Action will try to inject Request implicitly by type.
+    // So here it was
+
+    Result("Got request [" + req + "]") // <- this apply function will search for implicit
   }
 
   println(action1) // "Action(Result(Got request [Request(my request)]))"
+  println(action2) // "Action(Result(Got request [Request(my request)]))"
 
+// --
+
+  // Let's consider advantages
 
   // 2. What if we are not going to use _implicit_, but explicitly passing our OWN Request ?
 
   val myRequest = new Request("my own request")
   val action3 = Action { myRequest  =>           // why then use "implicit", because anyhow it will use Request val implicitly due to "implicitly()" method
+
+    // no any implicit were used
+
     Result("Got request [" + myRequest + "]")    // ???  The answer is:
                                                           // - We should not use only one arg in apply() method ! It is not enough
                                                           // - We should use currying as second param - it is going to help
@@ -70,7 +85,7 @@ object ImplicitArguments extends App {
  // 3. The better way to do it is to use "currying function"
  case class Action2(result:Result)
   object Action2 {
-    def apply(block:Request => Result)(implicit request:Request):Action2 = { // now we use implicit !
+    def apply(block:Request => Result)(implicit request:Request) : Action2 = { // now we use implicit !
 
       val result = block(request)
 
@@ -82,7 +97,7 @@ object ImplicitArguments extends App {
 
   // Test it again:
 
-  val a2_1 = Action2 { implicit req  =>       // passing anonymous function that use _exiting_ request implicitly as arg
+  val a2_1 = Action2 { req  =>       // passing anonymous function that use _exiting_ request implicitly as arg
     Result("Got request2 [" + req + "]")           //  and returns Result (result has information about the request)
   }
   println(a2_1)               // Action2(Result(Got request2 [Request(my request)]))
