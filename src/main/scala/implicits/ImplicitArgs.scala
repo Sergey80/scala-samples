@@ -31,10 +31,22 @@ object ImplicitArgs extends App {
     f(x) // x=3
   }
 
-  var result3_1 = function3(x => x * 2)
+  var result3_1 = function3(x => x * 2)  // we may use second parameter it is injected by default
   var result3_2 = function3(x => x * 2)(4)
 
   println( result3_1 ) // 3 * 2 = 6
   println( result3_2 ) // 3 * 4 = 8
+
+  // and you can not do this
+  def function4(implicit i:Int) = i   // this works as default variable (ALMOST)
+  // same as this
+  def function4_1(i:Int = implicitly[Int]) = i   // implicit scope has Int = 3
+
+  val result4 = function4         // should be without ()
+  val result4_1 = function4_1()   // requires ()
+
+  println("result4: " +result4)     // 3
+  println("result4_1: " +result4_1) // 3
+
 
 }
