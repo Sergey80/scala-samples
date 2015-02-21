@@ -1,24 +1,28 @@
 package implicits.usecases
 
+case class User(name:String)
+case class Request(content:String)
+
 object RequestResponseTest extends App {
-  type User = String      // for simplicity sake - all are strings
-  type Request = String
+
+  // representing the current user and request in the implicit scope
+  implicit val u:User = User("user1")
+  implicit val r:Request = Request("content")
+
   type Result = String
 
   trait Action  // there are two auth Action - Ok and Not Ok
-  case class OkAction(content:Result) extends Action
+  case class OkAction(request:Result) extends Action
   case class UnauthorizedAction(content:Result) extends Action
 
-  var userDB = List("user1", "user2", "user3") // our simple database
+  var userDB = List(User("user1"), User("user2"), User("user3") ) // our simple database
 
-  val user = "user1"  // usually user available from the session
-  var request : Request = "request"  // current request
 
   // check authorization and wraps request into Action
   def withAuth(f: User => (Request => Result) ): Action = {
     println("withAuth in play...")
 
-    val result:Result = f("user1")(request) // (is user was found or not)
+    val result:Result = f(implicitly[User])(implicitly[Request]) // expecting User and Request were defined in implicit scope
 
     def isAuthorized(user:User): Boolean = {
       println("check authorisation...")
@@ -27,15 +31,15 @@ object RequestResponseTest extends App {
 
     def onUnAuthorized(request: Request): Action = {
       println("wrapped to Action as not authorized")
-      UnauthorizedAction(request)
+      UnauthorizedAction("unauthorized")
     }
 
     if (result == "ok") {
-      if (isAuthorized(request)) {
+      if ( isAuthorized(implicitly[User]) ) {
         println("wrapped to Action as authorized")
-        OkAction(request)
-      } else onUnAuthorized(request)
-    } else onUnAuthorized(request)
+        OkAction("ok")
+      } else onUnAuthorized(implicitly[Request])
+    } else onUnAuthorized(implicitly[Request])
   }
 
   //
@@ -54,7 +58,7 @@ object RequestResponseTest extends App {
          If user has been found then it makes sense to continue with Authorisation (withAuth)
       */
       user => request => { // passing anonymous function with user, request, and result (where result is based on user existence in the user db )
-        val userOption = findInDb("user1")          // find the user in users db
+        val userOption = findInDb(User("user1"))          // find the user in users db
         val result:Result = userOption match {      // check if user exists
           case Some(_) => // user has been found
             println("user has been found")
@@ -68,7 +72,7 @@ object RequestResponseTest extends App {
     )
 
     authResult match {
-      case OkAction(_) => f(user)(request)  // if authorized do The work
+      case OkAction(_) => f(implicitly[User])(implicitly[Request])  // if authorized do The work
     }
 
     authResult
