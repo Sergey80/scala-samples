@@ -1,8 +1,8 @@
 name := "scala-samples"
 
-version := "0.2"
+version := "0.3"
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.6"
 
 resolvers += "Repo1" at "http://oss.sonatype.org/content/repositories/releases"
 
