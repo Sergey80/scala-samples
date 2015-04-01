@@ -24,9 +24,11 @@ object FunctorDemo extends App {
   }
 
 
-  val result = listFunctor.fmap[Int,Int](_ + 1)(List(1,2,3))
+  val result1 = listFunctor.fmap[Int,Int](_ + 1)(List(1,2,3))
+  val result2 = optionFunctor.fmap[Int,Int](_ + 1)(Some(1))
 
-  println(result)
+  println(result1)
+  println(result2)
 
 
 }
