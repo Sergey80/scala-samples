@@ -12,12 +12,22 @@ object FunctorDemo extends App {
     def fmap[A, B](f: A => B): T[A] => T[B] // takes function from A=>B and returns wrapped T[A] => T[B]
   }
 
+  // Everything you need to know about #higher-kinded-type is that
+  // type may apply another type as argument (#type-constructor),
+  // similarly to functions - function can takes values as arguments
+  // type behave as a function
+  // OOP does not exist - just in case if did not know/realize. There is no spoon :)
+
+  // let's define/implement two Functors then
+
   val listFunctor = new Functor[List] {      // List - type constructor
     def fmap[A, B](f: A => B): List[A] => List[B] = {   // [A], [B] - type parameters for that type constructor
       case Nil     => Nil
       case a :: as => f(a) :: fmap(f)(as)   // List[B]
     }
   }
+
+  // same as 'map' but 'map' works only with List-like types (not as abstract as Functor's fmap where we pass a type)
 
   val optionFunctor = new Functor[Option] {  // Option - type constructor
     def fmap[A, B](f: A => B): Option[A] => Option[B] = { // [A], [B] - type parameters for that type constructor
