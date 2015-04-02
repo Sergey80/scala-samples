@@ -1,7 +1,7 @@
 package fp_deep
 
 
-// #functor #higher-kinded-type #type-constructor #pattern-matching
+// #functor #higher-kinded-type #type-constructor #pattern-matching #first-order-parametric-polymorphism
 
 // special flag
 import scala.language.higherKinds  // if not set/imported - the warning about "higher-kinded type' will be generated (see this paper: http://adriaanm.github.io/files/higher.pdf)
@@ -13,9 +13,10 @@ object FunctorDemo extends App {
   }
 
   /*
-     Everything you need to know about #higher-kinded-type is that type may apply another type as argument (#type-constructor).
-     Similarly to functions - function can takes values as arguments.
+     Everything you need to know about #higher-kinded-type is that type may apply another type as argument (#type-constructor), and this type-argument also may have another type argument etc...
+     Similarly to functions - function can takes values as arguments, where argument maybe another function that takes argument .. etc.
      Type behaves as a function.
+     Usual "generics" in Java (f.e.) is "first-order parametric polymorphism" that has its limitations (because it is "first" but not _higher_ than "first")
      OOP does not exist - just in case if did not know/realize.
   */
 
@@ -52,3 +53,7 @@ object FunctorDemo extends App {
 // see: 'scalaz' samples/folders
 
 }
+
+// NOTES:
+// - " First-order parametric polymorphism like (List[T]), although it allows to abstract over types "
+// - " "higher-kinded types" is generalisation to types that abstract over types that abstract over types "
