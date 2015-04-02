@@ -4,7 +4,7 @@ package fp_deep
 // #functor #higher-kinded-type #type-constructor #pattern-matching
 
 // special flag
-import scala.language.higherKinds  // if not set/imported - the warning about "higher-kinded type' will be generated
+import scala.language.higherKinds  // if not set/imported - the warning about "higher-kinded type' will be generated (see this paper: http://adriaanm.github.io/files/higher.pdf)
 
 object FunctorDemo extends App {
 
@@ -12,11 +12,12 @@ object FunctorDemo extends App {
     def fmap[A, B](f: A => B): T[A] => T[B] // takes function from A=>B and returns wrapped T[A] => T[B]
   }
 
-  // Everything you need to know about #higher-kinded-type is that
-  // type may apply another type as argument (#type-constructor),
-  // similarly to functions - function can takes values as arguments
-  // type behave as a function
-  // OOP does not exist - just in case if did not know/realize. There is no spoon :)
+  /*
+     Everything you need to know about #higher-kinded-type is that type may apply another type as argument (#type-constructor).
+     Similarly to functions - function can takes values as arguments.
+     Type behaves as a function.
+     OOP does not exist - just in case if did not know/realize.
+  */
 
   // let's define/implement two Functors then
 
@@ -45,20 +46,9 @@ object FunctorDemo extends App {
   println (result1)    // List(2,3,4)
   println (result2)    // List(2)
 
-// eventually we may make this work (but not in scope of current sample):
+// Eventually we may make this work (but not in scope of current sample):
   // List(1,2,3).fmap(_ + 1)
   // Same(1).fmap(_ + 1)
 // see: 'scalaz' samples/folders
-
-// -------------- code reminding about #pattern-matching:
-
-  val map = Map[Int,String] (1->"A", 2->"B")
-  map foreach {
-      case(k, v) if k==1 => println("yes, we can decide which function to apply")
-      case(k,v) => println("k = " + k + "; v = " + v)
-  }
-  // 1. "yes, we can decide which function to apply"
-  // 2. "k = 2; v = B"
-
 
 }

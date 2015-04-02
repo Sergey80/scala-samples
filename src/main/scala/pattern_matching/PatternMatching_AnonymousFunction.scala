@@ -17,6 +17,12 @@ object PatternMatching_AnonymousFunction extends App {
 
   // just reminding that foreach() is defined as: "def foreach[U](f: A => U):Unit "
 
+  // If we did not use use pattern matching, then your code would look like this
+  map.foreach(x => {
+    if (x._1 == 1)  println("k=" + x._1 + ";v=" + x._2)
+    else           println("k=" + x._1  + ";v=" + x._2)
+  })
+
   // so, foreach expects a function
 
   // But what kind of function we have provided with " case(k,v) => println("k="+k+";v="+v) "  ?
