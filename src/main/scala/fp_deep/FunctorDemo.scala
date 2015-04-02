@@ -45,6 +45,11 @@ object FunctorDemo extends App {
   println (result1)    // List(2,3,4)
   println (result2)    // List(2)
 
+// eventually we may make this work (but not in scope of current sample):
+  // List(1,2,3).fmap(_ + 1)
+  // Same(1).fmap(_ + 1)
+// see: 'scalaz' samples/folders
+
 // -------------- code reminding about #pattern-matching:
 
   val map = Map[Int,String] (1->"A", 2->"B")
