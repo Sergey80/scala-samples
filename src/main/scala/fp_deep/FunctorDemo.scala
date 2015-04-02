@@ -35,7 +35,8 @@ object FunctorDemo extends App {
   println (result1)    // List(2,3,4)
   println (result2)    // List(2)
 
-// code reminding about #pattern-matching:
+// -------------- code reminding about #pattern-matching:
+
   val map = Map[Int,String] (1->"A", 2->"B")
   map foreach {
       case(k, v) if k==1 => println("yes, we can decide which function to apply")
