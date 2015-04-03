@@ -2,6 +2,8 @@ package fp_deep
 
 // should be read before FunctorDemo
 
+import scala.language.higherKinds  // if not set/imported - the warning about "higher-kinded type' will be generated (see this paper: http://adriaanm.github.io/files/higher.pdf)
+
 // #type-constructor #higher-kinded-type
 
 // trait Base[T, Container[XYZ]] ...
