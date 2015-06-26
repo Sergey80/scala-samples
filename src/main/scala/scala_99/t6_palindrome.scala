@@ -28,11 +28,27 @@ object t6_palindrome extends App {
 
   }
 
+  // more officiant version if expecting array-like input/string
+
+  def isPalindrome_v3(line: String): Boolean = {    // assuming line is string / array of chars - so we have random access by index
+
+    for (i <- 0 until line.length/2) {
+      if (line.charAt(i) != line.charAt(line.length -1 - i)) return false
+    }
+
+    true
+
+  }
+
   println ("--- v1 ---")
   printing( isPalindrome_v1 )
 
   println ("--- v2 ---")
   printing( isPalindrome_v2 )
+
+
+  println ("--- v3 ---")
+  println( isPalindrome_v3("aabaa") )
 
   // --
   def printing(f: List[Int] => Boolean) = {
