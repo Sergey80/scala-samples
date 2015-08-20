@@ -1,4 +1,4 @@
-package concurency
+package concurrency
 
 import java.util.concurrent.Executors
 import scala.concurrent.duration.Duration
