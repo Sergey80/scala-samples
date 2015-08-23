@@ -31,7 +31,7 @@ import scala.concurrent.{ExecutionContext, Await, Future, blocking}
  * that happens that they could not make it happen.
  *
  * So all were dead due this failure.
- * A philosophical question remains: who is wrong. Parents of children?
+ * A philosophical question remains: who is wrong - parents or children?
  *
  * And then after, when the historians have come,
  * they have grabbed the log from Pride's behaviour.
