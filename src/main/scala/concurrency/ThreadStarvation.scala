@@ -1,9 +1,9 @@
+// #thread #starvation #futures #thread-reuse
 package concurrency
+
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future, blocking}
 import org.scalameter._
-
-// #thread #starvation #futures
 
 object ThreadStarvation extends App {
 
