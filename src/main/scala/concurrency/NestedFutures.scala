@@ -12,9 +12,11 @@ import scala.concurrent.{ExecutionContext, Await, Future, blocking}
  *
  * The parents were big figure in the world and they could finish many tasks in ~1 second,
  * even if they work together in parallel they were smart enough to create a new space for their
- * work or reuse remaining space left after another parent has done with his/her work.
+ * work or reuse remaining space (thread in the pool) left after another
+ * parent has done with his/her work.
  *
- * Only windage (the retarding force of air friction on ther move) could stop them to be even faster.
+ * Only windage (the retarding force of air friction on ther move)
+ * could stop them to be even faster.
  *
  * That happens that each of them would make a birth to another 10 children,
  * who were not as efficient as their parents - they were not capable to create new space/playground
@@ -23,14 +25,18 @@ import scala.concurrent.{ExecutionContext, Await, Future, blocking}
  * Also those children were not as fast as their parents -
  * they could barely finish simple task in 2 seconds (not in 1 as their parents)
  *
- * One moment at time, when a great danger has come, and it requires all parent to make a grate job
- * to defence their One Pool Pride in one (or at least two seconds)
+ * One moment at time, when a great danger has come,
+ * and it requires all parent to make a grate job/defence
+ * to defend their One Pool Pride in one (or at least two seconds)
  * that happens that they could not make it happen.
  *
  * So all were dead due this failure.
+ * A philosophical question remains: who is wrong. Parents of children?
  *
- * And then after, when the historians have come, they have grabbed the log from Pride's behaviour.
- * A that moment there were 8 parents (and 80 childs respectively):
+ * And then after, when the historians have come,
+ * they have grabbed the log from Pride's behaviour.
+ * A that moment there were 8 parents (and 80 childs respectively).
+ * (4 cores their One Pool Pride has had):
  *
 > [40:08 : 03] parent: ForkJoinPool-1-worker-7 has finished the action
 > [40:08 : 03] parent: ForkJoinPool-1-worker-13 has finished the action
