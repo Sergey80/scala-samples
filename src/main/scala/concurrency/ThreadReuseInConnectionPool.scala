@@ -34,7 +34,7 @@ object ThreadReuseInConnectionPool extends App {
       }
     }
     val threadNames = Await.result(Future.sequence(allFutures), Duration.Inf)
-    println(s"2. Unique threads: ${threadNames.toSet.size}")
+    println(s"2. Unique threads: ${threadNames.toSet.size}") // > cores
   }
 
   // 3 - after 2-nd test, does ExecutionContext will  use all those new threads-space 
