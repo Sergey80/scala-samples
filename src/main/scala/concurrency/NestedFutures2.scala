@@ -10,6 +10,30 @@ import scala.concurrent.{ExecutionContext, Await, Future, blocking}
 
 import org.scalameter._
 
+// In this example we tried to fix 'NestedFutures' by introducing more execution context.
+// To let children to operate on their own Ex context.
+
+// But can see that if we have 'global' execution context as parent (which is based on Java JoinPool),
+// then whatever we pass as execution context to the child Future still will use Global context
+// and still will be using ONE connection pool.
+// And then therefore wll have performance problem if children do not use 'blocking' -
+// parents will be stuck in cores-long connection pool
+
+// So: Children will 'inherit' execution context, but not 'blocking'
+// and as children connected to the execution context the parents will not able to do
+// anything about it but wait for the free space in the pool (when child is done)
+// new additional threads will not be creating for the next parent because (I guess)
+// Global execution context will not see the reason of/for it.
+
+// Like a snapshot of the moment of time:
+// Connection Pool: [ch1, ch2, ch3, p1]
+
+// It things : "Ok there is one parent (p1) in the pool if one more parent
+// future will come I create for it new thread it the pool since I see 'blocking' instruction there".
+
+// But because we have more joined children than parents in the list
+// the moment when Global Ex context can help parent will never come.
+
 
 object ExContexts {
   val main = scala.concurrent.ExecutionContext.Implicits.global
@@ -67,13 +91,11 @@ object NestedFutures2 extends App {
 
   def childPlay(parentName:String)(ex:ExecutionContext):Future[String] = {
     Future {
-      blocking {
         Thread.sleep(2000) // two seconds play session
         val threadName = Thread.currentThread.getName
         // log
         println(s"[${timeStamp()}] child: " + threadName + " of " + parentName + " parent")
         Thread.currentThread.getName
-      }
     }
   }
 
