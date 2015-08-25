@@ -39,12 +39,6 @@ import org.scalameter._
 // pass ex to Future{}(ex) in childPlay function - then all children will play in
 // "pool2-thread-1" - "pool2-thread-10"
 
-// Question then:
-// should then children play in one pool2-thread-1 only
-// (since we set Executors.newFixedThreadPool(1) for them) but not creating threads:
-// from pool2-thread-1 to pool2-thread-10 for doing all work/play
-// in one moment ignoring the sleep(2000). As if parent's 'blocking' took effect on children?
-
 
 object ExContexts {
   val main = scala.concurrent.ExecutionContext.Implicits.global
