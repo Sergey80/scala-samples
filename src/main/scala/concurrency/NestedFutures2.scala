@@ -34,6 +34,17 @@ import org.scalameter._
 // But because we have more joined children than parents in the list
 // the moment when Global Ex context can help parent will never come.
 
+// UPDATE:
+// to fix it: add "implicit" to "ex:" param to childPlay or
+// pass ex to Future{}(ex) in childPlay function - then all children will play in
+// "pool2-thread-1" - "pool2-thread-10"
+
+// Queston then?
+// should then childrent play in one pool2-thread-1 only
+// (since we set Executors.newFixedThreadPool(1) for them) but not creating threads:
+// from pool2-thread-1 to pool2-thread-10 for doing all work/play
+// in one moment ignoring the sleep(2000). As if parent's 'blocking' took effect on children?
+
 
 object ExContexts {
   val main = scala.concurrent.ExecutionContext.Implicits.global
@@ -89,14 +100,14 @@ object NestedFutures2 extends App {
     works
   }
 
-  def childPlay(parentName:String)(ex:ExecutionContext):Future[String] = {
+  def childPlay(parentName:String)(/*implicit*/ ex:ExecutionContext):Future[String] = {
     Future {
-        Thread.sleep(2000) // two seconds play session
+        Thread.sleep(20000) // two seconds play session
         val threadName = Thread.currentThread.getName
         // log
         println(s"[${timeStamp()}] child: " + threadName + " of " + parentName + " parent")
         Thread.currentThread.getName
-    }
+    }(ex) // or uncomment "implicit" in an argument
   }
 
   def timeStamp(pattern:String = "ss:mm : hh"): String = {
