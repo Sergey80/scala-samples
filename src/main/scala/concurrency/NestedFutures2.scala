@@ -59,7 +59,7 @@ object NestedFutures2 extends App {
 
   val time = measure {
 
-    val works = parentWork(ExContexts.main) // main EC
+    val works = parentWork(ExContexts.main) // main EC (based on fork-join pool ) !
 
     val result1: Seq[Seq[Future[String]]] = Await.result(Future.sequence(works), Duration.Inf)
 
@@ -86,7 +86,7 @@ object NestedFutures2 extends App {
            // println(s"[${timeStamp()}] parent: " + parentName + " started an action")
 
             val playFutureOutcomes: Seq[Future[String]] = (1 to 10) map {stuffId =>
-              childPlay(parentName = parentName)(ExContexts.ecChildren)
+              childPlay(parentName = parentName)(ExContexts.ecChildren)         // separate context !
             }
 
             Thread.sleep(1000)
