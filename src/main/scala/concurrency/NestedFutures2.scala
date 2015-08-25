@@ -13,7 +13,7 @@ import org.scalameter._
 // In this example we tried to fix 'NestedFutures' by introducing more execution context.
 // To let children to operate on their own Ex context.
 
-// But can see that if we have 'global' execution context as parent (which is based on Java JoinPool),
+// But can see that if we have 'global' execution context as parent (which is based on ForkjoinPool),
 // then whatever we pass as execution context to the child Future still will use Global context
 // and still will be using ONE connection pool.
 // And then therefore wll have performance problem if children do not use 'blocking' -
@@ -101,7 +101,7 @@ object NestedFutures2 extends App {
         // log
         println(s"[${timeStamp()}] child: " + threadName + " of " + parentName + " parent")
         Thread.currentThread.getName
-    }(ex) // or uncomment "implicit" in an argument
+    }(ex) // THE FIX: or uncomment "implicit" in an argument  <--------------------------------------
   }
 
   def timeStamp(pattern:String = "ss:mm : hh"): String = {
