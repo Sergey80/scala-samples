@@ -8,6 +8,8 @@ import scala.concurrent.{ExecutionContextExecutor, ExecutionContext, Future}
 // have that performance problems that were described samples:
 // NestedFuture.scala and NestedFuture2.scala
 
+// + some ideas about Loggining:http://stackoverflow.com/questions/32491795/logging-with-akka-app-design
+
 object SeveralExContexts extends App {
 
   //val ec1 = scala.concurrent.ExecutionContext.Implicits.global
