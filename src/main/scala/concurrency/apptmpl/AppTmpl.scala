@@ -23,33 +23,54 @@ import scala.util.{Failure, Success, Try}
  *
 */
 
-object Service {
-  implicit val ex1 = scala.concurrent.ExecutionContext.global
+object Controller {
+  val ex1 = scala.concurrent.ExecutionContext.global
+
+  val ex2 = scala.concurrent.ExecutionContext.fromExecutor(null: Executor)
 }
 
-class Service1 {
+class Controller1 {
 
-  import Service._
+  //import Service._
+  implicit val ex1 = Controller.ex1
+
 
   val manager = new Manager()
 
-  def doServiceStuff(): String = {
+  def doControllerStuff2(): Unit = {
 
-    println("doing service stuff on " + Thread.currentThread().getName)
+    implicit val ex1 = Controller.ex2
+
+    val ff = Future {
+      println( "ff" + Thread.currentThread.getName )
+      1
+    }
+
+    ff.foreach{case x =>
+      print("ff done")
+    }
+
+  }
+
+  def doControllerStuff(): String = {
+
+    println("doing controller stuff on " + Thread.currentThread().getName)
 
     val futureResult  = manager.doManagerStuff()
 
-    val tryResult = Try(  Await.result(futureResult, 10.seconds)  )
-
     //
     futureResult foreach { x => {
-        // TODO: print to console may be considered a blocking operation and may slow down execution context
-        println("service on success on " + Thread.currentThread().getName)
-      }
+      // TODO: print to console may be considered a blocking operation and may slow down execution context
+      println("controller on success on " + Thread.currentThread().getName)
+    }
     }
 
+
+    val tryResult = Try(  Await.result(futureResult, 10.seconds)  )
+
+
     tryResult match {
-      case Success(e) => "OK"
+      case Success(e) => "OK:" + e
       case Failure(e) => "ERROR"
     }
 
@@ -67,29 +88,50 @@ object Manager {
 
 class Manager {
 
-  import Manager._
+  implicit val ex2 = Manager.ex2
+
+  val service = new Service()
 
   def doManagerStuff(): Future[String] = { // 2. no execution context passed
-    val f = Future {
-      blocking {
+
         println("did manager stuff on " + Thread.currentThread().getName)
-        "did manager stuff"
+
+        val serviceResult = service.doServiceStuff()
+
+        serviceResult.map{result =>
+          "did manager stuff " + result
+        }(Service.ex3) // !
+  }
+
+}
+
+object Service {
+  implicit val ex3 = scala.concurrent.ExecutionContext.fromExecutor(null: Executor)
+}
+
+class Service {
+
+  implicit val ex3 = Service.ex3
+
+  def doServiceStuff(): Future[String] = {
+    Future {
+      blocking {
+        println("doing service stuff")
+        "service work done"
       }
     }
-
-    f foreach {case x => println("!!!\n" + x) }
-
-    f
   }
 
 }
 
 object Ex extends App {
 
-  val service = new Service1()
+  val service = new Controller1()
 
-  service.doServiceStuff()
+  val result = service.doControllerStuff()
+  service.doControllerStuff2()
 
+  println(result) // OK:did manager stuff service work done
 }
 
 
