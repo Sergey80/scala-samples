@@ -94,12 +94,7 @@ object MapFlatMapFor extends App {
     future3 foreach { v =>
       println("v4: " + v)
     }
-
   }
-
-
-
   // --
   Thread.sleep(4000)
-
 }
