@@ -28,13 +28,7 @@ object Manager1 {
 
     println("did manager stuff on " + Thread.currentThread().getName)
 
-    // injecting ex-context here
-
-    //import Services.blockingExContext // using same ex-ctx same as service1 does.
-
     import Managers.waitingCtx // 1 fixed threads - used of flatMap /for - see below
-
-    // "for" will use Services.blockingExContext waiting for 4 futures to complete
 
     val ss = (1 to 10000).map {n =>
       service1.doServiceStuff(s"service ${n}").map{s =>
