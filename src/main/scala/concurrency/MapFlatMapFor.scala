@@ -61,7 +61,7 @@ object MapFlatMapFor extends App {
     }
   }
 
-  // #4. Because fmp/flatMap/for works with the futures that is already started
+  // #4. Because map/flatMap/for works with the futures that is already started
   // it s really BAD idea to pass a function that returns Future but not Future itself
   // like this:
   {
