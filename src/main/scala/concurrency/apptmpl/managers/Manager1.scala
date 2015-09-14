@@ -28,11 +28,11 @@ object Manager1 {
 
     println("did manager stuff on " + Thread.currentThread().getName)
 
-    import Managers.waitingCtx // 1 fixed threads - used of flatMap /for - see below
+    import Managers.waitingCtx // 1 fixed threads - used in 'map' to wait
 
-    val ss = (1 to 10000).map {n =>
-      service1.doServiceStuff(s"service ${n}").map{s =>
-        service1.doServiceStuff(s"service2 ${n}")
+    val ss = (1 to 10000) map {n =>
+      service1.doServiceStuff(s"service ${n}") map {s =>
+        service1.doServiceStuff(s"service2 ${s}")
       }
     }
 

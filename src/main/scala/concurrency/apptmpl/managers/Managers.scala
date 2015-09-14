@@ -1,13 +1,12 @@
 package concurrency.apptmpl.managers
 
-import java.util.concurrent.{Executors, Executor}
+import java.util.concurrent.{Executor}
 
 object Managers {
 
-  // Manager(s) has deal with slow/'blocking'-operations like IO/Net so we use separate execution context for its work
-
+  // same as 'global' ex context
   implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(null: Executor)
-  //implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(Executors.newFixedThreadPool(1))
 
-  //implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(Executors.newCachedThreadPool())
+  // fixed ex context
+  //implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(Executors.newFixedThreadPool(1))
 }
