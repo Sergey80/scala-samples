@@ -10,7 +10,7 @@ object Managers {
 
   // 2.
   //implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(Executors.newFixedThreadPool(1))
-  implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(Executors.newFixedThreadPool(40))
+  implicit val waitingCtx = scala.concurrent.ExecutionContext.fromExecutor(Executors.newFixedThreadPool(1))
 
   // 3.
   // Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available.
