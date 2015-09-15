@@ -26,4 +26,13 @@ object LogSample extends App {
 
   Thread.sleep(1000)
 
+  // output, like this:
+
+  /*
+   [INFO] [09/14/2015 21:53:34.897] [ForkJoinPool-2-worker-7] [my.nice.string] 2
+   [INFO] [09/14/2015 21:53:34.897] [ForkJoinPool-1-worker-7] [my.nice.string] 1
+  */
+
+  // see also logback.xml and application.conf in root
+
 }
