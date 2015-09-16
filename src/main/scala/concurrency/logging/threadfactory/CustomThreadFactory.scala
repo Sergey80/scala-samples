@@ -6,12 +6,14 @@ import java.util.concurrent.ThreadFactory
 import scala.concurrent.{BlockContext, CanAwait}
 import scala.concurrent.forkjoin.{ForkJoinPool, ForkJoinWorkerThread}
 
+// The purpose if this factory is to modify tread name, putting a prefix before actual name.
+// that facilitate debugging and logging in async env
 
 class CustomThreadFactory(prefix: String, uncaughtExceptionHandler:UncaughtExceptionHandler) extends ThreadFactory with ForkJoinPool.ForkJoinWorkerThreadFactory {
   def wire[T <: Thread](thread: T): T = {
     thread.setDaemon(true)
     thread.setUncaughtExceptionHandler(uncaughtExceptionHandler)
-    thread.setName(prefix + "-" + thread.getName)
+    thread.setName(prefix + "-" + thread.getName)  // prefix here !
     thread
   }
 

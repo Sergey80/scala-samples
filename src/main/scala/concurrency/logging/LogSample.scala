@@ -13,7 +13,7 @@ import scala.concurrent.{ExecutionContext, Future, blocking}
 
 object Services { // stores some settings
 
-  private[Services] val cores = Runtime.getRuntime().availableProcessors()
+  private[Services] val cores = Runtime.getRuntime.availableProcessors
 
   // made use of our own CustomThreadFactory to be able put nicer output for the pools in use
 
@@ -26,13 +26,13 @@ object Services { // stores some settings
 }
 
 
+
 object LogSample extends App {
 
   import Services._
-
   val system = ActorSystem("system")
 
-  val log = Logging(system.eventStream, "my.nice.string")
+  val log = Logging(system.eventStream, "app.logger")
 
   Future {
     log.info("1")
@@ -43,9 +43,9 @@ object LogSample extends App {
   }(ex2)
 
   //make sure it still able to create new threads (with 'blocking')
-  (1 to Runtime.getRuntime().availableProcessors() * 2) foreach { x =>
+  (1 to 100000) foreach { x =>  // and make sure log-settings (logback.xml) will create new backup/rollover files
     Future {
-      blocking {
+      blocking { // !
         Thread.sleep(1000)
         log.info(s"2.${x}")
       }
