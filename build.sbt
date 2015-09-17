@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
     "org.scalaz" %% "scalaz-typelevel" % "7.1.0",
     "com.storm-enroute" %% "scalameter-core" % "0.6",
     "joda-time" % "joda-time" % "2.8.2",
+    "org.scalacheck" %% "scalacheck" % "1.12.5" % "test",
     "org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0" % "test",
     "com.typesafe.akka" % "akka-actor_2.11" % "2.3.12",
     "com.typesafe.akka" %% "akka-slf4j" % "2.3.6",
