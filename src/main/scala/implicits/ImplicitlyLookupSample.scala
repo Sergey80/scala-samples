@@ -16,16 +16,18 @@ class C extends B
 
 object ImplicitlyLookupSample extends App {
 
-  implicit val c: C = new C     // there are two instances of class A
-  implicit val b: B = new B     // they are put into implicit scope (somewhere globally)
+  // adding to implicit scope
+  //          key  -> value
+  implicit val a: A = new A
+  implicit val b: A = new B
+  implicit val c: B = new C
 
-  // But C is on the bottom of hierarchy:
+  // So C is on the bottom of hierarchy:
   // A
     // - B
       // - C
 
   {
-    //implicit val a: A = new B
 
     // we are asking for an instance of class A
 
@@ -37,12 +39,22 @@ object ImplicitlyLookupSample extends App {
 
     // The answer is "C"  !
 
-    // So, if someone asks for instance of A in imp context it would lead to C :
+    // So, if someone asks for instance of A as a KEY - it would lead to C :
     // A
       // - B
         // - C        <- [A]
 
-    // -- note: about 'implicitly' (syntactic sugar)
+    // 1. Client:
+      // Give me a value by type A as key
+
+    // 2. Implicit scope:
+      // Ok, how many implementations of type A in the key row? "A" itself and "B"
+      // who of them is less abstract? Who is a child? B! because B extends A
+      // then B is a key - and it refers to - > C
+      // here we go you get a C
+
+
+// -- note: about 'implicitly' (syntactic sugar)
 
     // we use 'implicitly' because, otherwise we should create our own function, like:
     def getA(implicit a:A) = a

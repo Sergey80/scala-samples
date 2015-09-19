@@ -17,8 +17,8 @@ object Services { // stores some settings
 
   // made use of our own CustomThreadFactory to be able put nicer output for the pools in use
 
-  val schedulingPool = new ForkJoinPool(cores, CustomThreadFactory("scheduling"), CustomThreadFactory.uncaughtExceptionHandler, true)
-  val blockingWorkPool = new ForkJoinPool(cores, CustomThreadFactory("blockingWork"), CustomThreadFactory.uncaughtExceptionHandler, true)
+  private[logging] val schedulingPool = new ForkJoinPool(cores, CustomThreadFactory("scheduling"), CustomThreadFactory.uncaughtExceptionHandler, true)
+  private[logging] val blockingWorkPool = new ForkJoinPool(cores, CustomThreadFactory("blockingWork"), CustomThreadFactory.uncaughtExceptionHandler, true)
 
   val schedulingEx = ExecutionContext.fromExecutor (schedulingPool)
   val bockingWorkEx = ExecutionContext.fromExecutor (blockingWorkPool)
