@@ -81,6 +81,52 @@ println("------ 5 longWork --- ")
 
   printStats(5000)
 
+  println("------ 5_1 longWork --- ")
+
+  val result5_1 = for {
+    v1 <- secondLongWork()
+    v2 <- secondLongWork()
+    v3 <- secondLongWork()
+    v4 <- secondLongWork()
+    v5 <- secondLongWork()
+  } yield v1 + v2 + v3 + v4 + v5
+
+  val result5_2 = for {
+    v1 <- secondLongWork()
+    v2 <- secondLongWork()
+    v3 <- secondLongWork()
+    v4 <- secondLongWork()
+    v5 <- secondLongWork()
+  } yield v1 + v2 + v3 + v4 + v5
+
+  val result5_3 = for {
+    v1 <- secondLongWork()
+    v2 <- secondLongWork()
+    v3 <- secondLongWork()
+    v4 <- secondLongWork()
+    v5 <- secondLongWork()
+  } yield v1 + v2 + v3 + v4 + v5
+
+  val result5_4 = for {
+    v1 <- secondLongWork()
+    v2 <- secondLongWork()
+    v3 <- secondLongWork()
+    v4 <- secondLongWork()
+    v5 <- secondLongWork()
+  } yield v1 + v2 + v3 + v4 + v5
+
+
+  val result5_5 = for {
+    v1 <- secondLongWork()
+    v2 <- secondLongWork()
+    v3 <- secondLongWork()
+    v4 <- secondLongWork()
+    v5 <- secondLongWork()
+  } yield v1 + v2 + v3 + v4 + v5
+
+
+  printStats(5000)
+
   //
 
   def printStats(durationMs:Int): Unit = {
@@ -145,3 +191,9 @@ done
 max stat[size,active,running,stealing]: Stat(1,1,1,15)
 
 */
+
+// But for 5_1 scenario:
+
+// it will use all pool size(4), all thread will be active and running: 4
+
+// max stat[size,active,running,stealing]: Stat(4,4,4,45)
