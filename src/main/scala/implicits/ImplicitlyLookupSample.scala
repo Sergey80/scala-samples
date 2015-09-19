@@ -39,8 +39,8 @@ object ImplicitlyLookupSample extends App {
 
     // So, if someone asks for instance of A in imp context it would lead to C :
     // A
-    // - B
-    // - C        <- [A]
+      // - B
+        // - C        <- [A]
 
     // -- note: about 'implicitly' (syntactic sugar)
 
