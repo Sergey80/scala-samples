@@ -17,12 +17,11 @@ object Services { // stores some settings
 
   // made use of our own CustomThreadFactory to be able put nicer output for the pools in use
 
-  val ex1 = ExecutionContext.fromExecutor (
-    new ForkJoinPool(cores, CustomThreadFactory("my"), CustomThreadFactory.uncaughtExceptionHandler, true)
-  )
-  val ex2 = ExecutionContext.fromExecutor (
-    new ForkJoinPool(cores, CustomThreadFactory("oh-my-my"), CustomThreadFactory.uncaughtExceptionHandler, true)
-  )
+  val schedulingPool = new ForkJoinPool(cores, CustomThreadFactory("scheduling"), CustomThreadFactory.uncaughtExceptionHandler, true)
+  val blockingWorkPool = new ForkJoinPool(cores, CustomThreadFactory("blockingWork"), CustomThreadFactory.uncaughtExceptionHandler, true)
+
+  val schedulingEx = ExecutionContext.fromExecutor (schedulingPool)
+  val bockingWorkEx = ExecutionContext.fromExecutor (blockingWorkPool)
 }
 
 
@@ -36,11 +35,11 @@ object LogSample extends App {
 
   Future {
     log.info("1")
-  }(ex1)
+  }(schedulingEx)
 
   Future {
     log.info("2")
-  }(ex2)
+  }(bockingWorkEx)
 
   //make sure it still able to create new threads (with 'blocking')
   (1 to 100000) foreach { x =>  // and make sure log-settings (logback.xml) will create new backup/rollover files
@@ -49,7 +48,7 @@ object LogSample extends App {
         Thread.sleep(1000)
         log.info(s"2.${x}")
       }
-    }(ex2)
+    }(bockingWorkEx)
   }
 
   Thread.sleep(1000)
