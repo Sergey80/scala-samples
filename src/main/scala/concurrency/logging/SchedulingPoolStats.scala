@@ -22,7 +22,7 @@ object SchedulingPoolStats extends App {
         println("done")
         "X"
       }
-    }(Services.schedulingEx)
+    }(Services.bockingWorkEx)
   }
 
   implicit val ex = Services.schedulingEx
@@ -115,33 +115,33 @@ println("------ 5 longWork --- ")
 
 }
 
-// Output: here we can see that 'stealing' and 'size' goes up
+// Output: here we can see that 'stealing' goes up but poolSize and rest stays = 1
 /*
-
+scala.concurrent.forkjoin.ForkJoinPool@79f9805f[Running, parallelism = 4, size = 0, active = 0, running = 0, steals = 0, tasks = 0, submissions = 0]
 ------ 1 longWork ---
 done
-max stat[size,active,running,stealing]: Stat(2,1,1,2)
+max stat[size,active,running,stealing]: Stat(1,1,1,1)
 ------ 2 longWork ---
 done
 done
-max stat[size,active,running,stealing]: Stat(3,2,2,6)
+max stat[size,active,running,stealing]: Stat(1,1,1,3)
 ------ 3 longWork ---
 done
 done
 done
-max stat[size,active,running,stealing]: Stat(3,1,1,10)
+max stat[size,active,running,stealing]: Stat(1,1,1,6)
 ------ 4 longWork ---
 done
 done
 done
 done
-max stat[size,active,running,stealing]: Stat(3,2,1,14)
+max stat[size,active,running,stealing]: Stat(1,1,1,10)
 ------ 5 longWork ---
 done
 done
 done
 done
 done
-max stat[size,active,running,stealing]: Stat(3,2,2,19)
+max stat[size,active,running,stealing]: Stat(1,1,1,15)
 
 */
