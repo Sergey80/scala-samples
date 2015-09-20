@@ -4,6 +4,10 @@ package concurrency.antipatterns
 import java.util.concurrent.Executors
 import scala.concurrent.{ExecutionContext, Future}
 
+/**
+ * @see implicits.ImplicitlyLookupSample to grasp how implicit does lookup
+*/
+
 
 // Don't try to override/overlap one context by another.
 // Like the implicit Global Ex Context by new one down the line after.
