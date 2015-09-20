@@ -2,35 +2,45 @@ package concurrency.antipatterns
 
 
 import java.util.concurrent.Executors
-import scala.concurrent.{ExecutionContextExecutor, ExecutionContext, Future}
+import scala.concurrent.{ExecutionContext, Future}
 
 
-import ExecutionContext.Implicits.global  // ! my IDE marks  it as not used, but I should not believe in it
+// Don't try to override/overlap one context by another.
+// Like the implicit Global Ex Context by new one down the line after.
+// You may think your Future{}() would use ex Context you implicitly put after
+// but it is not the case - consider to look at how implicit does look up:
+
+// 1. adding a value into implicit scope
+import ExecutionContext.Implicits.global  // ! it is in use
 
 object ExecutionContextTrap {
+
   def main(args: Array[String]) {
 
     val pool = Executors.newFixedThreadPool(4)
 
+    // 2. adding value into implicit scope
     implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(pool)
-
 
     println("global:" + ExecutionContext.Implicits.global)    // ExecutionContextImpl
     println("ec: " + ec)                                      // ExecutionContextImpl
 
     println("--------------")
 
-    // NOTE that in implicit scope we have this:
-    // implicit val global : scala.concurrent.ExecutionContextExecutor          -> ExecutionContextImpl (1)
-    // implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(pool)  -> ExecutionContextImpl (2)
+    /* NOTE that in implicit scope we have this:
+     implicit val global : scala.concurrent.ExecutionContextExecutor          -> ExecutionContextImpl (1)
+     implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(pool)  -> ExecutionContextImpl (2)
+    */
 
     Future {
-        println(Thread.currentThread.getName)
+        println("future1: " + Thread.currentThread.getName) // #1 ForkJoinPool-1-worker-5
         Thread.sleep(1000)
-    } // expects instance of ExecutionContext  // ExecutionContextImpl from 'ec' !
+    } // TRAP!  // ExecutionContextImpl from 'global'         !!!
 
-    val who = implicitly[ExecutionContext]    // ExecutionContextImpl from 'global' !
-    println("who:" + who)
+    Future {
+      println("future2: " + Thread.currentThread.getName) // #2 pool-1-thread-1
+      Thread.sleep(1000)
+    }(ec)  // explicitly passing 'ec'            so now we see that #1 and #2 are different !!!
 
     //  Like
 
@@ -50,5 +60,3 @@ object ExecutionContextTrap {
     Thread.sleep(1000)
   }
 }
-
-// Q: Why Future {}() does not follow 'implicitly'-logic?
