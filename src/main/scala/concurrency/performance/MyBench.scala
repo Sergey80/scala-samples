@@ -95,6 +95,6 @@ object MyBench extends App {
   }
 
   def to_1(pairStat: Seq[(Stat, Stat)]) : Seq[Stat] =  statPairs map {s => s._1}
-  def to_2(pairStat: Seq[(Stat, Stat)]) : Seq[Stat] =  statPairs map {s => s._1}
+  def to_2(pairStat: Seq[(Stat, Stat)]) : Seq[Stat] =  statPairs map {s => s._2}
 
 }
