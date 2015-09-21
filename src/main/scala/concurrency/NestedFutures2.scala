@@ -62,7 +62,7 @@ object NestedFutures2 extends App {
     val result2: Seq[String] = Await.result(Future.sequence(result1.flatten), Duration.Inf)
   }
 
-  println(s"running time: ${time/1000} sec")
+  println(s"running time: $time")
 
   // ---
 

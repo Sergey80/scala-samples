@@ -32,7 +32,7 @@ object ThreadStarvation extends App {
 
   // as a result the execution time will take 2 seconds
 
-  println("running time1: " + time1.toFloat / 1000F + " sec") // 2 sec
+  println("running time1: " + time1) // 2 sec
 
   // --- 2 ---
 
@@ -53,7 +53,7 @@ object ThreadStarvation extends App {
     // since all threads will be executing in max "cores * 2" threads -
     // none of them will wait for the free space in the poll to execute
 
-  println("running time2: " + time2.toFloat / 1000F + " sec") // 1 sec
+  println("running time2: " + time2) // 1 sec
 
 
   // --- 3 ---
@@ -74,7 +74,7 @@ object ThreadStarvation extends App {
     Await.ready(Future.sequence(works), Duration.Inf)
   }
 
-  println("running time3: " + time3.toFloat / 1000F + " sec") // 10.89 sec. Not bad at all
+  println("running time3: " + time3) // 10.89 sec. Not bad at all
 
   // for 1000 workers it would take only 2.4 sec !
 

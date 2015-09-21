@@ -1,7 +1,8 @@
 package scala_99
 
 import org.scalatest._
-import t6_palindrome._
+
+import scala_99.t6_palindrome._
 
 // #scala-test
 

@@ -1,7 +1,8 @@
 package scala_99
 
 import org.specs2.mutable._
-import t6_palindrome._
+
+import scala_99.t6_palindrome._
 
 // #specs2
 

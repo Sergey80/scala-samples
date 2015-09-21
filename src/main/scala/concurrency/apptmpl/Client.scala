@@ -17,5 +17,5 @@ object Client extends App {
 
   }
 
-  println ("took: " + time / 1000  + " seconds")
+  println ("took: " + time)
 }
