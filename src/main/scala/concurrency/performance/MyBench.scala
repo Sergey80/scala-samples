@@ -3,7 +3,7 @@ package concurrency.performance
 import concurrency.logging.threadfactory.CustomThreadFactory
 import org.scalameter._
 
-import scala.concurrent.{ExecutionContext, Future, Await, blocking}
+import scala.concurrent.{Future, Await, blocking}
 import scala.concurrent.duration._
 
 object MyBench extends App {
@@ -58,12 +58,12 @@ object MyBench extends App {
   println (m.value/1000 + " sec")
 
   println("workPool's stat[active, running, steals, tasks, submission] max:  " + maxStat(statPairs)(to_1))
-  println("workPool's stat[active, running, steals, tasks, sSubmission] max:  " + average(statPairs)(to_1))
+  println("workPool's stat[active, running, steals, tasks, sSubmission] av:  " + average(statPairs)(to_1))
 
   println(" --- ")
 
   println("schedulingPool's stat[active, running, steals, tasks, submission] max:  " + maxStat(statPairs)(to_2))
-  println("schedulingPool's stat[active, running, steals, tasks, submission] max:  " + average(statPairs)(to_2))
+  println("schedulingPool's stat[active, running, steals, tasks, submission] av:  " + average(statPairs)(to_2))
 
   println(" --- ")
 
@@ -98,3 +98,20 @@ object MyBench extends App {
   def to_2(pairStat: Seq[(Stat, Stat)]) : Seq[Stat] =  statPairs map {s => s._2}
 
 }
+
+/*
+
+  Possible output: 4 cores:
+
+  24.125743104 sec
+
+  workPool's stat[active, running, steals, tasks, submission] max:  Stat(762,7806,19973,0,11359)
+  workPool's stat[active, running, steals, tasks, sSubmission] av:  Stat(252,2808,8101,0,5026)
+   ---
+  schedulingPool's stat[active, running, steals, tasks, submission] max:  Stat(4,3,986,1,1)
+  schedulingPool's stat[active, running, steals, tasks, submission] av:  Stat(0,0,103,0,0)
+   ---
+  Work pool size: 9705
+  Scheduling pool size: 4
+
+*/
