@@ -76,3 +76,5 @@ An an example,
                                                     this happens only if we don't use any sbt-related files in the project, like build.sbt) </li>
 </ol>
 
+--
+Spec: http://www.scala-lang.org/files/archive/spec/2.11/
