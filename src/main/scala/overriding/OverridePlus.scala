@@ -20,18 +20,16 @@ object OverridePlus extends App {
 
   trait A1 {
     type ChildOfA <: A             // not concrete (this makes all it abstract)
-    def aa(f:ChildOfA):A = new B
+    def aa(a:ChildOfA):A = new B
   }
 
   class B1 extends A1 {
     type ChildOfA = B              // concrete type
-    override def aa(f:B):B = new B
+    override def aa(b:B):B = new B
   }
   
-//  val result1 = (new AbstractStuff).stuff(new B)    // can not
   val result2 = (new B1).aa(new B)
 
-
-  println(result2.getClass.getSimpleName)
+  println(result2.getClass.getSimpleName) // B
 
 }
