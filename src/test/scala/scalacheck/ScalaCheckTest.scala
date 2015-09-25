@@ -77,3 +77,85 @@ class ScalaCheckTest extends FeatureSpec with GivenWhenThen with ShouldMatchers
   }
 
   }
+
+
+/*
+
+package test.formatter
+
+import java.text.SimpleDateFormat
+import java.util.Date
+
+import org.scalatest.prop.{GeneratorDrivenPropertyChecks, Configuration, Checkers}
+import org.scalatest.{FeatureSpec, GivenWhenThen, ShouldMatchers}
+
+import scala.concurrent.{ExecutionContext, Await, Future, blocking}
+import scala.concurrent.duration._
+
+import org.scalameter._
+
+class FormatterTest extends FeatureSpec with GivenWhenThen with ShouldMatchers with GeneratorDrivenPropertyChecks {
+
+  val DATE_FORMATTER1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+  def DATE_FORMATTER2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+
+  feature("feature1") {
+
+        scenario("singleton formatter") {
+
+        Given("Time")
+
+            //val date = new Date
+            val clientCount = 2000000
+            //val expectedTextDate = DATE_FORMATTER1.format(date)
+
+            //println("expectedDate: " + expectedTextDate)
+
+        When("Singleton - Many clients format at the same time")
+
+            implicit val _ex = ExecutionContext.global
+
+            val futureDates = (0 to clientCount).toList map {n =>
+              Future {
+                blocking {
+
+                  Thread.sleep(1000)
+
+                  val date = new Date
+
+                  val text = DATE_FORMATTER1.format(date)
+//                DATE_FORMATTER1.parse(text)
+
+                  text
+                }
+              }
+            }
+
+            val f =  Future.sequence(futureDates)
+
+            val time = measure {
+              Await.ready( f, Duration.Inf)
+            }
+
+            println("execution time: " + time + " sec")
+
+         Then("All dates should be the same")
+
+          val dates =  Await.result( f, Duration.Inf)
+
+          println("size: " + dates.size)
+
+            dates.foreach {date =>
+
+              //println(date)
+
+              date.contains("2015-09-25") should be(true)
+
+            }
+
+
+        }
+  }
+}
+
+*/
