@@ -159,3 +159,37 @@ class FormatterTest extends FeatureSpec with GivenWhenThen with ShouldMatchers w
 }
 
 */
+
+
+
+/*
+public class Test {
+
+    public static void main(String[] args) throws Exception {
+
+        final DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        Callable<Date> task = new Callable<Date>(){
+            public Date call() throws Exception {
+                return format.parse("2015-10-22");
+            }
+        };
+
+        //pool with 5 threads
+        ExecutorService exec = Executors.newFixedThreadPool(5);
+        List<Future<Date>> results = new ArrayList<Future<Date>>();
+
+        //perform 2 date conversions
+        for(int i = 0 ; i < 2 ; i++){
+//            Thread.sleep(1);
+            results.add(exec.submit(task));
+        }
+        exec.shutdown();
+
+        //look at the results
+        for(Future<Date> result : results){
+            System.out.println(result.get());
+        }
+    }
+}
+*/
