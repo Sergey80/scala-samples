@@ -13,7 +13,7 @@ object OverridePlus extends App {
     def aa(a:A):String = "boo"
   }
   class B() extends A {
-    // override def aa(a:B):String = "boo"    // ! you can not do this
+    // override def aa(a:B):String = "boo"    // ! you can NOT do this
   }
   
   // but there is a way
@@ -25,7 +25,7 @@ object OverridePlus extends App {
 
   class B1 extends A1 {
     type ChildOfA = B              // concrete type
-    override def aa(b:B):B = new B
+    override def aa(b:B):B = new B          // ! not you CAN do it
   }
   
   val result2 = (new B1).aa(new B)
