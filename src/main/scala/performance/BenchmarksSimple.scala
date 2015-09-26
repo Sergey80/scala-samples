@@ -10,7 +10,7 @@ object BenchmarksSimple extends App {
 
   val quantity: Quantity[Double] = config {
 
-    Key.exec.benchRuns -> 20,
+    Key.exec.benchRuns -> 100
     Key.verbose -> false
 
   } withWarmer {
@@ -19,9 +19,9 @@ object BenchmarksSimple extends App {
 
   } withMeasurer {
 
-    new Measurer.Default                // time
+    //new Measurer.Default                // time
     //new Measurer.IgnoringGC           // time without GC cycles
-    //new Measurer.MemoryFootprint      // memory
+    new Measurer.MemoryFootprint      // memory
 
   } measure {
                 // creating many SimpleDateFormat objects
@@ -31,6 +31,10 @@ object BenchmarksSimple extends App {
 
   }
 
-  println(s"Used memory: ${quantity}")  // depends on 'withMeasurer'
+  println(s"Used quantity: ${quantity}")  // depends on 'withMeasurer'
+
+  // Outputs like:
+  // Used quantity: 24.727337 ms
+  // Used quantity: 18599.848 kB
 
 }
