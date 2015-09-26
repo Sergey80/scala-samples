@@ -13,7 +13,7 @@ object BenchmarksCombine extends App {
   /** 
    * @param  measuresMap - map of name -> measure
    * @param block - a block of code to execute,
-   * @paras confs - (optional) configuration, if not set default will be used
+   * @param confs - (optional) configuration, if not set default will be used
    * @return a name->Quantity map back  
    */
 
