@@ -23,7 +23,8 @@ libraryDependencies ++= Seq(
     "org.slf4j" % "slf4j-log4j12" % "1.5.2",
     "ch.qos.logback" % "logback-classic" % "1.0.9",
     "com.storm-enroute" %% "scalameter" % "0.7",
-    "com.typesafe.play" % "play-json_2.11" % "2.3.10"
+    "com.typesafe.play" % "play-json_2.11" % "2.3.10",
+    "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
 )
 
 testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
