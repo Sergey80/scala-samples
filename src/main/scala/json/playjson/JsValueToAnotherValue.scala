@@ -2,7 +2,7 @@ package json.playjson
 
 import play.api.libs.json._
 
-object FromJsValue extends App {
+object JsValueToAnotherValue extends App {
 
   val json = Json.parse(
     s"""{
