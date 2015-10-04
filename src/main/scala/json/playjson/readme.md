@@ -2,7 +2,7 @@
 2. Say filterable serialization "NO" 
 3. Think, maybe you don't need to create case classes at all - just use JsonValue
    (
-     basically want to hae object for:
+     basically we want objects for:
       1. better ide support - to be able to access fields by dot (.)
       2. to be able to use equals and other methods without converting json to object all the time
    )
