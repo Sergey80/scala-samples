@@ -36,7 +36,7 @@ Json.
  Json.toJson(name)
 ```
  
-where  is defined in companion object and included automatically for toJosn() functon to operate with
+where 'writer' is defined in companion object and included automatically for toJosn() functon to operate with
 
 ```
 object Name {
