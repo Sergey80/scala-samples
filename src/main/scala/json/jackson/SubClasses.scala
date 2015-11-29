@@ -28,7 +28,7 @@ class ModelB(val a:String, val b:String, val c:String, commonData:String)  exten
   def this() = this("default", "default", "default" ,"default")
 }
 
-object IssueWithCaseClasses extends App {
+object Subclasses extends App {
 
   // 0. create a mapper
   val mapper = new ObjectMapper
