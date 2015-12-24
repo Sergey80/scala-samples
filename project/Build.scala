@@ -1,15 +1,11 @@
-name := "scala-samples"
+import sbt._
+import sbt.Keys._
 
-version := "0.4"
+object MyBuild extends Build {
 
-scalaVersion := "2.11.7"
+  //lazy val root = project.in(file(".")).aggregate(lang, statistics)
 
-resolvers += "Repo1" at "http://oss.sonatype.org/content/repositories/releases"
-
-resolvers += "Repo2" at "http://repo1.maven.org/maven2"
-
-
-libraryDependencies ++= Seq(
+  val dependencies = Seq(
     "org.specs2" %% "specs2" % "2.3.11" % "test",
     "org.scalatest" %% "scalatest" % "2.1.5",
     "org.scalaz" %% "scalaz-core" % "7.1.0",
@@ -25,18 +21,25 @@ libraryDependencies ++= Seq(
     "com.storm-enroute" %% "scalameter" % "0.7",
     "com.typesafe.play" % "play-json_2.11" % "2.3.10",
     "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
-)
+  )
 
-testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
+  lazy val lang = Project("Lang", file("lang")) settings(
+    version       := "0.5",
+    scalaVersion  := "2.11.7",
 
-scalacOptions += "-feature"
+    scalacOptions in Test ++= Seq("-Yrangepos"),
+    scalacOptions += "-feature",
 
-initialCommands in console := "import scalaz._, Scalaz._"
+    //initialCommands in console := "import scalaz._, Scalaz._"
 
+    //testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
 
-scalacOptions in Test ++= Seq("-Yrangepos")
+    //resolvers += "Repo1" at "http://oss.sonatype.org/content/repositories/releases",
+    //resolvers += "Repo2" at "http://repo1.maven.org/maven2
 
-// Read here for optional dependencies:
-// http://etorreborre.github.io/specs2/guide/org.specs2.guide.Runners.html#Dependencies
+    //resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo)
 
-resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo)
+    libraryDependencies ++= dependencies
+  )
+
+}
