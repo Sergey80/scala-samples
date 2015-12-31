@@ -3,8 +3,6 @@ import sbt.Keys._
 
 object MyBuild extends Build {
 
-  //lazy val root = project.in(file(".")).aggregate(lang, statistics)
-
   val dependencies = Seq(
     "org.specs2" %% "specs2" % "2.3.11" % "test",
     "org.scalatest" %% "scalatest" % "2.1.5",
@@ -30,16 +28,25 @@ object MyBuild extends Build {
     scalacOptions in Test ++= Seq("-Yrangepos"),
     scalacOptions += "-feature",
 
-    //initialCommands in console := "import scalaz._, Scalaz._"
+    initialCommands in console := "import scalaz._, Scalaz._",
 
-    //testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework")
+    testFrameworks += new TestFramework("org.scalameter.ScalaMeterFramework"),
 
-    //resolvers += "Repo1" at "http://oss.sonatype.org/content/repositories/releases",
-    //resolvers += "Repo2" at "http://repo1.maven.org/maven2
+    resolvers ++= Seq(
+      "Repo1" at "http://oss.sonatype.org/content/repositories/releases",
+      "Repo2" at "http://repo1.maven.org/maven2"
+    ),
 
     //resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo)
 
     libraryDependencies ++= dependencies
   )
+
+  lazy val statistics = Project(id = "Statistics", base = file("statistics")) settings(
+    version       := "0.1",
+    scalaVersion  := "2.11.7"
+  )
+
+  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, statistics)
 
 }
