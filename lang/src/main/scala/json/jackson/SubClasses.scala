@@ -17,16 +17,12 @@ import com.fasterxml.jackson.module.scala.DefaultScalaModule
   new Type(value = classOf[ModelA], name = "ModelA"),
   new Type(value = classOf[ModelB], name = "ModelB")
 ))
-class BaseModel(val modelName:String)
+trait BaseModel{
+  val commonData: String
+}
 
-//@JsonTypeName("SomeModel")  // Commented. Do I need this?
-class ModelA(val a:String, val b:String, val c:String, commonData:String)  extends BaseModel(commonData) {
-  def this() = this("default", "default", "default" ,"default")
-}
-//@JsonTypeName("SomeModel") // Commented. Do I need this?
-class ModelB(val a:String, val b:String, val c:String, commonData:String)  extends BaseModel(commonData) {
-  def this() = this("default", "default", "default" ,"default")
-}
+case class ModelA(a:String, b:String, c:String, commonData:String)  extends BaseModel
+case class ModelB(a:String, b:String, c:String, commonData:String)  extends BaseModel
 
 object Subclasses extends App {
 
@@ -51,10 +47,8 @@ object Subclasses extends App {
     // 2. convert to object
     val model = mapper.readValue(jsonA, classOf[ModelA])
 
-    println(model.a)
-    println(model.b)
-    println(model.c)
-    println(model.modelName)
+    println("""model read from json (determines class immpl by "aType" field): """ + model)             //
+
   }
 
 // from model to json --------------
@@ -62,8 +56,8 @@ object Subclasses extends App {
   {
 
     // 1.model
-    val modelA = new ModelA("1", "2", "3", "4")
-    val modelB = new ModelB("1", "2", "3", "4")
+    val modelA = ModelA("1", "2", "3", "4")
+    val modelB = ModelB("1", "2", "3", "5")
 
     // 2. writers
     val stringWriterA = new StringWriter
@@ -75,7 +69,7 @@ object Subclasses extends App {
     val jsonA = stringWriterA.toString
     val jsonB = stringWriterB.toString
 
-    println("backToJsonA: " + jsonA) // {"aType":"ModelA","a":"1","b":"2","c":"3","modelName":"4"}
-    println("backToJsonB: " + jsonB) // {"aType":"ModelB","a":"1","b":"2","c":"3","modelName":"4"}
+    println("backToJsonA: " + jsonA) // {"aType":"ModelA","a":"1","b":"2","c":"3","commonData":"4"}
+    println("backToJsonB: " + jsonB) // {"aType":"ModelB","a":"1","b":"2","c":"3","commonData":"5"}
   }
 }
