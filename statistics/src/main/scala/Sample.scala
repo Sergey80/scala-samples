@@ -1,3 +1,0 @@
-object Sample extends App {
-
-}

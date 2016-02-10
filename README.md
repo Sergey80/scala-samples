@@ -18,7 +18,7 @@ for particular example. Like #feature-1 #feature-3.
 
 <h3>HOW TO INSTALL</h3>
 
-Whell.. you have to know how to install.
+Well.. you have to know how to install.
 
 --
 Spec: http://www.scala-lang.org/files/archive/spec/2.11/

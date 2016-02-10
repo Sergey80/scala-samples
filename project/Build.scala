@@ -42,9 +42,11 @@ object MyBuild extends Build {
     libraryDependencies ++= dependencies
   )
 
-  lazy val statistics = Project(id = "Statistics", base = file("statistics")) settings(
+  lazy val statistics = Project(id = "Web", base = file("web")) settings(
     version       := "0.1",
-    scalaVersion  := "2.11.7"
+    scalaVersion  := "2.11.7",
+
+    libraryDependencies ++= dependencies
   )
 
   lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, statistics)
