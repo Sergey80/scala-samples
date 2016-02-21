@@ -16,7 +16,7 @@ class OrderService {
     // assume that we did call to downstream-system and get response from it
     val downstreamResponse = BDownstreamResponse(prop1 = "1", prop2 = "2", prop3 = "3")
 
-    UiResponseB(downstreamResponse) // covert downstream response to ui one
+    new UiResponseB(downstreamResponse) // covert downstream response to ui one
 
   }
 
