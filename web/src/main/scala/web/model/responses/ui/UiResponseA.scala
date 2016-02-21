@@ -1,23 +1,11 @@
 package web.model.responses.ui
 
-import web.model.responses.downstream.DownstreamResponseA
+import web.model.responses.downstream.CommonDownstreamResponse
 
-case class UiResponseA(
-                          prop1:Int,
-                          prop2: String
-                          ) extends CommonUiResponse
+class UiResponseA(input: CommonDownstreamResponse) extends CommonUiResponse(input) {
 
+  val prop3: String = input.prop1 + input.prop2
 
-object UiResponseA {
-
-  def from(downstreamResponseA: DownstreamResponseA): UiResponseA = {
-
-    // make use of common conversion logic
-    val commonUiResponse = CommonUiResponse.from(downstreamResponseA)
-
-    UiResponseA(
-      prop1 = commonUiResponse.prop1,  // coverts to Int
-      prop2 = downstreamResponseA.prop2
-    )
-  }
 }
+
+

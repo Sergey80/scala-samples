@@ -1,36 +1,21 @@
 package web.model.responses.ui
 
-import web.model.responses.downstream.{CommonDownstreamResponse, BDownstreamResponse, DownstreamResponseA}
+import web.model.responses.downstream.CommonDownstreamResponse
 
-import scala.util.Try
+import CommonUiResponse._
 
-/*
-  the vals are not initialized,
-  because:
-  1. for each subclass (case class) we DO want to see whole list of properties at once
-  2. CommonUiResponse companion object is responsible for the class creating and filling tis fields by values
-*/
+abstract class CommonUiResponse(input: CommonDownstreamResponse) {
 
-trait CommonUiResponse {
+  val prop1: Int      = toProp1(input.prop1)
 
-  val prop1: Int
-
-  val prop2: String
+  val prop2: String   = input.prop2
 
 }
 
-
-/**
- * CommonUiResponse companion object is responsible for the class creating and filling its fields by values
- */
 object CommonUiResponse {
 
-  def from(commonDownstreamResponse: CommonDownstreamResponse) : CommonUiResponse = {
-
-    new CommonUiResponse {
-      override val prop1: Int = commonDownstreamResponse.prop1.toInt // // converts to Int
-      override val prop2: String = commonDownstreamResponse.prop2
-    }
+  def toProp1(prop1:String) : Int = {
+    prop1.toInt
   }
 
 }
