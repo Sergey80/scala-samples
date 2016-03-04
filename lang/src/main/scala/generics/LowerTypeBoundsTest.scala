@@ -32,7 +32,7 @@ object LowerTypeBoundsTest extends App {
 //  val apples1: List[Apple] = fruitBasket.addList( fruitList )
 //  val apples2: List[Fruit] = fruitBasket.addList( fruitList )
 
-  // will work, because addList2 will bound all apples into fruits !
+  // will work, because addList2 will bound all apples into fruits (to super class of Apple) !
 
   val fruits = fruitBasket.addList2( fruitList )  // returns already bounded to "List[Fruit]"
 }
