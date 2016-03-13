@@ -21,7 +21,7 @@ import akka.util.ByteString
 
 import scala.concurrent.{ExecutionContext, Future}
 
-object Step1 extends App {
+object Step1_SourceAndSinck extends App {
 
   implicit val system = ActorSystem("QuickStart")
 
@@ -44,8 +44,11 @@ object Step1 extends App {
 
   val factorials: Source[BigInt, NotUsed] = source.scan(BigInt(1))((acc, next) => acc * next)  // "scan" like foldLeft ??
 
+  val fileWritingSink = FileIO.toFile(new File("factorials.txt"))
+
    val result: Future[IOResult] = factorials.map(num => ByteString(s"$num\n") ). // to Source[ByteString, NotUsed]
-     runWith(sink = FileIO.toFile(new File("factorials.txt")))  // sink is a gile
+     runWith(sink = fileWritingSink)  // sink is a file
+
 
   // IOResult is a type
   // that IO operations return in Akka Streams in order to tell you how many bytes or elements were consumed and
