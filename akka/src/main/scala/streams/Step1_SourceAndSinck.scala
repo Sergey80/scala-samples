@@ -21,6 +21,16 @@ import akka.util.ByteString
 
 import scala.concurrent.{ExecutionContext, Future}
 
+/**
+  * Akka Streams is a library to process and transfer a sequence of elements using bounded buffer space. This
+latter property is what we refer to as boundedness and it is the defining feature of Akka Streams. Translated to
+everyday terms it is possible to express a chain (or as we see later, graphs) of processing entities, each executing
+independently (and possibly concurrently) from the others while only buffering a limited number of elements at
+any given time. This property of bounded buffers is one of the differences from the actor model, where each actor
+usually has an unbounded, or a bounded, but dropping mailbox. Akka Stream processing entities have bounded
+“mailboxes” that do not drop.
+  */
+
 object Step1_SourceAndSinck extends App {
 
   implicit val system = ActorSystem("QuickStart")
