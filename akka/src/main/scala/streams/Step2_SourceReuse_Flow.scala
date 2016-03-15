@@ -41,5 +41,5 @@ object Step2_SourceReuse_Flow extends App {
   // converts to file Sink into Sink of strings
   val sinkOfStrings: Sink[String, Future[IOResult]] = lineSink(sink = fileWritingSink)
 
-  factorialsSource.map(num => num.toString).runWith(sinkOfStrings)(materializer)
+  val ioResult: Future[IOResult] = factorialsSource.map(num => num.toString).runWith(sinkOfStrings)(materializer)
 }
