@@ -23,7 +23,7 @@ object PlusMinusFruitBox extends App {
    fooFruitPlus( new BoxPlus[BigApple]) // BigApple >= Fruit       // works only with "+"
 
    fooFruitMinus( new BoxMinus[Fruit] ) // Fruit <= Fruit  (less or equal)
-   fooFruitMinus( new BoxMinus[Thing] ) // Thing <= Fruit          // work only with "-"
+   fooFruitMinus( new BoxMinus[Thing] ) // Thing <= Fruit          // works only with "-"
 // fooFruitMinus( new BoxMinus[Apple])  // Apple is not <= Fruit
 
 }
