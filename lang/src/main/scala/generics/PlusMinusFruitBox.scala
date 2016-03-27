@@ -1,6 +1,6 @@
 package generics
 
-// #covariance, #contravariant
+// #covariance, #contravariance
 
 class BoxPlus[+A]   // covariance
 
