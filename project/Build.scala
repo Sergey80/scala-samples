@@ -1,5 +1,15 @@
 import sbt._
 import sbt.Keys._
+import sbt.project
+import sbt.Plugins._
+
+import sbt.project
+
+import sbt._
+import Keys._
+
+//import ScalaJSPlugin._
+//import ScalaJSPlugin.autoImport._
 
 object BuildProject extends Build {
 
@@ -27,6 +37,11 @@ object BuildProject extends Build {
     "com.typesafe.play" % "play-json_2.11" % "2.3.10",
     "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
   )
+
+  val scalaRxDependencies =  Seq(
+    "com.scalarx" % "scalarx_2.11" % "0.3.1"
+  )
+
 
   lazy val lang = Project("Lang", file("lang")) settings(
     version       := "0.5",
@@ -66,6 +81,16 @@ object BuildProject extends Build {
     libraryDependencies ++= akkaDependencies
    )
 
-  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, web, akka)
+  lazy val ScalaJSPlugin = addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.8")
+
+
+  lazy val scalaRx = Project(id = "ScalaRX", base = file("scalarx"))/*.enablePlugins(ScalaJSPlugin)*/.settings(
+     version      := "0.1",
+     scalaVersion := "2.11.7",
+
+     libraryDependencies ++= scalaRxDependencies
+    )
+
+  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, web, akka, scalaRx)
 
 }
