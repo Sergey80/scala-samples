@@ -2,14 +2,16 @@ import sbt._
 import sbt.Keys._
 import sbt.project
 import sbt.Plugins._
-
 import sbt.project
-
 import sbt._
 import Keys._
+import org.scalajs.sbtplugin.ScalaJSPlugin
 
 //import ScalaJSPlugin._
 //import ScalaJSPlugin.autoImport._
+
+//import org.scalajs.sbtplugin.cross.{CrossType, CrossProject}
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
 object BuildProject extends Build {
 
@@ -81,10 +83,8 @@ object BuildProject extends Build {
     libraryDependencies ++= akkaDependencies
    )
 
-  lazy val ScalaJSPlugin = addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.8")
 
-
-  lazy val scalaRx = Project(id = "ScalaRX", base = file("scalarx"))/*.enablePlugins(ScalaJSPlugin)*/.settings(
+  lazy val scalaRx = Project(id = "ScalaRX", base = file("scalarx")).enablePlugins(ScalaJSPlugin).settings(
      version      := "0.1",
      scalaVersion := "2.11.7",
 

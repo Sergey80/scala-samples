@@ -8,26 +8,10 @@ object ScalaRxSample extends App {
 
   val a = Var(1)
   val b = Var(2)
+  val c = Rx{ a() + b() }
+  println(c.now) // 3
 
-  val cRx = Rx { a() + b() }
+  a() = 4
 
-  println("c=" + cRx())  // 3
-
-  a() = 10
-
-  println("c=" + cRx()) // 12
-
-  val o = Obs(cRx) {
-    println( "obs(c) = " + cRx() )
-  }
-
-  a() = 100
-
-  /***
-    * c=3
-    * c=12
-    * obs(c) = 12
-    * obs(c) = 102
-    */
-
+  println(c.now) // 6
 }
