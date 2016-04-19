@@ -3,6 +3,7 @@ package banch
 import rx._
 
 // https://vimeo.com/98477272
+// https://github.com/lihaoyi/scala.rx (up to date)
 
 object ScalaRxSample extends App {
 
