@@ -38,8 +38,8 @@ object BuildProject extends Build {
     "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
   )
 
-  val scalaRxDependencies =  Seq(
-    "com.scalarx" % "scalarx_2.11" % "0.3.1"
+  lazy val scalaRxDependencies =  Seq(
+    "com.lihaoyi" %% "scalarx" % "0.3.1"
   )
 
 
