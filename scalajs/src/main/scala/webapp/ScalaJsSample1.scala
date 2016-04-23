@@ -1,4 +1,4 @@
-package banch
+package webapp
 
 // https://github.com/scala-js/scalajs-tutorial
 
@@ -11,7 +11,7 @@ import scala.scalajs.js.JSApp
 // > project ScalaRX
 // > run
 
-object ScalaJSTest extends JSApp {
+object ScalaJsSample1 extends JSApp {
   def main(): Unit = {
     println("Hello world!")                   //
   }
