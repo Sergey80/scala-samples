@@ -15,6 +15,7 @@ import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
 object BuildProject extends Build {
 
+
   val akkaDependencies = Seq(
     "com.typesafe.akka" % "akka-actor_2.11" % "2.4.2",
     "com.typesafe.akka" %% "akka-slf4j" % "2.3.6",
@@ -25,7 +26,7 @@ object BuildProject extends Build {
     "org.scalaz" %% "scalaz-core" % "7.1.0",
     "org.scalaz" %% "scalaz-effect" % "7.1.0",
     "org.scalaz" %% "scalaz-typelevel" % "7.1.0",
-  "org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0" % "test"
+    "org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0" % "test"
   )
 
   val coreDependencies = Seq(
@@ -40,7 +41,7 @@ object BuildProject extends Build {
     "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
   )
 
-  lazy val scalaRxDependencies =  Seq(
+  lazy val jsDependencies =  Seq(
     "com.lihaoyi" %% "scalarx" % "0.3.1"
   )
 
@@ -68,13 +69,6 @@ object BuildProject extends Build {
     libraryDependencies ++= scalazDependencies
   )
 
-  lazy val web = Project(id = "Web", base = file("web")) settings(
-    version       := "0.1",
-    scalaVersion  := "2.11.7",
-
-    libraryDependencies ++= coreDependencies
-  )
-
   lazy val akka = Project(id = "Akka", base = file("akka")) settings(
     version       := "0.1",
     scalaVersion  := "2.11.7",
@@ -84,13 +78,17 @@ object BuildProject extends Build {
    )
 
 
-  lazy val scalaRx = Project(id = "ScalaRX", base = file("scalarx")).enablePlugins(ScalaJSPlugin).settings(
+  lazy val scalaJS = Project(id = "ScalaJS", base = file("scalajs")).enablePlugins(ScalaJSPlugin).settings(
      version      := "0.1",
      scalaVersion := "2.11.7",
 
-     libraryDependencies ++= scalaRxDependencies
+     //mainClass := Some("branch.ScalaJsSample"),
+
+     libraryDependencies ++= jsDependencies,
+
+     scalaJSUseRhino in Global := false //will use node.js to build the thing
     )
 
-  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, web, akka, scalaRx)
+  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, akka, scalaJS)
 
 }
