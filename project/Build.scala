@@ -3,14 +3,17 @@ import sbt.Keys._
 import sbt.project
 import sbt.Plugins._
 import sbt.project
-import sbt._
-import Keys._
-import org.scalajs.sbtplugin.ScalaJSPlugin
+
+
 
 //import ScalaJSPlugin._
 //import ScalaJSPlugin.autoImport._
 
 //import org.scalajs.sbtplugin.cross.{CrossType, CrossProject}
+import sbt._
+import Keys._
+import org.scalajs.sbtplugin.ScalaJSPlugin
+import org.scalajs.sbtplugin._
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
 object BuildProject extends Build {
@@ -41,7 +44,7 @@ object BuildProject extends Build {
     "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
   )
 
-  lazy val jsDependencies =  Seq(
+  lazy val scalaJsDependencies =  Seq(
     "com.lihaoyi" %% "scalarx" % "0.3.1"
   )
 
@@ -82,9 +85,24 @@ object BuildProject extends Build {
      version      := "0.1",
      scalaVersion := "2.11.7",
 
+    ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }, // TODO:
+
      //mainClass := Some("branch.ScalaJsSample"),
 
-     libraryDependencies ++= jsDependencies,
+     libraryDependencies ++= scalaJsDependencies,
+
+     libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
+
+     // we will not use use DOM directly so commenting it
+     // libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0",
+
+
+     jsDependencies += "org.webjars" % "jquery" % "2.2.3" / "jquery.js", // "jsDependencies" reserved
+
+//     // After reloading and rerunning fastOptJS,
+//        // this will create scala-js-jsdeps.js
+     skip in packageJSDependencies := false,
+     jsDependencies += "org.webjars" % "jquery" % "2.2.3" / "2.2.3/jquery.js",
 
      scalaJSUseRhino in Global := false //will use node.js to build the thing
     )
