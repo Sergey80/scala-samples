@@ -16,9 +16,24 @@ for particular example. Like #feature-1 #feature-3.
 
 "Use the course, Luke!" (R)
 
-<h3>HOW TO INSTALL</h3>
+<h3>HOW TO INSTALL & RUN</h3>
 
-Well.. you have to know how to install.
+sbt & nodejs should be installed
+
+NOTE: as SBT project, the project/Build.scala defines the dependencies and sub-projects.
+So, to build run a particular project, say ScalaJS:
+
+Start sbt-console:
+
+```sbt```
+
+Switch to that project:
+
+```project ScalaJS```
+
+Run:
+
+```run```
 
 --
 Spec: http://www.scala-lang.org/files/archive/spec/2.11/
