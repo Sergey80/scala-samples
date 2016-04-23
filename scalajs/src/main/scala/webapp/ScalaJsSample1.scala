@@ -30,6 +30,16 @@ object ScalaJsSample1 extends JSApp {
     */
 
     // 3. JQuery
-    jQuery("body").append("Hello World")
+
+    def addClickedMessage(): Unit = {
+      jQuery("body").append("<p>Hello World</p>")
+    }
+
+    def setupUI(): Unit = {
+      jQuery("#click-me-button").click(addClickedMessage _)
+    }
+
+    jQuery(setupUI _)
+
   }
 }

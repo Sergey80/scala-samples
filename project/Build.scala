@@ -104,6 +104,9 @@ object BuildProject extends Build {
      skip in packageJSDependencies := false,
      jsDependencies += "org.webjars" % "jquery" % "2.2.3" / "2.2.3/jquery.js",
 
+    // allows DOM be available from from console' run (so no "ReferenceError: "window" is not defined." error would appear)
+    jsDependencies += RuntimeDOM, // it will use PhantomJS, basically
+
      scalaJSUseRhino in Global := false //will use node.js to build the thing
     )
 
