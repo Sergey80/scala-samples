@@ -2,7 +2,9 @@ package webapp
 
 // https://github.com/scala-js/scalajs-tutorial
 
+import scala.concurrent.Await
 import scala.scalajs.js.JSApp
+import scala.scalajs.js.annotation.JSExport
 
 // DOM library:
 import org.scalajs.dom
@@ -12,7 +14,14 @@ import org.scalajs.dom.document
 // JQuery
 import org.scalajs.jquery.jQuery
 
+//import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+
+//import scala.concurrent.ExecutionContext.Implicits.global
+import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+
+
 object ScalaJsSample1 extends JSApp {
+
   def main(): Unit = {
 
     // 1.
@@ -39,7 +48,22 @@ object ScalaJsSample1 extends JSApp {
       jQuery("#click-me-button").click(addClickedMessage _)
     }
 
+    // 4. Calling a service
+
+    def callClient(): Unit = {
+
+      val futurePosts = PostClient.posts()
+      futurePosts foreach { posts =>
+        posts foreach {post =>
+          println(post.title)
+          jQuery("#posts").append(s"<p>${post.title}</p>")
+        }
+      }
+
+    }
+
     jQuery(setupUI _)
 
+    callClient()
   }
 }

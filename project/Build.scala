@@ -92,6 +92,7 @@ object BuildProject extends Build {
      libraryDependencies ++= scalaJsDependencies,
 
      libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
+     libraryDependencies += "com.lihaoyi" %%% "upickle" % "0.4.0",
 
      // we will not use use DOM directly so commenting it
      // libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0",
