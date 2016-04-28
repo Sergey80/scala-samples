@@ -1,3 +1,5 @@
 package webapp.model
 
-case class Post(userId: Long, id: Long, title: String, body: String)
+// http://stackoverflow.com/questions/36879109/upickle-read-from-scalajs-upickle-invaliddata-string-data-1
+
+case class Post(userId: Int, id: Int, title: String, body: String)
