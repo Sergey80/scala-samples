@@ -2,6 +2,8 @@ package webapp
 
 // https://github.com/scala-js/scalajs-tutorial
 
+import rx.Var
+
 import scala.concurrent.Await
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.annotation.JSExport
@@ -56,7 +58,7 @@ object ScalaJsSample1 extends JSApp {
       futurePosts foreach { posts =>
         posts foreach {post =>
           println(post.title)
-          jQuery("#posts").append(s"<p>${post.title}</p>")
+          jQuery("#posts").append(s"<li>${post.title}</li>")
         }
       }
 
@@ -65,5 +67,9 @@ object ScalaJsSample1 extends JSApp {
     jQuery(setupUI _)
 
     callClient()
+
+    // TODO: integration with ScalaRX
+    // 5.
+    //val text = Var(jQuery("#text").value().asInstanceOf[String])
   }
 }
