@@ -1,12 +1,17 @@
 package webapp
 
+import webapp.all._
+
 // https://github.com/scala-js/scalajs-tutorial
 
-import rx.Var
+import org.scalajs.dom.raw.Event
+import rx._
 
 import scala.concurrent.Await
+import scala.scalajs.js
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.annotation.JSExport
+import scalatags.JsDom.all._
 
 // DOM library:
 import org.scalajs.dom
@@ -57,7 +62,6 @@ object ScalaJsSample1 extends JSApp {
       val futurePosts = PostClient.posts()
       futurePosts foreach { posts =>
         posts foreach {post =>
-          println(post.title)
           jQuery("#posts").append(s"<li>${post.title}</li>")
         }
       }
@@ -65,11 +69,16 @@ object ScalaJsSample1 extends JSApp {
     }
 
     jQuery(setupUI _)
-
     callClient()
 
-    // TODO: integration with ScalaRX
-    // 5.
-    //val text = Var(jQuery("#text").value().asInstanceOf[String])
+    // 6. ScalaTag (+ TODO: ScalaRX)
+
+    val samplePage = new SamplePage(scalatags.Text)
+    dom.document.getElementById("scalatags").innerHTML = samplePage.htmlFrag.render
+      //.bindOption(..
+    //jQuery("scalatags").append(samplePage.htmlFrag.render)
+
+
+
   }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>The Scala.js Tutorial</title>
 </head>
-<body>
+<body onload="webapp.ScalaJsSample1().main()">
 <!-- Include Scala.js compiled code -->
 <script type="text/javascript" src="./target/scala-2.11/scalajs-fastopt.js"></script>
 
@@ -14,9 +14,9 @@
 <link rel="stylesheet" type="text/css" href="screen.css">
 
 <!-- Run tutorial.webapp.TutorialApp -->
-<script type="text/javascript">
-    webapp.ScalaJsSample1().main();
-</script>
+<!--<script type="text/javascript">-->
+    <!--webapp.ScalaJsSample1().main();-->
+<!--</script>-->
 
 <button id="click-me-button">Click</button>
 
@@ -25,16 +25,12 @@
     <ul id="posts"></ul>
 </section>
 
-<h3>Scala RX, reactive extensions, binding vars to form's fields</h3>
+
+<h3>Scala tags</h3>
 <section>
-    <form>
-        <p>
-            <input id="text" type="text"/>
-        </p>
-        <p>
-            <span></span>
-        </p>
-    </form>
+    <div id="scalatags">
+
+    </div>
 </section>
 
 </body>
