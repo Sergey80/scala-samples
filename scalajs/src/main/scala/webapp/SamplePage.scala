@@ -1,9 +1,6 @@
 package webapp
 
-import scala.scalajs.js.JSApp
-
 import scala.scalajs.js.annotation.JSExport
-import org.scalajs.dom
 
 @JSExport
 class SamplePage[Builder, Output <: FragT, FragT](val bundle: scalatags.generic.Bundle[Builder, Output, FragT]) {
