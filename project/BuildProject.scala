@@ -1,57 +1,45 @@
 import sbt._
-import sbt.Keys._
-import sbt.project
-import sbt.Plugins._
-import sbt.project
-
-
-
-//import ScalaJSPlugin._
-//import ScalaJSPlugin.autoImport._
-
-//import org.scalajs.sbtplugin.cross.{CrossType, CrossProject}
-import sbt._
 import Keys._
 import org.scalajs.sbtplugin.ScalaJSPlugin
-import org.scalajs.sbtplugin._
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
 object BuildProject extends Build {
 
 
   val akkaDependencies = Seq(
-    "com.typesafe.akka" % "akka-actor_2.11" % "2.4.2",
-    "com.typesafe.akka" %% "akka-slf4j" % "2.3.6",
-    "com.typesafe.akka" % "akka-stream_2.11" % "2.4.2"
+    "com.typesafe.akka" %% "akka-actor" % Versions.akkaActor,
+    "com.typesafe.akka" %% "akka-slf4j" % Versions.slf4jAkka,
+    "com.typesafe.akka" %% "akka-stream" % Versions.akkaActor
   )
 
   val scalazDependencies = Seq(
-    "org.scalaz" %% "scalaz-core" % "7.1.0",
-    "org.scalaz" %% "scalaz-effect" % "7.1.0",
-    "org.scalaz" %% "scalaz-typelevel" % "7.1.0",
-    "org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0" % "test"
+    "org.scalaz" %% "scalaz-core" % Versions.scalaz,
+    "org.scalaz" %% "scalaz-effect" % Versions.scalaz,
+    "org.scalaz" %% "scalaz-scalacheck-binding" % Versions.scalaz % "test"
   )
 
   val coreDependencies = Seq(
-    "org.specs2" %% "specs2" % "2.3.11" % "test",
-    "org.scalatest" %% "scalatest" % "2.1.5",
-    "joda-time" % "joda-time" % "2.8.2",
-    "org.scalacheck" %% "scalacheck" % "1.12.5" % "test",
-    "org.slf4j" % "slf4j-log4j12" % "1.5.2",
-    "ch.qos.logback" % "logback-classic" % "1.0.9",
-    "com.storm-enroute" %% "scalameter" % "0.7",
-    "com.typesafe.play" % "play-json_2.11" % "2.3.10",
-    "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.6.1"
+    "org.specs2" %% "specs2" % Versions.specs2 % "test",
+    "org.scalatest" %% "scalatest" % Versions.scalaTest,
+    "joda-time" % "joda-time" % Versions.jodaTime,
+    "org.scalacheck" %% "scalacheck" % Versions.scalacheck % "test",
+    "org.slf4j" % "slf4j-log4j12" % Versions.slf4j,
+    "ch.qos.logback" % "logback-classic" % Versions.logback,
+    "com.storm-enroute" %% "scalameter" % Versions.scalameter,
+    "com.typesafe.play" %% "play-json" % Versions.playJson,
+    "com.typesafe.play" %% "play-json" % Versions.playJson,
+    "com.typesafe.play" %% "play-json" % Versions.playJson,
+    "com.fasterxml.jackson.module" %% "jackson-module-scala" % Versions.jacksonModuleScala
   )
 
   lazy val scalaJsDependencies =  Seq(
-    "com.lihaoyi" %% "scalarx" % "0.3.1"
+    "com.lihaoyi" %% "scalarx" % Versions.scalaRx
   )
 
 
   lazy val lang = Project("Lang", file("lang")) settings(
     version       := "0.5",
-    scalaVersion  := "2.11.7",
+    scalaVersion  := Versions.scala,
 
     scalacOptions in Test ++= Seq("-Yrangepos"),
     scalacOptions += "-feature",
@@ -74,7 +62,7 @@ object BuildProject extends Build {
 
   lazy val akka = Project(id = "Akka", base = file("akka")) settings(
     version       := "0.1",
-    scalaVersion  := "2.11.7",
+    scalaVersion  := Versions.scala,
 
     libraryDependencies ++= coreDependencies,
     libraryDependencies ++= akkaDependencies
@@ -83,7 +71,7 @@ object BuildProject extends Build {
 
   lazy val scalaJS = Project(id = "ScalaJS", base = file("scalajs")).enablePlugins(ScalaJSPlugin).settings(
      version      := "0.1",
-     scalaVersion := "2.11.7",
+     scalaVersion := Versions.scala,
 
     ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }, // TODO:
 
@@ -92,20 +80,20 @@ object BuildProject extends Build {
      libraryDependencies ++= scalaJsDependencies,
 
      libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
-     libraryDependencies += "com.lihaoyi" %%% "upickle" % "0.4.0",
+     libraryDependencies += "com.lihaoyi" %%% "upickle" % Versions.upickle,
 
-    libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.5.5",
+    libraryDependencies += "com.lihaoyi" %%% "scalatags" % Versions.scalaTags,
 
      // we will not use use DOM directly so commenting it
-     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0",
+     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % Versions.dom,
 
 
-     jsDependencies += "org.webjars" % "jquery" % "2.2.3" / "jquery.js", // "jsDependencies" reserved
+     jsDependencies += "org.webjars" % "jquery" % Versions.jquery / "jquery.js", // "jsDependencies" reserved
 
 //     // After reloading and rerunning fastOptJS,
 //        // this will create scala-js-jsdeps.js
      skip in packageJSDependencies := false,
-     jsDependencies += "org.webjars" % "jquery" % "2.2.3" / "2.2.3/jquery.js",
+     jsDependencies += "org.webjars" % "jquery" % Versions.jquery / s"${Versions.jquery}/jquery.js",
 
     // allows DOM be available from from console' run (so no "ReferenceError: "window" is not defined." error would appear)
     jsDependencies += RuntimeDOM, // it will use PhantomJS, basically
@@ -113,6 +101,9 @@ object BuildProject extends Build {
      scalaJSUseRhino in Global := false //will use node.js to build the thing
     )
 
-  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")) aggregate(lang, akka, scalaJS)
+  lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")).settings(
+    name:="ScalaSamples",
+    version := Versions.binding
+  ).aggregate(lang, akka, scalaJS)
 
 }

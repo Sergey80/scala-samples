@@ -1,13 +1,13 @@
 package scalacheck
 
 
-import org.scalatest.prop.{GeneratorDrivenPropertyChecks, Configuration, Checkers}
-import org.scalatest.{FeatureSpec, GivenWhenThen, ShouldMatchers}
+import org.scalatest.prop.{GeneratorDrivenPropertyChecks}
+import org.scalatest.{FeatureSpec, GivenWhenThen}
 
 // https://github.com/rickynils/scalacheck/wiki/User-Guide
 // http://www.scalatest.org/user_guide/writing_scalacheck_style_properties
 
-class ScalaCheckTest extends FeatureSpec with GivenWhenThen with ShouldMatchers
+class ScalaCheckTest extends FeatureSpec with GivenWhenThen
 
                                                 // ScalaCheck support
                                                 /*with Checkers*/ with GeneratorDrivenPropertyChecks /*with Configuration*/ {
