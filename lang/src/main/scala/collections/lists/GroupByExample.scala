@@ -25,3 +25,25 @@ object GroupByExample extends App {
   println("occurrences: " + result)
 
 }
+
+/*
+  val all = Seq(
+              Model(1, "big"),
+              Model(2, "small"),
+              Model(1, "middle"),
+              Model(1, "small")
+            )
+
+  val sorted: List[Model] = all.map { model =>
+    model.sourceId match {
+      case small@"small" => (model, 0)
+      case middle@"middle" => (model, 1)
+      case big@"big" => (model, 2)
+    }
+  }.groupBy(_._1.price).toList.sortBy(_._1).flatMap {
+    case (price: BigDecimal, list: Seq[(Model, Int)]) => list.sortBy(_._2).map(_._1)
+  }
+  println(sorted)
+*/
+
+
