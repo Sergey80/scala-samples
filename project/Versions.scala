@@ -15,6 +15,8 @@ trait ScalaJVMVersions {
 
   val jacksonModuleScala = "2.6.1"
 
+  val shapeless = "2.3.2"
+
   val playJson = "2.5.3"
 
   val scalaz = "7.2.2"
