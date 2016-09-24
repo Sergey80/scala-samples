@@ -44,5 +44,17 @@ object Name {
 }
 ```
 
+or even
+
+```
+object Name {
+ implicit val nameFormat = Json.format[Name]
+}
+```
+
+
 If we found ourself to filter fields to be serialized, then just do not do it. 
-Just create new case class for that or use JsonValue directly. 
+Just create new case class for that or use JsonValue directly.
+
+About the json request/responses standards:
+http://stackoverflow.com/questions/12806386/standard-json-api-response-format
