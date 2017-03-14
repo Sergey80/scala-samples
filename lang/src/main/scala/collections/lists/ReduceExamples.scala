@@ -2,7 +2,7 @@ package lists
 
 // #list #reduce
 
-// Reduce - Simplified version of foldLeft.
+// Reduce - Simplified version of foldLeft (because we do not need pass seed-value, like we do in fold(seed)(fn)).
 
 // First argument is where result is passed
 // Second argument is always the current item in the collection.
