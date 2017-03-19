@@ -12,6 +12,11 @@ object BuildProject extends Build {
     "com.typesafe.akka" %% "akka-stream" % Versions.akkaActor
   )
 
+  val sparkDependencies = Seq(
+    "org.apache.spark" %% "spark-core" % Versions.spark
+  )
+
+
   val scalazDependencies = Seq(
     "org.scalaz" %% "scalaz-core" % Versions.scalaz,
     "org.scalaz" %% "scalaz-effect" % Versions.scalaz,
@@ -68,6 +73,14 @@ object BuildProject extends Build {
     libraryDependencies ++= coreDependencies,
     libraryDependencies ++= akkaDependencies
    )
+
+  lazy val spark = Project(id = "spark", base = file("spark")) settings(
+    version       := "0.1",
+    scalaVersion  := Versions.scala,
+
+//    libraryDependencies ++= coreDependencies,
+    libraryDependencies ++= sparkDependencies
+  )
 
 
   lazy val scalaJS = Project(id = "ScalaJS", base = file("scalajs")).enablePlugins(ScalaJSPlugin).settings(

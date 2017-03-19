@@ -5,6 +5,8 @@ object Versions extends ScalaJVMVersions with ScalaJSVersions with SharedVersion
 
 trait ScalaJVMVersions {
 
+  val spark = "2.0.0"
+
   val akkaActor = "2.4.4"
 
   val jodaTime = "2.8.2"
