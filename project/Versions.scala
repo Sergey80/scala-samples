@@ -48,6 +48,8 @@ trait SharedVersions
 
   val scalaTags = "0.5.5"
 
+  val monocleVersion = "1.4.0"
+
 //  val scalaCSS = "0.4.0"
 //
 //  val macroParadise = "2.1.0"

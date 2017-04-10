@@ -35,7 +35,11 @@ object BuildProject extends Build {
     "com.typesafe.play" %% "play-json" % Versions.playJson,
     "com.typesafe.play" %% "play-json" % Versions.playJson,
     "com.fasterxml.jackson.module" %% "jackson-module-scala" % Versions.jacksonModuleScala,
-    "com.chuusai" %% "shapeless" % Versions.shapeless
+    "com.chuusai" %% "shapeless" % Versions.shapeless,
+
+      "com.github.julien-truffaut" %%  "monocle-core"  % Versions.monocleVersion,
+      "com.github.julien-truffaut" %%  "monocle-macro" % Versions.monocleVersion,
+      "com.github.julien-truffaut" %%  "monocle-law"   % Versions.monocleVersion % "test"
   )
 
   lazy val scalaJsDependencies =  Seq(
