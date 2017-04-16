@@ -13,8 +13,8 @@ To run and add news:
  - sbt
  - project algorithms
  - ~test
- - and new code along with tests so you code will be auto-compiling as you do it
+ - add new code along with tests in the same file, so you code will be auto-compiling as you do it
  
 Feel free to use this project for your own purposes. 
-Please contribute here is you want. 
+Please contribute here if you want. 
  
