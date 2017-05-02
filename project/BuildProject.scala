@@ -1,5 +1,5 @@
 import sbt._
-import Keys._
+import Keys.{libraryDependencies, _}
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
@@ -44,6 +44,16 @@ object BuildProject extends Build {
 
   lazy val scalaJsDependencies =  Seq(
     "com.lihaoyi" %% "scalarx" % Versions.scalaRx
+  )
+
+
+  lazy val algorithms = Project("algorithms", file("algorithms")) settings(
+    version       := "0.5",
+    scalaVersion  := Versions.scala,
+
+    libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1",
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test",
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.13.5" % "test"
   )
 
 
@@ -122,6 +132,6 @@ object BuildProject extends Build {
   lazy val scalaSamples = Project(id = "ScalaSamples", base = file(".")).settings(
     name:="ScalaSamples",
     version := Versions.binding
-  ).aggregate(lang, akka, scalaJS)
+  ).aggregate(lang, akka, scalaJS, algorithms)
 
 }
