@@ -53,7 +53,8 @@ object BuildProject extends Build {
 
     libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.13.5" % "test"
+    libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.13.5" % "test",
+    libraryDependencies += "org.scalamock" %% "scalamock-scalatest-support" % "3.5.0"
   )
 
 
