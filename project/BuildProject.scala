@@ -93,6 +93,8 @@ object BuildProject extends Build {
     version       := "0.1",
     scalaVersion  := Versions.scala,
 
+    parallelExecution in test := false,
+
 //    libraryDependencies ++= coreDependencies,
     libraryDependencies ++= sparkDependencies
   )
