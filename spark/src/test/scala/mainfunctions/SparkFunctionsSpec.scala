@@ -43,6 +43,16 @@ class SparkFunctionsSpec extends FlatSpec with Matchers  with BeforeAndAfter  {
                     collect()
 
     result.length should equal (2)
+
+    // (jonh,CompactBuffer(1000))
+    // (bob,CompactBuffer(2000, 2000))
+
+    // NOTE: Performance-wise:
+    /*
+    Avoid groupByKey and use reduceByKey or combineByKey instead.
+    groupByKey shuffles all the data, which is slow.
+      reduceByKey shuffles _only_ the results of sub-aggregations in each partition of the data.
+    */
   }
 
   "reduceByKey" should "show how it works - actually groups by key - applying a function for its values" in {
@@ -60,6 +70,16 @@ class SparkFunctionsSpec extends FlatSpec with Matchers  with BeforeAndAfter  {
       collect()
 
     result.length should equal (2) // jonh: 1000, bob: 4000
+
+    // (jonh,1000)
+    // (bob,4000)
+
+    // NOTE: Performance-wise:
+    /*
+      Avoid groupByKey and use reduceByKey or combineByKey instead.
+      groupByKey shuffles all the data, which is slow.
+      reduceByKey shuffles _only_ the results of sub-aggregations in _each partition_ of the data.
+    */
   }
 
   "mapValues" should "show how it works - apply map function to the values" in {
