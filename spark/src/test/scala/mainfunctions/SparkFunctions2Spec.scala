@@ -12,7 +12,7 @@ import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
   * Also, here in the doc: https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions - it is all about pairs.
   */
 
-class SparkFunctionsJoinsSpec extends FlatSpec with Matchers  with BeforeAndAfter  {
+class SparkFunctions2Spec extends FlatSpec with Matchers  with BeforeAndAfter  {
 
   val conf: SparkConf = new SparkConf()
     .setMaster("local[2]") // two threads

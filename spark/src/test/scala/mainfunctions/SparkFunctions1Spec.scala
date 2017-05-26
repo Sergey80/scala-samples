@@ -1,9 +1,9 @@
 package mainfunctions
 
+import mainfunctions.model.Event
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
-import mainfunctions.model.Event
 
 /**
   * There are essential set of function that one should learn and know as alphabet.
@@ -12,7 +12,7 @@ import mainfunctions.model.Event
   * Also, here in the doc: https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions - it is all about pairs.
   */
 
-class SparkFunctionsSpec extends FlatSpec with Matchers  with BeforeAndAfter  {
+class SparkFunctions1Spec extends FlatSpec with Matchers  with BeforeAndAfter  {
 
   val conf: SparkConf = new SparkConf()
     .setMaster("local[2]") // two threads
