@@ -39,7 +39,7 @@ object CurryingTest extends App {
   // 2.1
   println ("2.1: " + add2(5)(6))
 
-  //val f =  add(5) // does not compile, expecting 2nd param passed
+  //val f =  add2(5) // does not compile, expecting 2nd param passed
   val f =  add2(5)_  // can treat it as 'partially applied function' because 2nd parameter is defined,
                         // so we may mark it to be omitted  (#partially-applied-function related)
   println("2.2: " + f(6) )
