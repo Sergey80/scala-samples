@@ -46,3 +46,9 @@ Run:
 
 --
 Spec: http://www.scala-lang.org/files/archive/spec/2.11/
+
+
+### NOTE: after 12 years of this project.
+
+Even with GPT, it still makes sense to have this project,
+ since it gives you a chance to play with Scala.
