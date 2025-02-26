@@ -1,44 +1,31 @@
 ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / scalaVersion := "3.2.1"
 
-ThisBuild / scalaVersion := "2.13.10"
+//libraryDependencies += "com.typesafe.play" %% "play-json" % "3.0.4"
 
-libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.14"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.14" % "test"
-libraryDependencies += "org.scalatestplus" %% "mockito-4-6" % "3.2.14.0" % "test"
-libraryDependencies += "org.scalatestplus" %% "junit-4-13" % "3.2.14.0" % "test"
-// https://mvnrepository.com/artifact/org.scalacheck/scalacheck
-libraryDependencies ++= Seq(
-  "org.scalatestplus" %% "scalacheck-1-14" % "3.1.1.1" % Test
-)
-
-
-libraryDependencies ++= Seq(
-  "com.chuusai" %% "shapeless" % "2.3.3"
-)
-
-libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"
-
-libraryDependencies += "joda-time" % "joda-time" % "2.12.1"
-
-libraryDependencies += "com.storm-enroute" %% "scalameter-core" % "0.20"
-
-libraryDependencies += "com.typesafe.play" %% "play-json" % "2.9.3"
-
-
-
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.7.0"
-
-libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.3.7"
-
-libraryDependencies += "com.github.julien-truffaut" %% "monocle-core" % "2.1.0"
-libraryDependencies += "com.github.julien-truffaut" %% "monocle-macro" % "2.1.0"
-
-
-libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.14.1"
-
-
+val scalatestVersion = "3.3.0-SNAP4"
+val monocleVersion = "3.0.0-M6"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "scala_samples"
+    name := "scala_samples",
+    libraryDependencies ++= Seq(
+      "org.scalactic" %% "scalactic" % scalatestVersion,
+      "org.scalatest" %% "scalatest" % scalatestVersion % Test,
+      "org.scalatestplus" %% "mockito-4-6" % "3.2.14.0" % Test,
+      "org.scalatestplus" %% "junit-4-13" % "3.2.14.0" % Test,
+      "org.scalatestplus" %% "scalacheck-1-16" % "3.2.14.0" % Test,
+
+//      "com.chuusai" %% "shapeless" % "2.3.12",
+      "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
+      "joda-time" % "joda-time" % "2.12.5",
+//      "com.storm-enroute" %% "scalameter-core" % "0.21",
+      "com.typesafe.play" %% "play-json" % "2.10.0",
+//      "com.typesafe.akka" %% "akka-actor-typed" % "2.10.0",
+      "org.scalaz" %% "scalaz-core" % "7.4.0-M15",
+      "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
+      "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
+      // to replace with circle:
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.18.2"
+    )
   )

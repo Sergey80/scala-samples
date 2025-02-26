@@ -7,7 +7,7 @@ Sometimes we have to read some articles, forums, blogs to understand the thing.
 But if we want just remind ourselves something we already knew, then is better just look at code sample.
 You could easily change it and play with it and see what's going on.
 
-In this case "the thing" is: 
+In this case "the thing" is: q
 
 Scala Language (lang folder)
 and its satellites technologies, such as ScalaJS, Apache Spark, Akka and more. 
@@ -23,6 +23,9 @@ for particular example. Like #feature-1 #feature-3.
 
 
 <h3>HOW TO INSTALL & RUN</h3>
+
+Make sure your build properties set the same sbt version as your global sbt version you use to build this project.
+see: [build.properties](project/build.properties) (especially if run from console
 
 sbt & nodejs (to work with ScalaJS samples) should be installed
 
