@@ -3,7 +3,6 @@ package scala_99
 // #tail-recursion #accumulating #if-else-expression #case #list-concatenation
 
 object t9_pack_duplicates extends App {
-
   def pack[A] (list:List[A]):  List[List[A]] = {
 
     def loop( list:List[A], prior: A = list.head, packAcc:List[A] = List(), resultAcc:List[List[A]] = List() ) : List[List[A]] = list match  {
@@ -22,8 +21,8 @@ object t9_pack_duplicates extends App {
 
   }
 
-  val result = pack(List[Symbol]('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)).reverse
+  val result = pack(List[Symbol](Symbol("a"), Symbol("a"), Symbol("a"), Symbol("a"), Symbol("b"), Symbol("c"), Symbol("c"), Symbol("a"), Symbol("a"), Symbol("d"), Symbol("e"), Symbol("e"), Symbol("e"), Symbol("e"))).reverse
 
-  println(result) // List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e, 'e))
+  println(result) // List(List(Symbol("a"), Symbol("a"), Symbol("a"), Symbol("a")), List(Symbol("b")), List(Symbol("c"), Symbol("c")), List(Symbol("a"), Symbol("a")), List(Symbol("d")), List(Symbol("e"), Symbol("e"), Symbol("e"), Symbol("e")))
 
 }

@@ -25,7 +25,7 @@ object JsValueToAnotherValue extends App {
   val nameOption = (json \ "name").asOpt[String]
   val nameOption1 = (json \ "name1").asOpt[String]
 
-  print(nameOption1 + "\n") // None
+  println(nameOption1.toString + "\n") // None
 
 
 

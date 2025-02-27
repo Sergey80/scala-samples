@@ -25,7 +25,7 @@ case class Place(name: String, location: Location, residents: Seq[Resident])
 object Location {
 
   // minimalistic:
-  implicit val locationWrites = Json.writes[Location]
+  implicit val locationWrites: Writes[Location] = Json.writes[Location]
 
   // same as:
   /*
@@ -38,7 +38,7 @@ object Location {
 
 
   // minimalistic:
-  implicit val locationReads = Json.reads[Location]
+  implicit val locationReads: Reads[Location] = Json.reads[Location]
 
   // same as:
   /*
@@ -52,7 +52,7 @@ object Location {
 
 object Resident {
   // minimalistic:
-  implicit val residentWrites = Json.writes[Resident]
+  implicit val residentWrites: Writes[Resident] = Json.writes[Resident]
 
   // same as:
   /*
@@ -68,8 +68,7 @@ object Resident {
 
 object Place {
 
-  implicit val placeWrites = Json.writes[Place]
-
+  implicit val placeWrites: Writes[Place] = Json.writes[Place]
   // same as:
   /*
   implicit val placeWrites = new Writes[Place] {

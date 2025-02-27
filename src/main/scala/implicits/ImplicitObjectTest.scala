@@ -6,7 +6,7 @@ package implicits
 */
 
 trait Worker[T] {
-  def doIt(it:T)
+  def doIt(it:T): Unit
 }
 
 object ImplicitObjectTest extends App {
@@ -24,12 +24,11 @@ object ImplicitObjectTest extends App {
   }
 
   object Boss {
-
-    def passWorkToDo[T](work:T) (implicit worker: Worker[T]) {
+     def passWorkToDo[T](work: T)(implicit worker: Worker[T]): Unit = {
        worker.doIt(work)
-    }
+     }
 
-  }
+   }
 
   // MAIN - a boss are passing some work to do, without specifying a worker
 

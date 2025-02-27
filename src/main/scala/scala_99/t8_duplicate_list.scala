@@ -16,7 +16,7 @@ object t8_duplicate_list extends App {
   }
 
 
-  val result = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+  val result = compress(List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"))
 
   println (result) // List('a, 'b, 'c, 'a, 'd, 'e)
 
@@ -24,24 +24,23 @@ object t8_duplicate_list extends App {
   // 2. make use of existing method: #dropWhile. recursion
 
   {
-    def compress[T](list:List[T]): List[T] = list match {
+    def compress[T](list: List[T]): List[T] = list match {
       case Nil => Nil
       case head :: tail => head :: compress(tail.dropWhile(_ == head)) // x=> x == head
     }
 
-    val result = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
-    println (result)
+    val result = compress(List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"))
+    println(result)
   }
 
 
   // 3. using fold
   {
-
-   def compress[T](list:List[T]): List[T] =
-     list.foldRight(List[T]()) { // will be adding tot he empty list
+    def compress[T](list:List[T]): List[T] =
+      list.foldRight(List[T]()) { // will be adding tot he empty list
       (right, result) => if (result.isEmpty || result.head != right) right :: result
-                         else result
-     }
+                          else result
+      }
 
     // just reminder that we may use 'case'
     def compress2[T](list:List[T]): List[T] =
@@ -52,8 +51,8 @@ object t8_duplicate_list extends App {
       }
 
 
-    val result1 = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
-    val result2 = compress2(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+    val result1 = compress(List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"))
+    val result2 = compress2(List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e"))
     println (result1)
     println (result2)
 

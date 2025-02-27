@@ -16,8 +16,7 @@ object FunctionLiteral extends App {
 
   // And this is #anonymous-function - there is no name of this function - you see, no name = anonymous:
 
-  (a: Int) => a + 1 // so, yes - this is an instance of class Function1
-
+  val anonymousFunction = (a: Int) => a + 1 // so, yes - this is an instance of class Function1
 
 
   // Sometimes though, we want to make use of #anonymous-function having a reference to it

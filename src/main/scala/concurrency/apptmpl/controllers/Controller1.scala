@@ -7,35 +7,17 @@ import scala.util.{Failure, Success, Try}
 
 
 object Controller1 {
-
-  //import Service._
-  implicit val ex1 = Controllers.ex1
-
+  import scala.concurrent.ExecutionContext
+  implicit val ex1: ExecutionContext = Controllers.ex1
 
   val manager1 = Manager1
 
-//  def doControllerStuff2(): Unit = {
-//
-//    implicit val ex1 = Controllers.ex2
-//
-//    val ff = Future {
-//      println( "ff" + Thread.currentThread.getName )
-//      1
-//    }
-//
-//    ff.foreach{case x =>
-//      print("ff done")
-//    }
-//
-//  }
-
   def doControllerStuff2(): String = {
+    implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.global
 
     val futureResult  = manager1.doManagerStuff2()
 
-
-    val tryResult = Try(  Await.result(futureResult, 10.seconds)  )
-
+    val tryResult = Try(Await.result(futureResult, 10.seconds))
 
     tryResult match {
       case Success(r) => "OK:" + r
@@ -44,28 +26,22 @@ object Controller1 {
   }
 
   def doControllerStuff1(): String = {
+    implicit val ec: ExecutionContext = scala.concurrent.ExecutionContext.global
 
     println("doing controller stuff on " + Thread.currentThread().getName)
 
     val futureResult  = manager1.doManagerStuff1()
 
-    //
-    futureResult foreach { x => {
+    futureResult foreach { x =>
       // TODO: print to console may be considered a blocking operation and may slow down execution context
       println("controller on success on " + Thread.currentThread().getName)
     }
-    }
 
-
-    val tryResult = Try(  Await.result(futureResult, 10.seconds)  )
-
+    val tryResult = Try(Await.result(futureResult, 10.seconds))
 
     tryResult match {
       case Success(e) => "OK:" + e
       case Failure(e) => "ERROR"
     }
-
-
   }
-
 }

@@ -15,7 +15,7 @@ package currying
 object CurryingTest extends App {
 
 { // 1. not Currying - it just returns a anonymous function with predefined body/algorithm
-  def add1(a:Int) = { b:Int => a + b } // use anonymous function, that expect b:Int as param and use "a" from parent-function
+  def add1(a:Int) = { a + (_: Int) } // use anonymous function, that expect b:Int as param and use "a" from parent-function
   // 1.1
   println ("1.1: " + add1(5)(6))
 

@@ -8,7 +8,7 @@ import org.joda.time.format.{DateTimeFormat}
 import scala.concurrent.duration.Duration
 import scala.concurrent.{ExecutionContext, Await, Future, blocking}
 
-import org.scalameter._
+//import org.scalameter._
 
 // In this example we tried to fix 'NestedFutures' by introducing more execution context.
 // To let children to operate on their own Ex context.
@@ -51,7 +51,7 @@ object NestedFutures2 extends App {
 
   val cores = Runtime.getRuntime.availableProcessors
 
-  val time = measure {
+//  val time = measure {
 
     val works = parentWork(ExContexts.main) // main EC (based on fork-join pool ) !
 
@@ -60,9 +60,9 @@ object NestedFutures2 extends App {
     println(s"[${timeStamp()}] parents are done with their work")
 
     val result2: Seq[String] = Await.result(Future.sequence(result1.flatten), Duration.Inf)
-  }
+//  }
 
-  println(s"running time: $time")
+//  println(s"running time: $time")
 
   // ---
 

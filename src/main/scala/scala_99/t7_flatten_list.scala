@@ -3,7 +3,6 @@ package scala_99
 
 object t7_flatten_list extends App {
 
-
   {  // pure recursion
 
     println("pure recursion: ")
@@ -15,7 +14,7 @@ object t7_flatten_list extends App {
     }
 
     val list = List(1, List(2, 3), 4)
-    println(list + " -> " + flatten(list))
+    println(s"$list -> ${flatten(list)}")
 
   }
 
@@ -29,7 +28,7 @@ object t7_flatten_list extends App {
     }
 
     val list = List(1, List(2, 3), 4)
-    println(list + " -> " + flatten(list))
+    println(s"$list -> ${flatten(list)}")
 
 
   }
@@ -43,7 +42,7 @@ object t7_flatten_list extends App {
     }
 
     val list = List(1, List(2, 3), 4)
-    println(list + " -> " + flatten(list))
+    println(s"$list -> ${flatten(list)}")
 
   }
 

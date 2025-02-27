@@ -1,7 +1,7 @@
 package concurrency.performance
 
 import concurrency.logging.threadfactory.CustomThreadFactory
-import org.scalameter._
+//import org.scalameter._
 
 import java.util.concurrent.ForkJoinPool
 import scala.concurrent.{Await, Future, blocking}
@@ -45,9 +45,8 @@ object MyBench extends App {
 
   var statPairs : Seq[(Stat, Stat)] = _
 
-  val m = measure {
-
-    val statsF = (1 to 20000) map { n => // a lot of work to do
+//  val m = measure {
+    val statsF = (1 to 20000).map { n => // a lot of work to do
       Future {
         blocking {
           Thread.sleep(5000) // work takes some time
@@ -75,14 +74,12 @@ object MyBench extends App {
       }(workerEcCtx)
     }
 
-    implicit val _schedulingEcCtx = schedulingEcCtx
+    implicit val _schedulingEcCtx: scala.concurrent.ExecutionContext = schedulingEcCtx
     val f = Future.sequence(statsF)
 
     statPairs = Await.result(f, 60.seconds)
 
-  }
-
-  println (m.value/1000 + " sec")
+//  println (m.value/1000 + " sec")
 
   println("workPool's stat[active, running, steals, tasks, submission] max:  " + maxStat(statPairs)(to_1))
   println("workPool's stat[active, running, steals, tasks, sSubmission] av:  " + average(statPairs)(to_1))

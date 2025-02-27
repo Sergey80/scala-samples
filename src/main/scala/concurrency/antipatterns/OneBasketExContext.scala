@@ -10,8 +10,7 @@ import scala.concurrent.{ExecutionContext, Await, Future}
  // need some execution space to wait/work on/in - the execution context is that 'space'
 
 object OneBasketExContext extends App {
-
-  implicit val ex = ExecutionContext.Implicits.global
+  implicit val ex: ExecutionContext = ExecutionContext.Implicits.global
 
   val f1 = Future {1}
   val f2 = Future {2}

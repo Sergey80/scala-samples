@@ -3,7 +3,6 @@ package collections.streams
 // please at "StreamSample" first.
 
 object StreamCreations extends App {
-
   // A very common way to construct a Stream is to define a recursive method.
   // Each recursive call constructs a new element in the stream.
 
@@ -23,7 +22,7 @@ object StreamCreations extends App {
 
     val val100 = infinate(100)
 
-    println (val0, val1, val2, val100)  // (3,8,6,1) <!-- random values !!!
+    println(s"($val0, $val1, $val2, $val100)")  // (3,8,6,1) <!-- random values !!!
 
     // infinate.force    // it leads to OutOfMemoryException exception !!!! That's normal for infinite streams
 

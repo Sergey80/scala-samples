@@ -11,7 +11,6 @@ package extractors
  * related: #companion-object #pattern-matching #variable-binding related
 */
 object ExtractorsTest extends App {
-
   // let's say we have class email
   class Email {
     var name:String = ""
@@ -45,7 +44,7 @@ object ExtractorsTest extends App {
   // 1. #pattern-matching related
 
   email match {
-    case Email(name, domain) => println("name: " + name, "domain:" + domain)  // (name: bob,domain:gmail.com)
+    case Email(name, domain) => println(s"name: $name, domain: $domain")  // (name: bob,domain:gmail.com)
     case _ => println("no")
   }
 
@@ -59,11 +58,11 @@ object ExtractorsTest extends App {
     // extractor !
     def unapply(host: String): Option[(String)] = {
 
-       val domains = host.split("\\.")  // splitting by dot ( "." )
+        val domains = host.split("\\.")  // splitting by dot ( "." )
 
-       if (domains.length > 1) return Some(domains(1))  // for now we care only about 1-th domain to keep things simple
+        if (domains.length > 1) return Some(domains(1))  // for now we care only about 1-th domain to keep things simple
 
-       None
+        None
 
     }
   } // as you can see to keep things simple we even do not create apply() method, and there is no class Domain, only object is used

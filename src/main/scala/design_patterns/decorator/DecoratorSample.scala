@@ -5,13 +5,12 @@ package design_patterns.decorator
 // #decorator-pattern #traits
 
 object DecoratorSample extends App {
-
   // creating an IceScream with ingredients / decorators
   val iceCream = new JustIceCream with NuttyDecorator with HoneyDecorator
 
   // sequence of 'with' does matter !
 
-  println (iceCream.makeIcecream()) // Base IceCream + crunchy nuts + sweet honey
+  println(iceCream.makeIcecream()) // Base IceCream + crunchy nuts + sweet honey
 
 }
 
@@ -35,12 +34,12 @@ class JustIceCream extends IceCream {
 
 trait HoneyDecorator extends JustIceCream {
   abstract override def makeIcecream(): String = {
-    super.makeIcecream + " + sweet honey"
+    super.makeIcecream() + " + sweet honey"
   }
 }
 
 trait NuttyDecorator extends JustIceCream {
   abstract override def makeIcecream(): String = {
-    super.makeIcecream + " + crunchy nuts"
+    super.makeIcecream() + " + crunchy nuts"
   }
 }

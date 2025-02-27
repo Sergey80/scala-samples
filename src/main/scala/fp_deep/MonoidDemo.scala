@@ -44,11 +44,11 @@ object MonoidDemo extends App {
   def sum2[A](xs: List[A])(implicit m: Monoid[A]): A =
     xs.foldLeft(m.mzero)(m.mappend)
 
-  implicit val intMonoid = IntMonoid
-  implicit val stringMonoid = StringMonoid
+  implicit val intMonoid: Monoid[Int] = IntMonoid
+  implicit val stringMonoid: Monoid[String] = StringMonoid
 
-  sum2(List(1, 2, 3)) // 6
-  sum2(List("a", "b", "c", "d"))
+  println(sum2(List(1, 2, 3))) // 6
+  println(sum2(List("a", "b", "c", "d")))
 
   // abcd
 

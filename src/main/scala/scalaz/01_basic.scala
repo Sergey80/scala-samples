@@ -2,14 +2,13 @@ import scalaz._
 import Scalaz._
 
 object ScalazDemo extends App {
-
   // Eq
 
   1 === 1
 
   //1 === "abc" // scalaz: wil fail
 
-  1 == "abc" // scala: false
+//  1 == "abc" // scala: false
   1.some
   1.some =/= 2.some
 
@@ -27,7 +26,7 @@ object ScalazDemo extends App {
 
   3.show // Cord apparently is a purely functional data structure for potentially long Strings
   3.shows //
-  "hello".println
+  "hello".println()
 
   // tanges
 

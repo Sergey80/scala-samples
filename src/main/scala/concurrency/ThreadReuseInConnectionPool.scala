@@ -7,8 +7,7 @@ import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future, blocking}
 
 object ThreadReuseInConnectionPool extends App {
-
-  implicit val ec = scala.concurrent.ExecutionContext.Implicits.global
+  implicit val ec: scala.concurrent.ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
   val cores = Runtime.getRuntime.availableProcessors
 
   // 1 - with n-cores-size thread-pool (no 'blocking is used')

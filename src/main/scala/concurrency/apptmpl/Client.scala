@@ -2,7 +2,7 @@ package concurrency.apptmpl
 
 import concurrency.apptmpl.controllers.Controller1
 
-import org.scalameter._
+//import org.scalameter._
 
 object Client extends App {
 
@@ -10,12 +10,12 @@ object Client extends App {
 
   //val result1 = controller1.doControllerStuff1()
 
-  val time = measure {
+//  val time = measure {
 
       val result1 = controller1.doControllerStuff2()
       println(result1) // OK:did manager stuff service work done
 
-  }
+//  }
 
-  println ("took: " + time)
+//  println ("took: " + time)
 }

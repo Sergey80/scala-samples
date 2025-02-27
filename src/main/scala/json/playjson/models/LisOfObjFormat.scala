@@ -6,9 +6,8 @@ package json.playjson.models
 case class MyObject(name: String, num: Double)
 
 object LisOfObjFormat extends App {
-
   import play.api.libs.json._
-  implicit val myObjectFormat = Json.format[MyObject]
+  implicit val myObjectFormat: Format[MyObject] = Json.format[MyObject]
 
   val objectList = Seq(
                         MyObject("1", 1),
@@ -16,7 +15,7 @@ object LisOfObjFormat extends App {
                         MyObject("3", 3)
   )
 
-  val jsObjects: JsObject = Json.obj("objects" -> objectList)
+  val jsObjects: JsObject = Json.obj("objects" -> Json.toJson(objectList))
 
   println(jsObjects) // {"objects":[{"name":"1","num":1},{"name":"2","num":2},{"name":"3","num":3}]}
 
