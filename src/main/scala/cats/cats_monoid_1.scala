@@ -64,5 +64,5 @@ def monoid_1(): Unit = {
   // functors, and type classes requires extra brain power.
 
   // If you already know how to solve a problem using simpler,
-  // explicit methods, why add this abstraction overhead?
+  // explicit methods, why add this abstraction overhead. Think about it carefully.
 }
