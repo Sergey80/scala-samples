@@ -26,6 +26,7 @@ lazy val root = (project in file("."))
       "com.github.julien-truffaut" %% "monocle-core" % monocleVersion,
       "com.github.julien-truffaut" %% "monocle-macro" % monocleVersion,
       // to replace with circle:
-      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.18.2"
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.18.2",
+    "org.typelevel" %% "cats-core" % "2.10.0"
     )
   )
