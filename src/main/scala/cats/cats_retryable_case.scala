@@ -1,6 +1,33 @@
-//> using scala "3.3.0"
-//> using lib "com.github.cb372::cats-retry:3.1.0"
-//> using lib "org.typelevel::cats-effect:3.5.1"
+// As we saw in the previous example, it was questionable whether we needed Cats at all.
+// It seemed like an overkill—we could have achieved the same result with simple Scala or even TypeScript.
+// But now, as we progress, we begin to see why it's not exactly overkill.
+// Looking at the retry example, we realize where Cats truly shines.
+
+// --- So, why is cats-retry better than a simple manual retry? ---
+
+/**
+ * A naive approach: Manually implementing retries.
+ *
+ * The following function attempts to retry a failing task a given number of times.
+ */
+def retryManually[A](task: => IO[A], maxRetries: Int): IO[A] = {
+  task.handleErrorWith { err =>
+    if (maxRetries > 0) {
+      println(s"Retrying due to: ${err.getMessage}")
+      retryManually(task, maxRetries - 1)
+    } else {
+      IO.raiseError(err)
+    }
+  }
+}
+
+/*
+ * 🚨 Problems with this approach:
+ *
+ * ❌ No built-in delay handling → We must manually add `Thread.sleep`, blocking execution.
+ * ❌ No flexible retry strategies → We must manually code backoff, jitter, and retry limits.
+ * ❌ Not composable → Harder to integrate with Cats abstractions like `Resource` or `Parallel` execution.
+ */
 
 import cats.implicits._
 import cats.effect.{IO, IOApp}
@@ -10,30 +37,37 @@ import scala.concurrent.duration._
 
 object ApiRetryExample extends IOApp.Simple {
 
-  // Simulated unstable API call (fails the first 3 times, succeeds on 4th)
+  // 🎭 Simulated unstable API call (fails the first 3 times, succeeds on 4th attempt)
   var attemptCount = 0
   def callUnstableApi: IO[String] = IO {
     attemptCount += 1
     if (attemptCount <= 3) {
-      // Fail with an exception for the first 3 attempts
       throw new RuntimeException("API failed")
     } else {
-      // Succeed on the 4th attempt
       "API Response"
     }
   }
 
-  // Define a retry policy: up to 3 retries with 1-second delay between attempts
+  // 🛠 Define a retry policy: Up to 3 retries, with a 1-second delay between attempts
   val retryPolicy = limitRetries[IO](3) |+| constantDelay[IO](1.second)
 
-  // Error handler: log each retry attempt
+  // 📌 Error handler: Logs each retry attempt
   def onError(err: Throwable, details: RetryDetails): IO[Unit] =
     IO.println(s"Retrying due to: ${err.getMessage}")
 
-  // Wrap the API call with retry logic to automatically retry on any error
+  // 🚀 Wrapping the API call with retry logic
   val retryingCall: IO[String] = retryingOnAllErrors[String](retryPolicy, onError)(callUnstableApi)
 
-  // Entry point: execute the call and print the final result
+  // 🔥 Entry point: Execute the call and print the final result
   override def run: IO[Unit] =
     retryingCall.flatMap(response => IO.println(s"Final Response: $response"))
 }
+
+/*
+ * ✨ Why Cats-Retry Shines ✨
+ *
+ * ✅ Declarative → Define retry logic separately from business logic.
+ * ✅ Composable → Works seamlessly with Cats-Effect (IO), Resource, and FP constructs.
+ * ✅ Flexible → Supports exponential backoff, jitter, time limits, and custom rules out-of-the-box.
+ * ✅ Non-blocking → Avoids `Thread.sleep`; everything runs asynchronously.
+ */
