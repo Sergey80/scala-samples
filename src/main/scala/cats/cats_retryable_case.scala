@@ -71,3 +71,57 @@ object ApiRetryExample extends IOApp.Simple {
  * ✅ Flexible → Supports exponential backoff, jitter, time limits, and custom rules out-of-the-box.
  * ✅ Non-blocking → Avoids `Thread.sleep`; everything runs asynchronously.
  */
+
+/*
+  And yet, it maybe not enought, think twice, if you tink scala + casts introduce more complexity to your code,
+  the code, that very soon will lose its value, because I is to be written by AI, not people
+  (for people is to know what to write, to know the user stories), people will be read it,
+ then ask yourse this: what language would be the best for you as human to read the code
+
+ Consider this TS code for example:
+
+  import { TaskEither, tryCatch, taskEither } from 'fp-ts/lib/TaskEither';
+  import { pipe } from 'fp-ts/lib/function';
+  import { delay } from 'fp-ts-contrib/lib/Task';
+  import { right, left } from 'fp-ts/lib/Either';
+  import { retrying, RetryPolicy, limitRetries, constantDelay, exponentialBackoff } from 'fp-ts-contrib/lib/Retry';
+
+  // 🎭 Simulated unstable API call (fails the first 3 times, succeeds on 4th attempt)
+  let attemptCount = 0;
+  const callUnstableApi: TaskEither<Error, string> = tryCatch(
+    async () => {
+      attemptCount++;
+      if (attemptCount <= 3) {
+        throw new Error("API failed");
+      }
+      return "API Response";
+    },
+    (reason) => (reason instanceof Error ? reason : new Error(String(reason)))
+  );
+
+  // 🛠 Define retry policies
+  const maxRetries = 3;
+  const retryPolicy: RetryPolicy = limitRetries(maxRetries)
+    .concat(constantDelay(1000)); // ⏳ 1s delay per retry
+  // Alternative: Use exponential backoff instead of constant delay
+  // const retryPolicy = limitRetries(maxRetries).concat(exponentialBackoff(500));
+
+  // 📌 Logging function for retry attempts
+  const onError = (error: Error, attempts: number): TaskEither<Error, void> =>
+    tryCatch(
+      async () => console.log(`Retry #${attempts}: ${error.message}`),
+      () => undefined
+    );
+
+  // 🚀 Retry the API call with a policy
+  const retryingCall = retrying(retryPolicy, callUnstableApi, onError);
+
+  // 🔥 Execute the retrying call
+  retryingCall().then((result) => {
+    console.log(result);
+});
+
+ */
+
+// So choose your language carefully—one that you can write quickly and read without struggle.
+// Maybe, to build a web app, you don't need knowledge of Abstract Algebra or rocket science.
