@@ -15,8 +15,10 @@ lazy val root = (project in file("."))
       "org.scalatestplus" %% "mockito-4-6" % "3.2.14.0" % Test,
       "org.scalatestplus" %% "junit-4-13" % "3.2.14.0" % Test,
       "org.scalatestplus" %% "scalacheck-1-16" % "3.2.14.0" % Test,
+      "com.disneystreaming" %% "weaver-cats" % "0.8.3" % Test,
 
-      //      "com.chuusai" %% "shapeless" % "2.3.12",
+
+//      "com.chuusai" %% "shapeless" % "2.3.12",
       "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
       "joda-time" % "joda-time" % "2.12.5",
       //      "com.storm-enroute" %% "scalameter-core" % "0.21",
