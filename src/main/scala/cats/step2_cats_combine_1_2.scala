@@ -6,17 +6,16 @@ import cats.implicits.*
 case class Score(points: Int)
 
 // define semigroup -- it is all about that method `combine`tht we define here
-implicit val scoreSemigroup: Semigroup[Score] = (a, b) => Score(a.points + b.points)
+implicit val scoreSemigroup: Semigroup[Score] = (a, b) => Score(a.points + b.points) // in this case we say that when we combine a and b we will use `+`
 
 /*
- You do not see method combine here, but it is there:
- defined as:
+ You do not see method `combine` here, but it is there in the Semigroup.... - defined as:
 
  `def combine(x: A, y: A): A`
 
   here we implement that combine method with the `+` operator.
 
-  Nothing fancy, just an interface with one method.
+  Nothing fancy, just like an OOP `interface` with one method (?)
 */
 
 @main
@@ -32,6 +31,8 @@ implicit val scoreSemigroup: Semigroup[Score] = (a, b) => Score(a.points + b.poi
     A Semigroup in Cats is like injecting a method into a type,
    much like defining a common trait or interface in OOP,
    but without super class or interface.
+
+  So we're implicitly injecting plus (+) to Score type. Unline interfaces in OOP - no need to build integrate, all is flat and implicit.
   **/
 }
 
